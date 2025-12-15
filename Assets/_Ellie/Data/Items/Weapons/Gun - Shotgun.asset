@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2428632dc5c33724ea71a453bafb4760, type: 3}
+  m_Name: Gun - Shotgun
+  m_EditorClassIdentifier: CarGame::CarGame.WeaponItemData
+  displayName: Shotgun Shogun
+  sprite: {fileID: 21300000, guid: 09a1ea8e8e4d2964c85eed571d8ac2e8, type: 3}
+  maxStackSize: 5
+  gun: {fileID: 5936284848236713949, guid: a2f7eefa964eac6459c3ce3316a2d3d6, type: 3}
+  ammoType: {fileID: 11400000, guid: eebccc480c2d42548ba823933ee66812, type: 2}
+  maxDurability: 500

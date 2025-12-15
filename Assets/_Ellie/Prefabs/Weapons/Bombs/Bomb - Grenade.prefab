@@ -1,0 +1,468 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &7740218264761312451
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6010776623419980692}
+  - component: {fileID: 3080717465976467729}
+  m_Layer: 0
+  m_Name: Spot Light 2D
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6010776623419980692
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7740218264761312451}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7980491311450805829}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3080717465976467729
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7740218264761312451}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 073797afb82c5a1438f328866b10b3f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.RenderPipelines.Universal.2D.Runtime::UnityEngine.Rendering.Universal.Light2D
+  m_ComponentVersion: 2
+  m_LightType: 3
+  m_BlendStyleIndex: 0
+  m_FalloffIntensity: 1
+  m_Color: {r: 0.99607843, g: 0.4132973, b: 0, a: 1}
+  m_Intensity: 0
+  m_LightVolumeIntensity: 1
+  m_LightVolumeEnabled: 0
+  m_ApplyToSortingLayers: 00000000d5decf3b3dd2bb62d36f3dac7732d0787b11048b255f95a4cf485f8e1b0de68b
+  m_LightCookieSprite: {fileID: 0}
+  m_DeprecatedPointLightCookieSprite: {fileID: 0}
+  m_LightOrder: 0
+  m_AlphaBlendOnOverlap: 0
+  m_OverlapOperation: 0
+  m_NormalMapDistance: 3
+  m_NormalMapQuality: 2
+  m_UseNormalMap: 0
+  m_ShadowsEnabled: 1
+  m_ShadowIntensity: 0.75
+  m_ShadowSoftness: 0.3
+  m_ShadowSoftnessFalloffIntensity: 0.5
+  m_ShadowVolumeIntensityEnabled: 0
+  m_ShadowVolumeIntensity: 0.75
+  m_LocalBounds:
+    m_Center: {x: 0, y: -0.00000011920929, z: 0}
+    m_Extent: {x: 0.9985302, y: 0.99853027, z: 0}
+  m_PointLightInnerAngle: 360
+  m_PointLightOuterAngle: 360
+  m_PointLightInnerRadius: 0
+  m_PointLightOuterRadius: 15
+  m_ShapeLightParametricSides: 5
+  m_ShapeLightParametricAngleOffset: 0
+  m_ShapeLightParametricRadius: 1
+  m_ShapeLightFalloffSize: 0.5
+  m_ShapeLightFalloffOffset: {x: 0, y: 0}
+  m_ShapePath:
+  - {x: -0.5, y: -0.5, z: 0}
+  - {x: 0.5, y: -0.5, z: 0}
+  - {x: 0.5, y: 0.5, z: 0}
+  - {x: -0.5, y: 0.5, z: 0}
+--- !u!1001 &2761364039592396997
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 8772570988657628142}
+    m_Modifications:
+    - target: {fileID: 1131270401555697707, guid: 72f38c8d2caf09d47ab0a0f86fa5a3a8, type: 3}
+      propertyPath: m_Name
+      value: Grenade Frag (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6878020635865776674, guid: 72f38c8d2caf09d47ab0a0f86fa5a3a8, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6878020635865776674, guid: 72f38c8d2caf09d47ab0a0f86fa5a3a8, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6878020635865776674, guid: 72f38c8d2caf09d47ab0a0f86fa5a3a8, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6878020635865776674, guid: 72f38c8d2caf09d47ab0a0f86fa5a3a8, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6878020635865776674, guid: 72f38c8d2caf09d47ab0a0f86fa5a3a8, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6878020635865776674, guid: 72f38c8d2caf09d47ab0a0f86fa5a3a8, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6878020635865776674, guid: 72f38c8d2caf09d47ab0a0f86fa5a3a8, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6878020635865776674, guid: 72f38c8d2caf09d47ab0a0f86fa5a3a8, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6878020635865776674, guid: 72f38c8d2caf09d47ab0a0f86fa5a3a8, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6878020635865776674, guid: 72f38c8d2caf09d47ab0a0f86fa5a3a8, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 72f38c8d2caf09d47ab0a0f86fa5a3a8, type: 3}
+--- !u!114 &2912535413375090190 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1024905848004474571, guid: 72f38c8d2caf09d47ab0a0f86fa5a3a8, type: 3}
+  m_PrefabInstance: {fileID: 2761364039592396997}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 09a9ddb6cea81f54ba08f07aab512aec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: CarGame::CarGame.Projectile
+--- !u!4 &8728528741449812711 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6878020635865776674, guid: 72f38c8d2caf09d47ab0a0f86fa5a3a8, type: 3}
+  m_PrefabInstance: {fileID: 2761364039592396997}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &5311077418482364366
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 8772570988657628142}
+    m_Modifications:
+    - target: {fileID: 1131270401555697707, guid: 72f38c8d2caf09d47ab0a0f86fa5a3a8, type: 3}
+      propertyPath: m_Name
+      value: Grenade Frag
+      objectReference: {fileID: 0}
+    - target: {fileID: 6878020635865776674, guid: 72f38c8d2caf09d47ab0a0f86fa5a3a8, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6878020635865776674, guid: 72f38c8d2caf09d47ab0a0f86fa5a3a8, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6878020635865776674, guid: 72f38c8d2caf09d47ab0a0f86fa5a3a8, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6878020635865776674, guid: 72f38c8d2caf09d47ab0a0f86fa5a3a8, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6878020635865776674, guid: 72f38c8d2caf09d47ab0a0f86fa5a3a8, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6878020635865776674, guid: 72f38c8d2caf09d47ab0a0f86fa5a3a8, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6878020635865776674, guid: 72f38c8d2caf09d47ab0a0f86fa5a3a8, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6878020635865776674, guid: 72f38c8d2caf09d47ab0a0f86fa5a3a8, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6878020635865776674, guid: 72f38c8d2caf09d47ab0a0f86fa5a3a8, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6878020635865776674, guid: 72f38c8d2caf09d47ab0a0f86fa5a3a8, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 72f38c8d2caf09d47ab0a0f86fa5a3a8, type: 3}
+--- !u!4 &1641315319944015340 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6878020635865776674, guid: 72f38c8d2caf09d47ab0a0f86fa5a3a8, type: 3}
+  m_PrefabInstance: {fileID: 5311077418482364366}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &5155934058894301445 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1024905848004474571, guid: 72f38c8d2caf09d47ab0a0f86fa5a3a8, type: 3}
+  m_PrefabInstance: {fileID: 5311077418482364366}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 09a9ddb6cea81f54ba08f07aab512aec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: CarGame::CarGame.Projectile
+--- !u!1001 &6867876160084172738
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 8772570988657628142}
+    m_Modifications:
+    - target: {fileID: 1131270401555697707, guid: 72f38c8d2caf09d47ab0a0f86fa5a3a8, type: 3}
+      propertyPath: m_Name
+      value: Grenade Frag (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6878020635865776674, guid: 72f38c8d2caf09d47ab0a0f86fa5a3a8, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6878020635865776674, guid: 72f38c8d2caf09d47ab0a0f86fa5a3a8, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6878020635865776674, guid: 72f38c8d2caf09d47ab0a0f86fa5a3a8, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6878020635865776674, guid: 72f38c8d2caf09d47ab0a0f86fa5a3a8, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6878020635865776674, guid: 72f38c8d2caf09d47ab0a0f86fa5a3a8, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6878020635865776674, guid: 72f38c8d2caf09d47ab0a0f86fa5a3a8, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6878020635865776674, guid: 72f38c8d2caf09d47ab0a0f86fa5a3a8, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6878020635865776674, guid: 72f38c8d2caf09d47ab0a0f86fa5a3a8, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6878020635865776674, guid: 72f38c8d2caf09d47ab0a0f86fa5a3a8, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6878020635865776674, guid: 72f38c8d2caf09d47ab0a0f86fa5a3a8, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 72f38c8d2caf09d47ab0a0f86fa5a3a8, type: 3}
+--- !u!4 &16954097075150304 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6878020635865776674, guid: 72f38c8d2caf09d47ab0a0f86fa5a3a8, type: 3}
+  m_PrefabInstance: {fileID: 6867876160084172738}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &5870066676786407689 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1024905848004474571, guid: 72f38c8d2caf09d47ab0a0f86fa5a3a8, type: 3}
+  m_PrefabInstance: {fileID: 6867876160084172738}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 09a9ddb6cea81f54ba08f07aab512aec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: CarGame::CarGame.Projectile
+--- !u!1001 &7981847986894908745
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: -3146828309232924949, guid: 416e32d2a51ee2646900b8091102e805, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -2725425722477725682, guid: 416e32d2a51ee2646900b8091102e805, type: 3}
+      propertyPath: explosion
+      value: 
+      objectReference: {fileID: 8852799211536323355}
+    - target: {fileID: -2725425722477725682, guid: 416e32d2a51ee2646900b8091102e805, type: 3}
+      propertyPath: blastRadius
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 469269571586082915, guid: 416e32d2a51ee2646900b8091102e805, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: ab1241b6b80bf58468addbc376a2ef47, type: 3}
+    - target: {fileID: 469269571586082915, guid: 416e32d2a51ee2646900b8091102e805, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 9dfc825aed78fcd4ba02077103263b40, type: 2}
+    - target: {fileID: 1263181308290734255, guid: 416e32d2a51ee2646900b8091102e805, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1263181308290734255, guid: 416e32d2a51ee2646900b8091102e805, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1263181308290734255, guid: 416e32d2a51ee2646900b8091102e805, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1263181308290734255, guid: 416e32d2a51ee2646900b8091102e805, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1263181308290734255, guid: 416e32d2a51ee2646900b8091102e805, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1263181308290734255, guid: 416e32d2a51ee2646900b8091102e805, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1263181308290734255, guid: 416e32d2a51ee2646900b8091102e805, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1263181308290734255, guid: 416e32d2a51ee2646900b8091102e805, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1263181308290734255, guid: 416e32d2a51ee2646900b8091102e805, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1263181308290734255, guid: 416e32d2a51ee2646900b8091102e805, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2158351419267354358, guid: 416e32d2a51ee2646900b8091102e805, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: f00c23469b07c4347a632c9b4edb4f50, type: 2}
+    - target: {fileID: 4829760272812621765, guid: 416e32d2a51ee2646900b8091102e805, type: 3}
+      propertyPath: m_Name
+      value: Bomb - Grenade
+      objectReference: {fileID: 0}
+    - target: {fileID: 7861765606534423321, guid: 416e32d2a51ee2646900b8091102e805, type: 3}
+      propertyPath: m_Name
+      value: Explosion
+      objectReference: {fileID: 0}
+    - target: {fileID: 8649643971637808755, guid: 416e32d2a51ee2646900b8091102e805, type: 3}
+      propertyPath: m_Resource
+      value: 
+      objectReference: {fileID: 8300000, guid: b56b1680211892e478eadfbd29b84508, type: 3}
+    - target: {fileID: 8821951292253102442, guid: 416e32d2a51ee2646900b8091102e805, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 8a16cbe87f5cbec4788cb070ffd57f5a, type: 3}
+    - target: {fileID: 8821951292253102442, guid: 416e32d2a51ee2646900b8091102e805, type: 3}
+      propertyPath: m_SortingLayer
+      value: 4
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 3769840830093483492, guid: 416e32d2a51ee2646900b8091102e805, type: 3}
+    m_RemovedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 1692041337179504295, guid: 416e32d2a51ee2646900b8091102e805, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1641315319944015340}
+    - targetCorrespondingSourceObject: {fileID: 1692041337179504295, guid: 416e32d2a51ee2646900b8091102e805, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8728528741449812711}
+    - targetCorrespondingSourceObject: {fileID: 1692041337179504295, guid: 416e32d2a51ee2646900b8091102e805, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 16954097075150304}
+    - targetCorrespondingSourceObject: {fileID: 1511712223427340, guid: 416e32d2a51ee2646900b8091102e805, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6010776623419980692}
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5293555423653602915, guid: 416e32d2a51ee2646900b8091102e805, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8852799211536323355}
+  m_SourcePrefab: {fileID: 100100000, guid: 416e32d2a51ee2646900b8091102e805, type: 3}
+--- !u!82 &1642843171804914490 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 8649643971637808755, guid: 416e32d2a51ee2646900b8091102e805, type: 3}
+  m_PrefabInstance: {fileID: 7981847986894908745}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &2860705955153087274 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5293555423653602915, guid: 416e32d2a51ee2646900b8091102e805, type: 3}
+  m_PrefabInstance: {fileID: 7981847986894908745}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &8852799211536323355
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2860705955153087274}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ae5861f5ed95864c8a6612d62f6c61a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: CarGame::CarGame.GrenadeExplosion
+  audioSource: {fileID: 1642843171804914490}
+  damageableLayers:
+    serializedVersion: 2
+    m_Bits: 2048
+  mask:
+    serializedVersion: 2
+    m_Bits: 2304
+  frags:
+  - {fileID: 5155934058894301445}
+  - {fileID: 2912535413375090190}
+  - {fileID: 5870066676786407689}
+  knockbackForce: 10
+  verticalKnockbackFactor: 0
+  coneAngle: 180
+  coneDirection: 90
+  fragDelay: 0.025
+  fragSpeed: 20
+  damage: 7
+--- !u!4 &7980491311450805829 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1511712223427340, guid: 416e32d2a51ee2646900b8091102e805, type: 3}
+  m_PrefabInstance: {fileID: 7981847986894908745}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &8772570988657628142 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1692041337179504295, guid: 416e32d2a51ee2646900b8091102e805, type: 3}
+  m_PrefabInstance: {fileID: 7981847986894908745}
+  m_PrefabAsset: {fileID: 0}

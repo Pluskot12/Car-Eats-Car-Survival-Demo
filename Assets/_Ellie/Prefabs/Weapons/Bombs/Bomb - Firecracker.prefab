@@ -1,0 +1,199 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2380549436437349266
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8735832464495400112}
+  - component: {fileID: 7293902828154682524}
+  m_Layer: 0
+  m_Name: Spot Light 2D
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8735832464495400112
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2380549436437349266}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7980491311450805829}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7293902828154682524
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2380549436437349266}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 073797afb82c5a1438f328866b10b3f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.RenderPipelines.Universal.2D.Runtime::UnityEngine.Rendering.Universal.Light2D
+  m_ComponentVersion: 2
+  m_LightType: 3
+  m_BlendStyleIndex: 0
+  m_FalloffIntensity: 1
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Intensity: 0
+  m_LightVolumeIntensity: 1
+  m_LightVolumeEnabled: 0
+  m_ApplyToSortingLayers: 00000000d5decf3b3dd2bb62d36f3dac7732d0787b11048b255f95a4cf485f8e1b0de68b
+  m_LightCookieSprite: {fileID: 0}
+  m_DeprecatedPointLightCookieSprite: {fileID: 0}
+  m_LightOrder: 0
+  m_AlphaBlendOnOverlap: 0
+  m_OverlapOperation: 0
+  m_NormalMapDistance: 3
+  m_NormalMapQuality: 2
+  m_UseNormalMap: 0
+  m_ShadowsEnabled: 1
+  m_ShadowIntensity: 0.75
+  m_ShadowSoftness: 0.3
+  m_ShadowSoftnessFalloffIntensity: 0.5
+  m_ShadowVolumeIntensityEnabled: 0
+  m_ShadowVolumeIntensity: 0.75
+  m_LocalBounds:
+    m_Center: {x: 0, y: -0.00000011920929, z: 0}
+    m_Extent: {x: 0.9985302, y: 0.99853027, z: 0}
+  m_PointLightInnerAngle: 360
+  m_PointLightOuterAngle: 360
+  m_PointLightInnerRadius: 0
+  m_PointLightOuterRadius: 15
+  m_ShapeLightParametricSides: 5
+  m_ShapeLightParametricAngleOffset: 0
+  m_ShapeLightParametricRadius: 1
+  m_ShapeLightFalloffSize: 0.5
+  m_ShapeLightFalloffOffset: {x: 0, y: 0}
+  m_ShapePath:
+  - {x: -0.5, y: -0.5, z: 0}
+  - {x: 0.5, y: -0.5, z: 0}
+  - {x: 0.5, y: 0.5, z: 0}
+  - {x: -0.5, y: 0.5, z: 0}
+--- !u!1001 &7981847986894908745
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: -3146828309232924949, guid: 416e32d2a51ee2646900b8091102e805, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -2725425722477725682, guid: 416e32d2a51ee2646900b8091102e805, type: 3}
+      propertyPath: explosion
+      value: 
+      objectReference: {fileID: 8530662901513767423}
+    - target: {fileID: -2725425722477725682, guid: 416e32d2a51ee2646900b8091102e805, type: 3}
+      propertyPath: blastRadius
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 469269571586082915, guid: 416e32d2a51ee2646900b8091102e805, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 9dfc825aed78fcd4ba02077103263b40, type: 2}
+    - target: {fileID: 1263181308290734255, guid: 416e32d2a51ee2646900b8091102e805, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1263181308290734255, guid: 416e32d2a51ee2646900b8091102e805, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1263181308290734255, guid: 416e32d2a51ee2646900b8091102e805, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1263181308290734255, guid: 416e32d2a51ee2646900b8091102e805, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1263181308290734255, guid: 416e32d2a51ee2646900b8091102e805, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1263181308290734255, guid: 416e32d2a51ee2646900b8091102e805, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1263181308290734255, guid: 416e32d2a51ee2646900b8091102e805, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1263181308290734255, guid: 416e32d2a51ee2646900b8091102e805, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1263181308290734255, guid: 416e32d2a51ee2646900b8091102e805, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1263181308290734255, guid: 416e32d2a51ee2646900b8091102e805, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4829760272812621765, guid: 416e32d2a51ee2646900b8091102e805, type: 3}
+      propertyPath: m_Name
+      value: Bomb - Firecracker
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 3769840830093483492, guid: 416e32d2a51ee2646900b8091102e805, type: 3}
+    m_RemovedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 1511712223427340, guid: 416e32d2a51ee2646900b8091102e805, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8735832464495400112}
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5293555423653602915, guid: 416e32d2a51ee2646900b8091102e805, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8530662901513767423}
+  m_SourcePrefab: {fileID: 100100000, guid: 416e32d2a51ee2646900b8091102e805, type: 3}
+--- !u!82 &1642843171804914490 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 8649643971637808755, guid: 416e32d2a51ee2646900b8091102e805, type: 3}
+  m_PrefabInstance: {fileID: 7981847986894908745}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &2860705955153087274 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5293555423653602915, guid: 416e32d2a51ee2646900b8091102e805, type: 3}
+  m_PrefabInstance: {fileID: 7981847986894908745}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &8530662901513767423
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2860705955153087274}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 047491c1f0236a2469e78cc779b337ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: CarGame::CarGame.FirecrackerExplosion
+  audioSource: {fileID: 1642843171804914490}
+  damageableLayers:
+    serializedVersion: 2
+    m_Bits: 2048
+  slowFactor: 0.1
+  slowDuration: 1
+--- !u!4 &7980491311450805829 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1511712223427340, guid: 416e32d2a51ee2646900b8091102e805, type: 3}
+  m_PrefabInstance: {fileID: 7981847986894908745}
+  m_PrefabAsset: {fileID: 0}
