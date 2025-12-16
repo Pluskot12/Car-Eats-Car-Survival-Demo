@@ -3362,15 +3362,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4cf81727c11bc88488068d9aa242ea23, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damageSystem: {fileID: 8812350335675060485}
   carController: {fileID: 8442439189541336823}
   body: {fileID: 3874321903012650743}
-  healthText: {fileID: 0}
   trunkAnimator: {fileID: 867811987930544241}
   attachmentController: {fileID: 8373699522964624600}
   hitEffect: {fileID: 6379311600034787976, guid: ab6ae1f8f00f2df4690f92d4c7f5a88e, type: 3}
   statPanel: {fileID: 0}
-  audioSource: {fileID: 3607047649965983307}
+  damageSystem: {fileID: 8812350335675060485}
   noiseGenerator: {fileID: 1007253762997390744}
   jump: {fileID: 1910759933503228779}
   dash: {fileID: 5063934474061071967}
@@ -3380,8 +3378,9 @@ MonoBehaviour:
   maxHunger: 40
   currentTurbo: 7
   maxTurbo: 7
-  hungerLowClip: {fileID: 8300000, guid: 24b2233d68f17624a8a858cc89abf675, type: 3}
-  hungerDamageClip: {fileID: 8300000, guid: f4184bfffaf44134ea0c068e1dfa571a, type: 3}
+  audioSource: {fileID: 3607047649965983307}
+  hungerLowClip: {fileID: 8300000, guid: 73a66673e50df0e4b9db14406fcaee9d, type: 3}
+  hungerDamageClip: {fileID: 8300000, guid: e050d2b74a4235940810cd0e57cd42da, type: 3}
 --- !u!114 &7975402313758293827
 MonoBehaviour:
   m_ObjectHideFlags: 0
