@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c6b8b407f9df22419d646aabd90f3fe, type: 3}
+  m_Name: Recipe List
+  m_EditorClassIdentifier: CarGame::CarGame.CraftingRecipeList
+  path: Assets/_Ellie/Data/Items/Crafting Recipes
+  recipes:
+  - {fileID: 11400000, guid: be5d7c765bd4b3a429fb9a85f855e2c8, type: 2}
+  - {fileID: 11400000, guid: 24b9fb6e4a6cfe344bce6e5ae7e9dec9, type: 2}
+  - {fileID: 11400000, guid: e9ee34c6c76a6eb40ab5a4ba6dc0efff, type: 2}
+  - {fileID: 11400000, guid: 87180da28d3f4784d87edc52f2453404, type: 2}
+  - {fileID: 11400000, guid: 54c421041945a5146b42e6544fc4c053, type: 2}
+  - {fileID: 11400000, guid: 281deb0d897196d4a88b9c7b2771d167, type: 2}
+  - {fileID: 11400000, guid: b494a1c6ea584724c9a2bcb354e02ca8, type: 2}
+  - {fileID: 11400000, guid: 511cacd180f01f04fbbed95482ece05f, type: 2}
+  - {fileID: 11400000, guid: 2b7f9ebd7d7442444a04eed77fc9a373, type: 2}
