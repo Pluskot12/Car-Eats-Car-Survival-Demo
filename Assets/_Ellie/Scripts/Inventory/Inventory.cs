@@ -10,15 +10,16 @@ namespace CarGame
         public int Quantity;
         public int Durability;
 
-        public InventoryItem(ItemData itemData, int quantity)
+        public InventoryItem(ItemData itemData, int quantity, int durability)
         {
             ItemData = itemData;
             Quantity = quantity;
-
+            Durability = durability;
+            /*
             if (itemData is IBreakable breakable) 
             {
                 Durability = breakable.MaxDurability;
-            }
+            }*/
         }
     }
 
@@ -35,7 +36,7 @@ namespace CarGame
             items = new InventoryItem[slots];
         }
 
-        public int TryAdd(ItemData item, int quantity)
+        public int TryAdd(ItemData item, int quantity, int durability)
         {
             int remaining = quantity;
 
@@ -48,7 +49,7 @@ namespace CarGame
                     if (items[i] != null)
                         continue;
 
-                    items[i] = new InventoryItem(item, quantity);
+                    items[i] = new InventoryItem(item, quantity, durability);
                     remaining = -1;
                 }
 
@@ -65,8 +66,7 @@ namespace CarGame
                     if (items[i] != null)
                         continue;
 
-                    items[i] = new InventoryItem(item, 1);
-                    remaining -= 1;
+                    items[i] = new InventoryItem(item, 1, durability);
                 }
 
                 AnyValueChanged?.Invoke(items);
@@ -87,6 +87,7 @@ namespace CarGame
 
                 int addAmount = Mathf.Min(space, remaining);
                 items[i].Quantity += addAmount;
+                items[i].Durability = durability;
                 remaining -= addAmount;
             }
 
@@ -96,7 +97,7 @@ namespace CarGame
                     continue;
 
                 int addAmount = Mathf.Min(item.maxStackSize, remaining);
-                items[i] = new InventoryItem(item, addAmount);
+                items[i] = new InventoryItem(item, addAmount, durability);
                 remaining -= addAmount;
             }
 
@@ -105,7 +106,7 @@ namespace CarGame
             return remaining;
         }
 
-        public InventoryItem TryAddAtIndex(int index, ItemData item, int quantity)
+        public InventoryItem TryAddAtIndex(int index, ItemData item, int quantity, int durability)
         {
             int remaining = quantity;
 
@@ -113,9 +114,9 @@ namespace CarGame
             {
                 int addAmount = Mathf.Min(item.maxStackSize, remaining);
                 remaining -= addAmount;
-                items[index] = new InventoryItem(item, addAmount);
+                items[index] = new InventoryItem(item, addAmount, durability);
                 AnyValueChanged.Invoke(items);
-                return new InventoryItem(item, remaining);
+                return new InventoryItem(item, remaining, durability);
             }
             else if (items[index].ItemData == item)
             {
@@ -128,13 +129,13 @@ namespace CarGame
                 int remainder = total - newQuantity;
 
                 AnyValueChanged.Invoke(items);
-                return new InventoryItem(item, remainder);
+                return new InventoryItem(item, remainder, durability);
             }
 
             else if (items[index].ItemData != item) 
             {
                 var temp = items[index];
-                items[index] = new InventoryItem(item, remaining);
+                items[index] = new InventoryItem(item, remaining, durability);
 
                 AnyValueChanged.Invoke(items);
                 return temp;
@@ -280,6 +281,7 @@ namespace CarGame
                 invItem.Durability -= amount;
                 if (invItem.Durability <= 0)
                 {
+                    GameManager.Instance.Player.Attachments.OnBreak();
                     // Item breaks
                 }
             }
@@ -297,6 +299,7 @@ namespace CarGame
 
                     if (items[index].Durability <= 0)
                     {
+                        GameManager.Instance.Player.Attachments.OnBreak();
                         if (TryRemoveAtIndex(index)) 
                         {
                             OnItemDestroyed.Invoke();
@@ -311,5 +314,10 @@ namespace CarGame
             return false;
         }
 
+        public void Clear()
+        {
+            Array.Clear(items, 0, items.Length);
+            AnyValueChanged.Invoke(items);
+        }
     }
 }

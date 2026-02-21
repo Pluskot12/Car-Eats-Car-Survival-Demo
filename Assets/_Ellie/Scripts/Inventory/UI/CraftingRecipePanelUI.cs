@@ -105,6 +105,11 @@ namespace CarGame
             if (valid == requried)
             {
                 Debug.Log("Crafting " + currentRecipe.item);
+                int durability = -1;
+                if (currentRecipe.item is IBreakable)
+                {
+                    durability = ((IBreakable)currentRecipe.item).MaxDurability;
+                }
 
                 foreach (var ingredient in currentRecipe.ingredients)
                 {
@@ -113,16 +118,16 @@ namespace CarGame
 
                 if (PlayerInventory.Instance.InventoryController.CanFit(currentRecipe.item, currentRecipe.quantity))
                 {
-                    int leftover = PlayerInventory.Instance.InventoryController.OnItemPickup(currentRecipe.item, currentRecipe.quantity);
+                    int leftover = PlayerInventory.Instance.InventoryController.OnItemPickup(currentRecipe.item, currentRecipe.quantity, durability);
 
                     if (leftover > 0)
                     {
-                        ItemSpawner.Instance.SpawnItem(currentRecipe.item, leftover, GameManager.Instance.Player.transform.position, Vector2.zero);
+                        ItemSpawner.Instance.SpawnItem(currentRecipe.item, leftover, durability, GameManager.Instance.Player.transform.position, Vector2.zero);
                     }
                 }
                 else 
                 {
-                    ItemSpawner.Instance.SpawnItem(currentRecipe.item, currentRecipe.quantity, GameManager.Instance.Player.transform.position, Vector2.zero);
+                    ItemSpawner.Instance.SpawnItem(currentRecipe.item, currentRecipe.quantity, durability, GameManager.Instance.Player.transform.position, Vector2.zero);
                 }
 
                 audioSource.PlayOneShot(craftSound);

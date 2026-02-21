@@ -60,5 +60,23 @@ namespace CarGame
             attachedTool?.OnDeselect();
             attachedTool = null;
         }
+
+        public void ShowAttachment() 
+        {
+            attachedGun?.gameObject.SetActive(true);
+            attachedTool?.gameObject.SetActive(true);
+        }
+
+        public void HideAttachment()
+        {
+            attachedGun?.gameObject.SetActive(false);
+            attachedTool?.gameObject.SetActive(false);
+        }
+
+        public void OnBreak() 
+        {
+            attachedGun?.OnItemBreak();
+            attachedTool?.OnItemBreak();
+        }
     }
 }

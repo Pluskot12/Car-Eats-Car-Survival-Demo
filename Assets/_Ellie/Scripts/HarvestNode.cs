@@ -91,7 +91,7 @@ namespace CarGame
             Vector3 position = transform.position + Vector3.up;
             Vector3 force = Vector3.up * 150f;
 
-            ItemSpawner.Instance.SpawnItem(resource, quantity, position, force);
+            ItemSpawner.Instance.SpawnItem(resource, quantity, -1, position, force);
         }
     }
 }

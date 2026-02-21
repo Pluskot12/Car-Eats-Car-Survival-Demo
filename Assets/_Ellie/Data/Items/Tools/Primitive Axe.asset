@@ -16,4 +16,4 @@ MonoBehaviour:
   sprite: {fileID: 21300000, guid: 013f9b009695874468adc778c491f69f, type: 3}
   maxStackSize: 1
   prefab: {fileID: 5644371346415532888, guid: f934b03367fbbb64e87a16bb0254fbbd, type: 3}
-  maxDurability: 75
+  maxDurability: 40

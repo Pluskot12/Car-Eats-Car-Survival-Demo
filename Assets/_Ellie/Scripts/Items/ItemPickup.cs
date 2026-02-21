@@ -13,11 +13,13 @@ namespace CarGame
 
         public ItemData Data { get; private set; }
         public int Quantity { get; set; }
-        public void Setup(ItemData data, int quantity, bool dropped)
+        public int Durability { get; set; }
+        public void Setup(ItemData data, int quantity, int durability, bool dropped)
         {
             spriteRenderer.sprite = data.sprite;
             Data = data;
             Quantity = quantity;
+            Durability = durability;
             CantPickup = dropped;
 
             if (dropped) 
@@ -52,25 +54,26 @@ namespace CarGame
             if (player == null)
                 return;
 
-           // if (!player.CanPickUp(this))
-           //     return;
+            if (player.IsDead)
+                return;
 
             Vector2 toPlayer = (player.transform.position - transform.position);
             float dist = toPlayer.magnitude;
             if (dist < magnetRange)
             {
-                if (!player.CanFit(Data, Quantity)) { return; }
+                if (!player.CanFit(Data, Quantity)) 
+                { 
+                    return; 
+                }
 
-                    Vector2 dir = toPlayer.normalized;
+                Vector2 dir = toPlayer.normalized;
                 float pull = magnetStrength * (1f - dist / magnetRange);
 
                 rb.AddForce(dir * pull, ForceMode2D.Force);
 
                 if (dist < pickupDistance)
                 {
-                    // Add pickup
                     player.Pickup(this);
-                    //Destroy(gameObject);
                 }
             }
         }

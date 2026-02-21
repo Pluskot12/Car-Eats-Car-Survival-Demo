@@ -62,6 +62,17 @@ namespace CarGame
 
         Coroutine fadeCoroutine;
 
+        private void Start()
+        {
+            BiomeManager.Instance.OnBiomeChanged.AddListener(OnBiomeChange);
+        }
+
+        private void OnBiomeChange(BiomeData biome)
+        {
+            if (TimeManager.Instance.GetTimeOfDay() == TimeManager.TimeOfDay.Day)
+                PlayAmbient(biome.dayAmbience, 1f);
+        }
+
         public void UpdateTime(float time) 
         {
             currentTime = time;

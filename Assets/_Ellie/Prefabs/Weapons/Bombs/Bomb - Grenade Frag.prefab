@@ -36,6 +36,22 @@ PrefabInstance:
       propertyPath: 'hitSounds.Array.data[1]'
       value: 
       objectReference: {fileID: 8300000, guid: b1698c0aafc24c7498994a8a60561eeb, type: 3}
+    - target: {fileID: 3369514608286690041, guid: f28a2489381ebe446afed8a554d5f6f7, type: 3}
+      propertyPath: m_ApplyToSortingLayers.Array.size
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 3369514608286690041, guid: f28a2489381ebe446afed8a554d5f6f7, type: 3}
+      propertyPath: 'm_ApplyToSortingLayers.Array.data[9]'
+      value: -256091303
+      objectReference: {fileID: 0}
+    - target: {fileID: 3369514608286690041, guid: f28a2489381ebe446afed8a554d5f6f7, type: 3}
+      propertyPath: 'm_ApplyToSortingLayers.Array.data[10]'
+      value: -1302098321
+      objectReference: {fileID: 0}
+    - target: {fileID: 3369514608286690041, guid: f28a2489381ebe446afed8a554d5f6f7, type: 3}
+      propertyPath: 'm_ApplyToSortingLayers.Array.data[11]'
+      value: 427893433
+      objectReference: {fileID: 0}
     - target: {fileID: 3719644617050582790, guid: f28a2489381ebe446afed8a554d5f6f7, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.15

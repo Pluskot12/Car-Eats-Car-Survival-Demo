@@ -192,8 +192,7 @@ namespace CarGame
         public void OnItemDropped(InventorySlotUI item, Vector3 force)
         {
             Vector3 position = GameManager.Instance.Player.transform.position;
-
-            ItemSpawner.Instance.DropItem(item.SlottedItem.ItemData, item.SlottedItem.Quantity, position, force, true);
+            ItemSpawner.Instance.DropItem(item.SlottedItem.ItemData, item.SlottedItem.Quantity, item.SlottedItem.Durability, position, force, true);
         }
 
         private InventorySlotUI clonedSlot;
@@ -210,21 +209,28 @@ namespace CarGame
 
         public void ShowClone(InventoryItem slot) 
         {
-            var slottedItem = new InventoryItem(slot.ItemData, slot.Quantity);
+            var slottedItem = new InventoryItem(slot.ItemData, slot.Quantity, slot.Durability);
+
             clonedSlot.gameObject.SetActive(true);
             clonedSlot.transform.SetAsLastSibling();
 
             clonedSlot.Setup(slottedItem);
 
             UIMananger.IsHoldingItem = slottedItem != null;
+            UIMananger.HeldItem = slottedItem;
         }
 
         public void RemoveClone()
         {
             clonedSlot.Setup(null);
             clonedSlot.gameObject.SetActive(false);
-
+            UIMananger.HeldItem = null;
             StartCoroutine(RenableShooting());
+        }
+
+        public void OnDeath() 
+        {
+            RemoveClone();
         }
 
         private IEnumerator RenableShooting() 
