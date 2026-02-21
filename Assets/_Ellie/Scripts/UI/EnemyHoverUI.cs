@@ -13,7 +13,6 @@ namespace CarGame
 
         private void AnimateIn()
         {
-
             Sequence.Create().Group(Tween.Custom(0f, 1f, duration: inDuration, onValueChange: newVal => canvasGroup.alpha = newVal));
         }
 

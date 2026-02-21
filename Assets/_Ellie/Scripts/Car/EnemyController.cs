@@ -19,8 +19,8 @@ namespace CarGame
         [SerializeField] private HitEffect hitEffect;
 
         [SerializeField] private Vision vision;
-        [SerializeField] private Jaw jaw;
-        [SerializeField] private Eye eye;
+        [SerializeField] private EnemyAttackSystem jaw;
+        [SerializeField] private Eye[] eyes;
 
         [Header("Drops")]
         [SerializeField] private List<DropTable> dropTables;
@@ -56,7 +56,7 @@ namespace CarGame
 
         private int randomMoveDirection;
         
-        private bool isChasing;
+        private Player attackTarget;
         private float visionGauge;
 
         private Player player;
@@ -75,17 +75,27 @@ namespace CarGame
 
         #endregion
 
-        
+        [SerializeField] private LayerMask groundLayer;
+
         private void Start()
         {
+            controller.AlignToGround(gameObject, 0f);
+
+            randomStopDistance = stopDistance;
+
             player = GameManager.Instance.Player;
 
             testCanvas.transform.SetParent(null);
+            testCanvas.transform.localRotation = Quaternion.identity;
+            testCanvas.transform.localScale = Vector3.one;
 
             CurrentHealth = MaxHealth;
             hpLabel.text = CurrentHealth.ToString();
 
-            eye.SetTarget(GameManager.Instance.Player.transform);
+            foreach (var eye in eyes) 
+            { 
+                eye.SetTarget(GameManager.Instance.Player.LookPosition);
+            }
 
             StartCoroutine(PlayIdleSound());
 
@@ -93,6 +103,8 @@ namespace CarGame
         }
         [Header("KNOCK")]
         public Vector2 knockback;
+        float randomStopDistance;
+        bool updateDistance;
         private void Update()
         {
             if (IsDead || inactive) 
@@ -103,40 +115,21 @@ namespace CarGame
 
             playerInVision = vision.CanSeePlayer();
 
-            /*
-            if ()
-            {
-                controller.SetMoveInput(0);
-                controller.Break();
-            }
-            */
-            if (isChasing)
+            if (attackTarget)
             {
                 float dirToPlayer = player.transform.position.x - transform.position.x;
                 float absDist = Mathf.Abs(dirToPlayer);
 
-                if (dirToPlayer > 0 && transform.localScale.x < 0)
-                {
-                    Vector3 scale = transform.localScale;
-                    scale.x = Mathf.Abs(scale.x);
-                    transform.localScale = scale;
-                }
-                else if (dirToPlayer < 0 && transform.localScale.x > 0)
-                {
-                    Vector3 scale = transform.localScale;
-                    scale.x = -Mathf.Abs(scale.x);
-                    transform.localScale = scale;
-                }
-
-                if (absDist > stopDistance)
+                if (absDist > randomStopDistance)
                 {
                     float moveDir = Mathf.Sign(dirToPlayer);
                     controller.SetMoveInput(-moveDir);
+                    updateDistance = true;
                 }
-                else
+                else if (updateDistance && absDist <= stopDistance * 0.25f)
                 {
-                    controller.Break();
-                    controller.SetMoveInput(0);
+                    randomStopDistance = stopDistance * Random.Range(0.7f, 1.3f);
+                    updateDistance = false;
                 }
             }
 
@@ -146,12 +139,24 @@ namespace CarGame
             }
             else if (!alerted)
             { 
-                isChasing = false;
-                eye.SetFollow(false);
-                jaw.SetChasing(false);
+                attackTarget = null;
+                foreach (var eye in eyes)
+                {
+                    eye.SetFollow(false);
+                }
+                
+                jaw.SetTarget(null);
                 
                 if (!inIdleMode)
                     StartIdle();
+            }
+        }
+
+        private void OnDestroy()
+        {
+            if (testCanvas != null) 
+            {
+                Destroy(testCanvas.gameObject);
             }
         }
 
@@ -159,13 +164,21 @@ namespace CarGame
         {
             if (playerInVision)
             {
-                eye.SetFollow(true);
+                foreach (var eye in eyes)
+                {
+                    eye.SetFollow(true);
+                }
                 visionGauge += visionGaugeMultiplier * Time.deltaTime;
             }
             else 
             {
-                if (!isChasing)
-                    eye.SetFollow(false);
+                if (!attackTarget) 
+                { 
+                    foreach (var eye in eyes)
+                    {
+                        eye.SetFollow(false);
+                    }
+                }
                 visionGauge -= visionGaugeMultiplierDown * Time.deltaTime;
             }
 
@@ -173,30 +186,42 @@ namespace CarGame
 
             FillBar(visionGauge);
 
-            if (visionGauge == 1f && !isChasing)
+            if (visionGauge == 1f && !attackTarget)
             {
                 bar.color = Color.red;
-                isChasing = true;
-                eye.SetFollow(true);
+                attackTarget = player;
+                foreach (var eye in eyes)
+                {
+                    eye.SetFollow(true);
+                }
                 StopIdle();
-                jaw.SetChasing(isChasing);
+
+                if (jaw) 
+                {
+                    jaw.SetTarget(attackTarget);
+                }
             }
-            else if (visionGauge == 0 && isChasing) 
+            else if (visionGauge == 0 && attackTarget) 
             {
                 bar.color = Color.green;
-                isChasing = false;
-                eye.SetFollow(false);
+                attackTarget = null;
+                foreach (var eye in eyes)
+                {
+                    eye.SetFollow(false);
+                }
                 StartIdle();
-                jaw.SetChasing(isChasing);
+                jaw.SetTarget(attackTarget);
             }
         }
 
         [Header("Idle Settings")]
-        [SerializeField] private float moveDuration = 2f;   // how long to move
-        [SerializeField] private float waitDuration = 2f;   // how long to wait
-        [SerializeField] private float maxWanderDistance = 5f; // from spawn
-        [SerializeField] private float idleMoveSpeed = 5f; // from spawn
-        [SerializeField] private float chaseMoveSpeed = 15f; // from spawn
+        [SerializeField] private float moveDuration = 2f;
+        [SerializeField] private float moveRandom = 2f;
+        [SerializeField] private float waitDuration = 2f;
+        [SerializeField] private float waitRandom = 2f;
+        [SerializeField] private float maxWanderDistance = 5f;
+        [SerializeField] private float idleMoveSpeed = 5f;
+        [SerializeField] private float chaseMoveSpeed = 15f;
 
         private Vector2 idlePoint;
         private Coroutine idleRoutine;
@@ -236,11 +261,13 @@ namespace CarGame
                     direction = -1f;
 
                 controller.SetMoveInput(direction);
-                yield return new WaitForSeconds(moveDuration);
+
+                yield return new WaitForSeconds(moveDuration + Random.Range(0, moveRandom));
 
                 controller.SetMoveInput(0f);
                 controller.Break();
-                yield return new WaitForSeconds(waitDuration);
+
+                yield return new WaitForSeconds(waitDuration + Random.Range(0, waitRandom));
             }
         }
 
@@ -286,8 +313,11 @@ namespace CarGame
             {
                 IsDead = true;
                 body.simulated = false;
-                damageSystem.OnDeath();
 
+                damageSystem.OnDeath();
+                jaw.SetTarget(null);
+
+                StopAllCoroutines();
                 ItemSpawner.Instance.SpawnLoot(transform, dropTables);
             }
         }
@@ -342,7 +372,7 @@ namespace CarGame
         Coroutine alertedState;
         private void StartAlert()
         {
-            if (isChasing)
+            if (attackTarget)
             {
                 return;
             }

@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Runtime.InteropServices.WindowsRuntime;
 using UnityEngine;
 
 namespace CarGame
@@ -37,7 +36,7 @@ namespace CarGame
 
             foreach (var item in testItems) 
             {
-                inventory.TryAdd(item.item, item.quantity);
+                inventory.TryAdd(item.item, item.quantity, ItemSpawner.GetMaxDurability(item.item));
             }
 
         }
@@ -66,14 +65,14 @@ namespace CarGame
         {
             if (to.SlottedItem == null)
             {
-                inventory.TryAddAtIndex(to.Index, from.SlottedItem.ItemData, from.SlottedItem.Quantity);
+                inventory.TryAddAtIndex(to.Index, from.SlottedItem.ItemData, from.SlottedItem.Quantity, from.SlottedItem.Durability);
                 from.Setup(null);
                 UIMananger.IsHoldingItem = false;
 
                 return;
             }
 
-            var leftover = inventory.TryAddAtIndex(to.Index, from.SlottedItem.ItemData, from.SlottedItem.Quantity);
+            var leftover = inventory.TryAddAtIndex(to.Index, from.SlottedItem.ItemData, from.SlottedItem.Quantity, from.SlottedItem.Durability);
 
             if (leftover != null && leftover.Quantity > 0 || leftover.ItemData.GetType() == typeof(WeaponItemData))
             {
@@ -97,9 +96,9 @@ namespace CarGame
             inventoryUI.Refresh(items);
         }
 
-        public int OnItemPickup(ItemData item, int quantity)
+        public int OnItemPickup(ItemData item, int quantity, int durability)
         {
-            int remaining = inventory.TryAdd(item, quantity);
+            int remaining = inventory.TryAdd(item, quantity, durability);
             inventoryUI.OnItemPickup();
             return remaining;
         }
@@ -140,10 +139,33 @@ namespace CarGame
             return inventory.RemoveItems(item, amount);
         }
 
-        public void AddAtIndex(int index, ItemData data, int q) 
+        public void AddAtIndex(int index, ItemData data, int q, int d) 
         {
-            inventory.TryAddAtIndex(index, data, q);
+            inventory.TryAddAtIndex(index, data, q, d);
         }
 
+        public void DropAllItems()
+        {
+            Vector3 force = Vector3.up;
+            Vector3 position = GameManager.Instance.Player.transform.position;
+            
+            foreach (var item in inventory.Items) 
+            {
+                if (item == null) 
+                {
+                    continue;
+                }
+
+                ItemSpawner.Instance.DropItemOnDeath(item.ItemData, item.Quantity, item.Durability, position, true);
+            }
+
+            if (UIMananger.HeldItem != null) 
+            {
+                ItemSpawner.Instance.DropItemOnDeath(UIMananger.HeldItem.ItemData, UIMananger.HeldItem.Quantity, UIMananger.HeldItem.Durability, position, true);
+                UIMananger.Instance.OnPlayerDeath();
+            }
+
+            inventory.Clear();
+        }
     } 
 }

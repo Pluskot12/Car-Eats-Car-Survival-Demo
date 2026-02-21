@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 
@@ -12,6 +13,7 @@ namespace CarGame
         [SerializeField] private Transform hitPoint;
         [SerializeField] private LayerMask targetLayers;
         [SerializeField] private float hitRadius = 0.25f;
+        [SerializeField] private GameObject explodingParts;
 
         [Header("Tool Settings")]
         [SerializeField] private HarvestNode.HarvestType type;
@@ -161,6 +163,16 @@ namespace CarGame
             StopAllCoroutines();
 
             Destroy(gameObject);
+        }
+
+        public void OnItemBreak()
+        {
+            if (explodingParts == null)
+                return;
+
+            explodingParts.transform.SetParent(null);
+            explodingParts.SetActive(true);
+            Destroy(explodingParts, 5f);
         }
     }
 }

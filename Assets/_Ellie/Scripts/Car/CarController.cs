@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using static CarGame.Dash;
@@ -13,6 +14,7 @@ namespace CarGame
         [SerializeField] private Rigidbody2D frontWheel;
         [SerializeField] private Rigidbody2D backWheel;
         [SerializeField] private Exhaust exhaust;
+        [SerializeField] private Dash dash;
 
         [Header("Settings")]
         [SerializeField] private float maxSpeed = 20f;
@@ -50,6 +52,28 @@ namespace CarGame
         private float rotInput;
         private bool facingRight = true;
         public bool FacingRight => facingRight;
+
+        private List<Bodies> bodies;
+
+        private class Bodies 
+        {
+            public Rigidbody2D body;
+            public Vector3 startPosition;
+
+            public Bodies(Rigidbody2D b, Vector3 pos) 
+            {
+                body = b;
+                startPosition = pos;
+            }
+        }
+
+        private void Start()
+        {
+            bodies = new List<Bodies>();
+            bodies.Add(new Bodies(car, car.transform.localPosition));
+            bodies.Add(new Bodies(frontWheel, frontWheel.transform.localPosition));
+            bodies.Add(new Bodies(backWheel, backWheel.transform.localPosition));
+        }
 
         private void Update()
         {
@@ -122,7 +146,7 @@ namespace CarGame
             if (v != 0)
                 FlipX(v);
         }
-
+        [SerializeField] private float slowdownMulti = 1;
         public void SetRotationInput(float v)
         {
             rotInput = v;
@@ -131,8 +155,10 @@ namespace CarGame
         private void FixedUpdate()
         {
             if (disableEngine) return;
+
             if (Mathf.Abs(moveInput) > 0.01f)
             {
+
                 // Slow down if going the opposite direction
                 if (Mathf.Sign(moveInput) != Mathf.Sign(frontWheel.angularVelocity))
                 {
@@ -146,7 +172,17 @@ namespace CarGame
 
                 car.AddTorque(moveInput * accelerationRotation);
             }
+            else if (dash && !dash.IsDashing)
+            {
+                if (AreBothWheelsGrounded()) 
+                {
+                    car.linearVelocityX *= breakForce;
+                }
 
+                frontWheel.angularVelocity *= slowdownMulti;
+                backWheel.angularVelocity *= slowdownMulti;
+            }
+           
             // Handle up/down rotation
             if (Mathf.Abs(rotInput) > 0.1f)
             {
@@ -154,16 +190,20 @@ namespace CarGame
                 car.MoveRotation(newRot);
             }
 
+ 
+            // Do we need this anymore?
             // Cap at maxSpeed
+            /*
             Vector2 forward = car.transform.right;
             float forwardSpeed = Vector2.Dot(car.linearVelocity, forward);
-            if (Mathf.Abs(forwardSpeed) > MaxSpeed * 1.1f)
+            if (dash && !dash.IsDashing && Mathf.Abs(forwardSpeed) > MaxSpeed)
             {
+                Debug.Log("??");
                 Vector2 lateral = car.linearVelocity - forward * forwardSpeed;
                 float cappedForward = Mathf.Sign(forwardSpeed) * MaxSpeed;
                 car.linearVelocity = forward * cappedForward + lateral;
-            }
-
+            }*/
+            
             // Stabilizes enemy cars
             if (stabilize)
             {
@@ -190,17 +230,23 @@ namespace CarGame
 
         private void ApplyEngineTorque(Rigidbody2D wheel)
         {
-            float desiredTorque = moveInput * horsepower;
-
             Vector2 forward = car.transform.right;
             float forwardSpeed = Vector2.Dot(car.linearVelocity, forward);
 
-            float speedRatio = Mathf.Abs(forwardSpeed) / MaxSpeed;
-            float torqueFactor = 1f - Mathf.Clamp01(speedRatio);
+            // Only apply torque if below max speed AND moving in the same direction as input
+            bool belowMaxSpeed = Mathf.Abs(forwardSpeed) < MaxSpeed;
+            bool oppositeDirection = moveInput == 0 || Mathf.Sign(forwardSpeed) == Mathf.Sign(moveInput) || Mathf.Abs(forwardSpeed) < 0.1f;
 
-            float finalTorque = desiredTorque * torqueFactor;
+            if (belowMaxSpeed || oppositeDirection)  // Apply if below max OR going opposite direction (for braking/reversing)
+            {
+                float desiredTorque = moveInput * horsepower;
+                wheel.AddTorque(desiredTorque);
+            }
 
-            wheel.AddTorque(finalTorque);
+            if (oppositeDirection && AreBothWheelsGrounded())
+            {
+                car.linearVelocityX *= breakForce;
+            }
         }
 
         private bool IsGrounded(CircleCollider2D collider)
@@ -377,6 +423,92 @@ namespace CarGame
             return maxSpeed;
         }
 
+        public void Teleport(Vector3 spawnPoint)
+        {
+
+            StartCoroutine(Beep(spawnPoint));
+
+        }
+        private IEnumerator Beep(Vector3 spawnPoint) 
+        {
+            //gameObject.SetActive(false);
+            car.position = spawnPoint;
+            car.transform.localScale = Vector3.one;
+            facingRight = true;
+            foreach (var body in bodies) 
+            {
+                ResetRb(body);
+            }
+            
+            //ResetRb(frontWheel);
+            //ResetRb(backWheel);
+
+            yield return new WaitForSeconds(0.5f);
+
+            //car.position = spawnPoint;
+
+            yield return new WaitForSeconds(0.5f);
+
+            //gameObject.SetActive(true);
+        }
+        private void ResetRb(Bodies body) 
+        {
+            body.body.bodyType = RigidbodyType2D.Static;
+
+            body.body.interpolation = RigidbodyInterpolation2D.None;
+            //body.body.angularVelocity = 0f;
+            //body.body.linearVelocity = Vector2.zero;
+
+
+            body.body.transform.localPosition = body.startPosition;
+            body.body.transform.rotation = Quaternion.Euler(Vector2.zero);
+
+            body.body.bodyType = RigidbodyType2D.Dynamic;
+            body.body.interpolation = RigidbodyInterpolation2D.Interpolate;
+        }
+
         private float speedMultiplier = 1f;
+
+        public void AlignToGround(GameObject car, float wheelOffset = 0f)
+        {
+            Transform leftWheel = GetRigidbody(CarController.PhysicsPart.BackWheel).transform;
+            Transform rightWheel = GetRigidbody(CarController.PhysicsPart.FrontWheel).transform;
+
+            float wheelRadius = frontWheelCollider.radius + 0.1f + wheelOffset;
+            float originalX = car.transform.position.x;
+
+            RaycastHit2D leftHit = Physics2D.Raycast(
+                leftWheel.position + Vector3.up * 100f,
+                -car.transform.up,
+                1000,
+                groundLayer
+            );
+
+            RaycastHit2D rightHit = Physics2D.Raycast(
+                rightWheel.position + Vector3.up * 100f,
+                -car.transform.up,
+                1000,
+                groundLayer
+            );
+
+            if (leftHit.collider != null && rightHit.collider != null)
+            {
+                Vector3 leftWheelCenter = leftHit.point + Vector2.up * wheelRadius;
+                Vector3 rightWheelCenter = rightHit.point + Vector2.up * wheelRadius;
+                Vector3 midpoint = (leftWheelCenter + rightWheelCenter) / 2f;
+
+                Vector2 wheelDirection = rightWheelCenter - leftWheelCenter;
+                float angle = Mathf.Atan2(wheelDirection.y, wheelDirection.x) * Mathf.Rad2Deg;
+                car.transform.rotation = Quaternion.Euler(0, 0, angle);
+
+                Vector3 localLeftWheel = car.transform.InverseTransformPoint(leftWheel.position);
+                Vector3 localRightWheel = car.transform.InverseTransformPoint(rightWheel.position);
+                Vector3 localWheelMidpoint = (localLeftWheel + localRightWheel) / 2f;
+
+                Vector3 newPosition = midpoint - car.transform.TransformVector(localWheelMidpoint);
+
+                car.transform.position = new Vector3(originalX, newPosition.y, newPosition.z);
+            }
+        }
     }
 }

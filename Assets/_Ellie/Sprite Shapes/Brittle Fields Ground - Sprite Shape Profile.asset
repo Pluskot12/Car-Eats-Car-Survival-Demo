@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Brittle Fields Ground - Sprite Shape Profile
   m_EditorClassIdentifier: 
   m_Angles:
-  - m_Start: -110
-    m_End: 106
+  - m_Start: -88
+    m_End: 88
     m_Order: 0
     m_Sprites:
     - {fileID: 21300000, guid: 2fa113ca6e6e78c45b12aa6c1d88ff57, type: 3}
@@ -44,5 +44,5 @@ MonoBehaviour:
   - m_CornerType: 7
     m_Sprites:
     - {fileID: 21300000, guid: 608e61deb05c54660bebf5a4dd2ee02d, type: 3}
-  m_FillOffset: -0.171
+  m_FillOffset: 0
   m_UseSpriteBorders: 1

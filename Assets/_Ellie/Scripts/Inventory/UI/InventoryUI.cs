@@ -143,7 +143,7 @@ namespace CarGame
                 if (clickedSlot.SlottedItem == null)
                     return;
 
-                inventoryPanelU.ShowClone(new InventoryItem(clickedSlot.SlottedItem.ItemData, 1));
+                inventoryPanelU.ShowClone(new InventoryItem(clickedSlot.SlottedItem.ItemData, 1, clickedSlot.SlottedItem.Durability));
                 
                 inventoryPanelU.OnItemSplit();
                 ItemQuantityChanged.Invoke(clickedSlot, 1);

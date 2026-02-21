@@ -10,14 +10,18 @@ namespace CarGame
 
         public Player Player;
 
+        [SerializeField] private Vector3 spawnPoint; 
+
         private void Awake()
         {
             Instance = this;
         }
 
-        public void Restart()
+        public void Respawn()
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            Player.Respawn(spawnPoint);
+            UIMananger.Instance.ShowPlayerUI();
+            // SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
 
         public void OnPlayerDeath()

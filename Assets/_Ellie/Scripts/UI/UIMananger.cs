@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,6 +12,7 @@ namespace CarGame
     {
 
         public static UIMananger Instance { get; internal set; }
+        public static InventoryItem HeldItem { get; internal set; }
 
         [SerializeField] private AudioSource uiAudioSource;
         [SerializeField] private InventoryPanelUI inventoryPanel;
@@ -35,12 +37,25 @@ namespace CarGame
         {
             yield return new WaitForSeconds(3f);
 
-            inventoryPanel.Hide();
-            statMeters.Hide();
-            clock.Hide();
+            HidePlayerUI();
 
             deathScreen.Show();
 
+        }
+
+        public void ShowPlayerUI() 
+        {
+            inventoryPanel.SetInteractable(true);
+            inventoryPanel.Show();
+            statMeters.Show();
+            clock.Show();
+        }
+
+        public void HidePlayerUI() 
+        {
+            inventoryPanel.Hide();
+            statMeters.Hide();
+            clock.Hide();
         }
 
         public static bool IsPointerOverUIObject()
@@ -64,6 +79,11 @@ namespace CarGame
         public void PlayAudioClip(AudioClip clip) 
         {
             uiAudioSource.PlayOneShot(clip);
+        }
+
+        public void OnPlayerDeath()
+        {
+            inventoryPanel.OnDeath();
         }
 
         public static bool IsHoldingItem;

@@ -16,11 +16,13 @@ namespace CarGame
         [SerializeField] private float minAngle = 25;
         [SerializeField] private float maxAngle = 155f;
         [SerializeField] private float torque = 20;
+        [SerializeField] private bool activateOnStart = true;
 
 
         private void Start()
         {
-            Setup();
+            if (activateOnStart)
+                Setup();
         }
 
         public void Setup() 

@@ -23,11 +23,11 @@ TagManager:
   - 
   - Projectile
   - 
+  - Interactable
   - 
+  - Structure
   - 
-  - 
-  - 
-  - 
+  - GroundShadow
   - 
   - 
   - 
@@ -53,8 +53,17 @@ TagManager:
   - name: Road
     uniqueID: 1656476221
     locked: 0
+  - name: Structure
+    uniqueID: 4038875993
+    locked: 0
   - name: Harvest Nodes
     uniqueID: 2889707475
+    locked: 0
+  - name: Collectables - Resources
+    uniqueID: 2992868975
+    locked: 0
+  - name: Collectables - Boxes
+    uniqueID: 427893433
     locked: 0
   - name: Effects Behind
     uniqueID: 2026910327

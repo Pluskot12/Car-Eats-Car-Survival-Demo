@@ -38,6 +38,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &947602525935102003
 SpriteRenderer:
+  serializedVersion: 2
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -81,8 +82,9 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: -1533714651
-  m_SortingLayer: 4
+  m_SortingLayer: 10
   m_SortingOrder: 50
+  m_MaskInteraction: 0
   m_Sprite: {fileID: 21300000, guid: 79488152842e0e54fae8f9969b80ff74, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -92,7 +94,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &5381870694993942148
 GameObject:
@@ -4623,7 +4624,7 @@ ParticleSystem:
     vectorLabel1_3: W
 --- !u!199 &4962043771947339795
 ParticleSystemRenderer:
-  serializedVersion: 6
+  serializedVersion: 7
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -4667,8 +4668,9 @@ ParticleSystemRenderer:
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: -1962667653
-  m_SortingLayer: 3
+  m_SortingLayer: 9
   m_SortingOrder: 1
+  m_MaskInteraction: 0
   m_RenderMode: 0
   m_MeshDistribution: 0
   m_SortMode: 1
@@ -4700,7 +4702,6 @@ ParticleSystemRenderer:
   m_MeshWeighting1: 1
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
-  m_MaskInteraction: 0
 --- !u!1 &6143837073140887938
 GameObject:
   m_ObjectHideFlags: 0
@@ -5083,7 +5084,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 4590855076079262447}
+  - {fileID: 2544587377271710277}
   - {fileID: 6356055498328876253}
   - {fileID: 4898727396518336799}
   - {fileID: 7856840557901183753}
@@ -5251,6 +5252,38 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!1 &9006671166697572406
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2544587377271710277}
+  m_Layer: 11
+  m_Name: Eyes
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2544587377271710277
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9006671166697572406}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 4590855076079262447}
+  m_Father: {fileID: 1327180406369035576}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &9100079575571313381
 GameObject:
   m_ObjectHideFlags: 0
@@ -5286,6 +5319,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &8585724144012671621
 SpriteRenderer:
+  serializedVersion: 2
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -5329,8 +5363,9 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: -1533714651
-  m_SortingLayer: 4
+  m_SortingLayer: 10
   m_SortingOrder: 0
+  m_MaskInteraction: 0
   m_Sprite: {fileID: 21300000, guid: 26723f5b12fdeee48954b2da07e26206, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -5340,7 +5375,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!60 &6839897993693285552
 PolygonCollider2D:
@@ -5434,7 +5468,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4964939943865890480, guid: 5b01a3cd645350a448f2ae9365d30058, type: 3}
       propertyPath: m_SortingLayer
-      value: 4
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 4964939943865890480, guid: 5b01a3cd645350a448f2ae9365d30058, type: 3}
       propertyPath: m_SortingOrder
@@ -5860,7 +5894,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4964939943865890480, guid: 5b01a3cd645350a448f2ae9365d30058, type: 3}
       propertyPath: m_SortingLayer
-      value: 3
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 4964939943865890480, guid: 5b01a3cd645350a448f2ae9365d30058, type: 3}
       propertyPath: m_SortingOrder
@@ -5956,7 +5990,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4964939943865890480, guid: 5b01a3cd645350a448f2ae9365d30058, type: 3}
       propertyPath: m_SortingLayer
-      value: 4
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 4964939943865890480, guid: 5b01a3cd645350a448f2ae9365d30058, type: 3}
       propertyPath: m_SortingOrder
@@ -6040,7 +6074,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 1327180406369035576}
+    m_TransformParent: {fileID: 2544587377271710277}
     m_Modifications:
     - target: {fileID: 2610134789860017845, guid: 342002b4775d3574cb7039bbf3f0ac77, type: 3}
       propertyPath: m_Name
@@ -6130,7 +6164,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4964939943865890480, guid: 5b01a3cd645350a448f2ae9365d30058, type: 3}
       propertyPath: m_SortingLayer
-      value: 3
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 4964939943865890480, guid: 5b01a3cd645350a448f2ae9365d30058, type: 3}
       propertyPath: m_SortingOrder

@@ -16,7 +16,7 @@ namespace CarGame
         [SerializeField] private TextMeshProUGUI ammoCount;
         [SerializeField] private TextMeshProUGUI durabilityCount;
 
-        public const float SPEED_MULTI = 5f;
+        public const float SPEED_MULTI = 7.5f;
 
         public void UpdateHealth(int currentHealth, int maxHealth, bool instant = false)
         {
@@ -36,6 +36,7 @@ namespace CarGame
 
         public void UpdateSpeed(float current, float max)
         {
+           // Debug.LogFormat("C: {0} M: {1} %:{2}", current, max, (current/max));
             speedMeter.UpdateMeter(current * SPEED_MULTI, max * SPEED_MULTI, true);
         }
 
@@ -64,6 +65,11 @@ namespace CarGame
                 durabilityCount.text = durability;
                 //durabilityCount.text = "1000";
             }
+        }
+
+        public void Show()
+        {
+            gameObject.SetActive(true);
         }
 
         public void Hide()
