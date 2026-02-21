@@ -14,5 +14,10 @@ namespace CarGame
         {
             Instance = this;
         }
+
+        public void DropAllItems() 
+        {
+            inventoryController.DropAllItems();
+        }
     }
 }

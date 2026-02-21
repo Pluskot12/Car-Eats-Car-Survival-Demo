@@ -17,4 +17,4 @@ MonoBehaviour:
   maxStackSize: 5
   gun: {fileID: 5936284848236713949, guid: a2f7eefa964eac6459c3ce3316a2d3d6, type: 3}
   ammoType: {fileID: 11400000, guid: eebccc480c2d42548ba823933ee66812, type: 2}
-  maxDurability: 500
+  maxDurability: 40

@@ -51,5 +51,11 @@ namespace CarGame
 
             bombCooldown = false;
         }
+
+        public void DropAllItems()
+        {
+            gadgetController.DropAllItems();
+        }
+
     }
 }

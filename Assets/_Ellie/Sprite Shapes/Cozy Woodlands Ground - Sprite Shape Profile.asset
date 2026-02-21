@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Cozy Woodlands Ground - Sprite Shape Profile
   m_EditorClassIdentifier: 
   m_Angles:
-  - m_Start: -180
-    m_End: 177
+  - m_Start: -88
+    m_End: 88
     m_Order: 0
     m_Sprites:
     - {fileID: 21300000, guid: 29c7d77ca56b253499e29cadab05a268, type: 3}
@@ -44,5 +44,5 @@ MonoBehaviour:
   - m_CornerType: 7
     m_Sprites:
     - {fileID: 21300000, guid: 608e61deb05c54660bebf5a4dd2ee02d, type: 3}
-  m_FillOffset: -0.171
+  m_FillOffset: 0
   m_UseSpriteBorders: 1

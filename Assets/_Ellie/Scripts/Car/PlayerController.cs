@@ -1,5 +1,5 @@
 using CarGame;
-
+using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Audio;
@@ -16,6 +16,7 @@ namespace CarGame
         [SerializeField] private AudioSource engineSource;
         [SerializeField] private AudioSource hornSource;
         [SerializeField] private Light2D headlights;
+        [SerializeField] private PlayerInteract interact;
 
         [Header("Audio")]
         [SerializeField] private AudioClip turnAudio;
@@ -55,7 +56,8 @@ namespace CarGame
         private void Update()
         {
             if (player.IsDead) 
-            { 
+            {
+                player.StopTurbo();
                 return;
             }
 
@@ -84,10 +86,25 @@ namespace CarGame
             float speed = (targetVolume > engineSource.volume) ? rampUpSpeed : rampDownSpeed;
             engineSource.volume = Mathf.Lerp(engineSource.volume, targetVolume, speed * Time.deltaTime);
         }
-
+        private float currentInput = 0f;
+        [SerializeField] private float inputReleaseTime = 0.3f;
         private void HandleInput()
         {
-            controller.SetMoveInput(-Input.GetAxis("Vertical"));
+            float targetInput = -Input.GetAxisRaw("Vertical");
+
+            if (Mathf.Abs(targetInput) > Mathf.Abs(currentInput))
+            {
+                currentInput = targetInput; // Instant response
+            }
+            else
+            {
+                float step = (1f / inputReleaseTime) * Time.deltaTime;
+                currentInput = Mathf.MoveTowards(currentInput, targetInput, step);
+            }
+
+            controller.SetMoveInput(currentInput);
+
+
             controller.SetRotationInput(-Input.GetAxis("Horizontal"));
 
             //engineSource.volume = Mathf.Abs(Input.GetAxis("Vertical"));
@@ -103,6 +120,16 @@ namespace CarGame
             HandleHeadLightInput();
             HandleTurboInput();
             HandleDashInput();
+
+            HandleInteractInput();
+        }
+
+        private void HandleInteractInput()
+        {
+            if (Input.GetMouseButtonDown(1)) 
+            {
+                interact.Interact();
+            }
         }
 
         [Header("Dash Input")]
@@ -225,6 +252,12 @@ namespace CarGame
             yield return new WaitForSeconds(cooldown);
 
             canPlayFlipSound = true;
+        }
+
+        public void OnDeath()
+        {
+            headlightsOn = false;
+            headlights.enabled = false;
         }
     }
 }

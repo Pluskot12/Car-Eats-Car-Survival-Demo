@@ -8,6 +8,7 @@ namespace CarGame
         [Header("References")]
         [SerializeField] private Animator animator;
         [SerializeField] private Transform eyeParent;
+        [SerializeField] private Transform eyeCenter;
 
         [Header("Settings")]
         [SerializeField] private float minBlink = 1;
@@ -71,14 +72,14 @@ namespace CarGame
 
         private void FollowTarget()
         {
-            Vector3 direction = target.transform.position - transform.position;
+            Vector3 direction = target.transform.position - eyeCenter.position;
 
             if (direction.magnitude > maxDistance)
             {
                 direction = direction.normalized * maxDistance;
             }
 
-            Vector3 targetWorldPos = transform.position + direction;
+            Vector3 targetWorldPos = eyeCenter.position + direction;
 
             eyeParent.localPosition = transform.InverseTransformPoint(targetWorldPos);
         }

@@ -19,6 +19,8 @@ public class TestSlider : MonoBehaviour
         labelString = label.text;
 
         UpdateLabel(slider.value);
+
+        OnSliderChanged(slider.value);
     }
 
     public void OnSliderChanged(float value) 
@@ -37,6 +39,6 @@ public class TestSlider : MonoBehaviour
 
         float v = value * multiplier;
 
-        return Mathf.RoundToInt(v) + suffix;
+        return Mathf.CeilToInt(v) + suffix;
     }
 }

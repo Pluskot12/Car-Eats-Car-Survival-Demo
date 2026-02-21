@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using TMPro;
 using UnityEngine;
 
@@ -8,12 +9,14 @@ namespace CarGame
     {
         [Header("References")]
         
+        [SerializeField] private PlayerController playerController;
         [SerializeField] private CarController carController;
         [SerializeField] private Rigidbody2D body;
         [SerializeField] private Animator trunkAnimator;
         [SerializeField] private AttachmentController attachmentController;
         [SerializeField] private HitEffect hitEffect;
         [SerializeField] private PlayerStatPanelUI statPanel;
+        [SerializeField] private Transform lookPosition;
 
         [SerializeField] private DamageSystem damageSystem;
         [SerializeField] private NoiseGenerator noiseGenerator;
@@ -41,6 +44,8 @@ namespace CarGame
 
         public AudioSource AudioSource => audioSource;
 
+        public Transform LookPosition => lookPosition;
+
         public bool IsDead { get; private set; }
 
         public int MaxHealth { get => health; set => health = value; }
@@ -53,15 +58,56 @@ namespace CarGame
             CurrentHealth = MaxHealth;
 
             currentHunger = maxHunger;
-            currentTurbo = maxTurbo;
+            //currentTurbo = maxTurbo;
 
             statPanel.UpdateHealth(CurrentHealth, MaxHealth, true);
             statPanel.UpdateTurbo(currentTurbo, maxTurbo);
             statPanel.UpdateHunger(currentHunger, maxHunger);
             statPanel.UpdateSpeed(0, 1);
 
+           // gameObject.SetActive(false);
 
+           // StartCoroutine(PlaceOnGround());
+            carController.AlignToGround(gameObject);
             //healthText.text = CurrentHealth.ToString();
+        }
+
+        IEnumerator PlaceOnGround() 
+        {
+            yield return null;
+
+            carController.AlignToGround(gameObject);
+
+            yield return null;
+
+            gameObject.SetActive(true);
+
+        }
+
+
+
+        public void Respawn(Vector3 spawnPoint) 
+        {
+            carController.Teleport(spawnPoint);
+
+            CurrentHealth = MaxHealth;
+
+            currentHunger = maxHunger;
+            currentTurbo = 0;
+
+            statPanel.UpdateHealth(CurrentHealth, MaxHealth, true);
+            statPanel.UpdateTurbo(currentTurbo, maxTurbo);
+            statPanel.UpdateHunger(currentHunger, maxHunger);
+            statPanel.UpdateSpeed(0, 1);
+
+            damageSystem.UpdateSprite(100, false);
+            damageSystem.Respawn();
+
+            attachmentController.ShowAttachment();
+
+            body.simulated = true;
+
+            IsDead = false;
         }
 
         private void Update()
@@ -70,7 +116,15 @@ namespace CarGame
             {
                 return;
             }
-
+            if (Input.GetKeyDown(KeyCode.C))
+            {
+                //GetComponent<IDamageable>().TryDamage(9999);
+            }
+            if (Input.GetKeyDown(KeyCode.L))
+            {
+               // carController.Teleport(new Vector3(0, -3.38f,0f));
+            }
+            /*
             if (Input.GetKeyDown(KeyCode.L)) 
             {
                 GetComponent<IDamageable>().TryDamage(10);
@@ -79,7 +133,7 @@ namespace CarGame
             {
                 AddHealth(10);
             }
-
+            */
             UpdateSpeed();
             UpdateHunger();
         }
@@ -148,12 +202,17 @@ namespace CarGame
                 IsDead = true;
                 body.simulated = false;
                 damageSystem.OnDeath();
+                attachmentController.HideAttachment();
+                
+                playerController.OnDeath();
+
+                PlayerInventory.Instance.DropAllItems();
+                PlayerGadgets.Instance.DropAllItems();
 
                 GameManager.Instance.OnPlayerDeath();
             }
 
             statPanel.UpdateHealth(CurrentHealth, MaxHealth);
-            //healthText.text = CurrentHealth.ToString();
         }
 
         public void OnInventory(bool showing) 
@@ -171,13 +230,12 @@ namespace CarGame
         public void Pickup(ItemPickup item)
         {
             // Add item to inventory
-            Debug.LogFormat("Picked up {1} {0}", item.Data.displayName, item.Quantity);
-            int leftover = PlayerInventory.Instance.InventoryController.OnItemPickup(item.Data, item.Quantity);
-
+            //Debug.LogFormat("Picked up {1} ({0}) Durability: {2}", item.Data.displayName, item.Quantity, item.Durability);
+            int leftover = PlayerInventory.Instance.InventoryController.OnItemPickup(item.Data, item.Quantity, item.Durability);
 
             if (leftover <= 0)
             {
-                Destroy(item.gameObject); // fully consumed
+                Destroy(item.gameObject);
             }
             else
             {
@@ -337,13 +395,13 @@ namespace CarGame
             }
         }
 
-        public void AddHealth(int value) 
+        public void AddHealth(int value, bool playSound = true) 
         {
             CurrentHealth = Mathf.Clamp(CurrentHealth + value, 0, MaxHealth);
             statPanel.UpdateHealth(CurrentHealth, MaxHealth, true);
 
             float percentage = (float)CurrentHealth / MaxHealth * 100f;
-            damageSystem.UpdateSprite(percentage);
+            damageSystem.UpdateSprite(percentage, playSound);
         }
 
         public void AddHunger(float value)

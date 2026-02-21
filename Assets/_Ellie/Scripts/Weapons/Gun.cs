@@ -22,6 +22,7 @@ namespace CarGame
         [SerializeField] private Transform visual;
         [SerializeField] private Transform bulletSpawnPoint;
         [SerializeField] private AudioSource reloadAudioSource;
+        [SerializeField] private GameObject explodingParts;
         private AudioSource audioSource;
 
         [Header("Settings")]
@@ -172,8 +173,10 @@ namespace CarGame
                 return;
             }
 
+            int durability = PlayerInventory.Instance.InventoryController.Inventory.Items[slot].Durability;
+
             PlayerInventory.Instance.InventoryController.RemoveItems(data.ammoType, toTake);
-            PlayerInventory.Instance.InventoryController.AddAtIndex(slot, data, toTake);
+            PlayerInventory.Instance.InventoryController.AddAtIndex(slot, data, toTake, durability);
 
             ammo += toTake;
         }
@@ -326,6 +329,16 @@ namespace CarGame
             StopAllCoroutines();
 
             Destroy(gameObject);
+        }
+
+        public void OnItemBreak()
+        {
+            if (explodingParts == null)
+                return;
+
+            explodingParts.transform.SetParent(null);
+            explodingParts.SetActive(true);
+            Destroy(explodingParts, 5f);
         }
     }
 }

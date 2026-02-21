@@ -2,7 +2,7 @@ using System.Collections;
 using UnityEngine;
 namespace CarGame
 {
-    public class Jaw : MonoBehaviour
+    public class Jaw : EnemyAttackSystem
     {
         [Header("References")]
         [SerializeField] private Animator animator;
@@ -12,30 +12,12 @@ namespace CarGame
         [SerializeField] private float maxBite = 2f;
         [SerializeField] private float biteRadius = 1f;
 
-        [SerializeField] private Vector2 biteOffset = Vector2.zero;
+        [SerializeField] private Transform hitpoint;
         [SerializeField] private LayerMask playerLayer;
 
         [SerializeField] private int damage = 10;
 
-        private Coroutine bite;
-
-        public void SetChasing(bool chasing)
-        {
-            if (!gameObject.activeInHierarchy)
-                return;
-
-            if (chasing)
-            {
-                bite = StartCoroutine(BiteCo());
-            }
-            else
-            {
-                if (bite != null)
-                    StopCoroutine(bite);
-            }
-        }
-
-        IEnumerator BiteCo()
+        protected override IEnumerator AttackCoroutine()
         {
             while (true)
             {
@@ -49,7 +31,7 @@ namespace CarGame
 
         public void BiteTrigger()
         {
-            Vector2 bitePos = (Vector2)transform.position + (Vector2)(transform.right * biteOffset.x + transform.up * biteOffset.y);
+            Vector2 bitePos = (Vector2)hitpoint.position;
             Collider2D hit = Physics2D.OverlapCircle(bitePos, biteRadius, playerLayer);
 
             if (hit != null)
@@ -64,7 +46,7 @@ namespace CarGame
         private void OnDrawGizmosSelected()
         {
             Gizmos.color = Color.red;
-            Vector2 bitePos = (Vector2)transform.position + (Vector2)(transform.right * biteOffset.x + transform.up * biteOffset.y);
+            Vector2 bitePos = (Vector2)hitpoint.position;
             Gizmos.DrawWireSphere(bitePos, biteRadius);
         }
 

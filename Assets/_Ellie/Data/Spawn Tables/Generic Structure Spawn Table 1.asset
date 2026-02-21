@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc33bb9c4c3e8bb4ea41c4a0d74705bd, type: 3}
+  m_Name: Generic Structure Spawn Table 1
+  m_EditorClassIdentifier: CarGame::CarGame.SpawnTable
+  objects:
+  - name: Boxes
+    variants:
+    - {fileID: 8433775419084928759, guid: 84afba5bbf540d546a3a945a9f168ee5, type: 3}
+    - {fileID: 8433775419084928759, guid: ab302f7eb2d121b4bbf79ac002db4801, type: 3}
+    - {fileID: 8433775419084928759, guid: 560a18b2e8a5a6944ad647bf49b7cbed, type: 3}
+    min: 1
+    max: 3
+    chance: 70
+  - name: Crates
+    variants:
+    - {fileID: 8433775419084928759, guid: a48c6552f65a10f428ca62dc333f322e, type: 3}
+    - {fileID: 8433775419084928759, guid: 02fbbf2bef5bd88439f1ae9c3613ec61, type: 3}
+    - {fileID: 8433775419084928759, guid: 4c5c0bd979f523e42b98b1dae7b184ac, type: 3}
+    min: 1
+    max: 2
+    chance: 20
+  - name: Enemies
+    variants:
+    - {fileID: 3553150425493378300, guid: e07c9f67501a53e44a16ded9bc670a1d, type: 3}
+    min: 1
+    max: 4
+    chance: 0

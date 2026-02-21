@@ -1,0 +1,114 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 646423e13eabb674985e8580af31d4dd, type: 3}
+  m_Name: Cozy Woodlands Biome
+  m_EditorClassIdentifier: CarGame::CarGame.BiomeData
+  biomeType: 1
+  chunkPrefab: {fileID: 5630860628453097293, guid: 71142601db9c0e449a60495d3dd3f532, type: 3}
+  terrainType: 0
+  smoothness: 0.5
+  noiseScale: 0.1
+  heightAmplitude: 2
+  noiseSeed: 0.5
+  cornerSmoothness: 1
+  tangentStrength: 1
+  profile: {fileID: 11400000, guid: acd214fa3eeb5764c9da09ec17a8f28e, type: 2}
+  flatChance: 0.35
+  flatMinPoints: 4
+  flatMaxPoints: 6
+  spawningAllowed: 1
+  structureSpawnChance: 0.4
+  structures:
+  - {fileID: 3874158534899231194, guid: 57d05215b8241d348b3a71a5691463f4, type: 3}
+  - {fileID: 3874158534899231194, guid: 3a48e9d66d9bc1a4285b216d190ef9d5, type: 3}
+  - {fileID: 3874158534899231194, guid: b112e85141879dd479539d0a5f68677e, type: 3}
+  nodes:
+  - prefab: {fileID: 8905499103834021116, guid: 6eb4ffa86d0eab8499cb0dbe120a9b2f, type: 3}
+    spawnChance: 0.025
+    minSpacing: 1
+    maxSpacing: 2
+    allowedAngle: 3.5
+  - prefab: {fileID: 8905499103834021116, guid: 2054f4dc23288aa468fd10e13c138b2a, type: 3}
+    spawnChance: 0.025
+    minSpacing: 1
+    maxSpacing: 2
+    allowedAngle: 3.5
+  - prefab: {fileID: 3509101911078871453, guid: 3a6dde19a0ec7534dbb0c7ffeca23776, type: 3}
+    spawnChance: 0.01
+    minSpacing: 1
+    maxSpacing: 2
+    allowedAngle: 0
+  - prefab: {fileID: 3509101911078871453, guid: a785606d2b255aa4ca576868dbac84c4, type: 3}
+    spawnChance: 0.01
+    minSpacing: 1
+    maxSpacing: 2
+    allowedAngle: 0
+  interactables:
+  - prefab: {fileID: 8433775419084928759, guid: ab302f7eb2d121b4bbf79ac002db4801, type: 3}
+    spawnChance: 0.0035
+    minSpacing: 5
+    maxSpacing: 6
+    allowedAngle: 5
+  - prefab: {fileID: 8433775419084928759, guid: 84afba5bbf540d546a3a945a9f168ee5, type: 3}
+    spawnChance: 0.0035
+    minSpacing: 5
+    maxSpacing: 6
+    allowedAngle: 5
+  - prefab: {fileID: 8433775419084928759, guid: 560a18b2e8a5a6944ad647bf49b7cbed, type: 3}
+    spawnChance: 0.0035
+    minSpacing: 5
+    maxSpacing: 6
+    allowedAngle: 5
+  - prefab: {fileID: 8433775419084928759, guid: a48c6552f65a10f428ca62dc333f322e, type: 3}
+    spawnChance: 0.0017
+    minSpacing: 5
+    maxSpacing: 6
+    allowedAngle: 5
+  - prefab: {fileID: 8433775419084928759, guid: 02fbbf2bef5bd88439f1ae9c3613ec61, type: 3}
+    spawnChance: 0.0017
+    minSpacing: 5
+    maxSpacing: 6
+    allowedAngle: 5
+  - prefab: {fileID: 8433775419084928759, guid: 4c5c0bd979f523e42b98b1dae7b184ac, type: 3}
+    spawnChance: 0.0017
+    minSpacing: 5
+    maxSpacing: 6
+    allowedAngle: 5
+  - prefab: {fileID: 8433775419084928759, guid: c3afb40ee0accad4a9a677ded8db0583, type: 3}
+    spawnChance: 0.3
+    minSpacing: 5
+    maxSpacing: 6
+    allowedAngle: 5
+  - prefab: {fileID: 8433775419084928759, guid: ca79461ab8d42614daf641e1dc525962, type: 3}
+    spawnChance: 0.3
+    minSpacing: 5
+    maxSpacing: 6
+    allowedAngle: 5
+  skySprite:
+    sprite: {fileID: 21300000, guid: 11fcbc67b223e2d46adbaed423694e12, type: 3}
+    yOffset: 0
+  horizonSprite:
+    sprite: {fileID: 21300000, guid: 8cdba8d24a0968c4d9396770311922ac, type: 3}
+    yOffset: 0
+  backgroundSprite:
+    sprite: {fileID: 21300000, guid: 5bfd42aaef3637348b78c47d8080eecb, type: 3}
+    yOffset: 0
+  dayAmbience: {fileID: 8300000, guid: 3acffd04a3cc98c46949827e46a777bf, type: 3}
+  duskAmbience: {fileID: 0}
+  nightAmbience: {fileID: 0}
+  enemies:
+  - enemy: {fileID: 5388008087247309080, guid: d3b532a88f3ea1947982d27853683e9d, type: 3}
+    chance: 35
+  - enemy: {fileID: 5388008087247309080, guid: dd70175222d6dbc47aece0e0a3e550e1, type: 3}
+    chance: 10
+  - enemy: {fileID: 5388008087247309080, guid: afcbb62c5d66c9b4f8ed071dad8e3350, type: 3}
+    chance: 10
