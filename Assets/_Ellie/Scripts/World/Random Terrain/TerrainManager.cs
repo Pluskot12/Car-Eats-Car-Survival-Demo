@@ -378,6 +378,20 @@ namespace CarGame
             return Physics2D.Raycast(position, -Vector2.up, Mathf.Infinity, groundLayer); ;
         }
 
+        public RaycastHit2D RaycastGroundAtMouse()
+        {
+            var mousePos = Input.mousePosition;
+            mousePos.z = 0;
+            mousePos = Camera.main.ScreenToWorldPoint(mousePos);
+
+            var hit = RaycastGroundAt(mousePos);
+
+            // Debug.Log("Position: " + hit.point);
+            // Debug.Log("Direction: " + hit.normal);     
+
+            return hit;
+        }
+
         private BiomeData GetBiomeDataAtIndex(int index)
         {
             foreach (var biome in biomeDict) 
