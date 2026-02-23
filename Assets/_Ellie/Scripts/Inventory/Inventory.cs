@@ -67,6 +67,7 @@ namespace CarGame
                         continue;
 
                     items[i] = new InventoryItem(item, 1, durability);
+                    remaining -= 1;
                 }
 
                 AnyValueChanged?.Invoke(items);
