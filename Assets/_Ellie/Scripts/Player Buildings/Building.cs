@@ -6,5 +6,7 @@ namespace CarGame
     {
         [SerializeField] private GameObject visuals;
         [SerializeField] private SpriteRenderer spriteRenderer;
+
+        public SpriteRenderer SpriteRenderer => spriteRenderer;
     }
 }

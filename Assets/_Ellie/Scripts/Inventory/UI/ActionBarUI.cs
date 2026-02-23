@@ -78,6 +78,13 @@ namespace CarGame
                 GameManager.Instance.Player.ApplyItemEffect((ConsumeableItemData)slots[selectedSlot].SlottedItem.ItemData);
                 PlayerInventory.Instance.InventoryController.OnItemUse(selectedSlot); 
             }
+            else if (slots[selectedSlot].SlottedItem.ItemData.GetType() == typeof(BuildingItem))
+            {
+                if (BuildingManager.Instance.TryPlace((BuildingItem)slots[selectedSlot].SlottedItem.ItemData)) 
+                {
+                    PlayerInventory.Instance.InventoryController.OnItemUse(selectedSlot);
+                }
+            }
         }
 
         public InventorySlotUI ActiveSlot() 
@@ -107,8 +114,6 @@ namespace CarGame
             selector.SetAsFirstSibling();
             selector.localPosition = Vector2.zero;
 
-
-
             OnInventoryRefreshed(playSound);
         }
 
@@ -130,6 +135,15 @@ namespace CarGame
             else
             {
                 GameManager.Instance.Player.Attachments.AttachItem(slots[selectedSlot].SlottedItem.ItemData, selectedSlot, playSound);
+            }
+
+            if (slots[selectedSlot].SlottedItem == null) 
+            {
+                BuildingManager.Instance.OnBuildingSelected(null);
+            }
+            else if (slots[selectedSlot].SlottedItem.ItemData is BuildingItem) 
+            {
+                BuildingManager.Instance.OnBuildingSelected((BuildingItem)slots[selectedSlot].SlottedItem.ItemData);
             }
         }
 
