@@ -14,6 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: CarGame::CarGame.CraftingRecipeList
   path: Assets/_Ellie/Data/Items/Crafting Recipes
   recipes:
+  - {fileID: 11400000, guid: 3c9cdb6b42273f14086ad3ec05f95480, type: 2}
+  - {fileID: 11400000, guid: 7bf53da8efe26a6418761f7ac1101bd6, type: 2}
+  - {fileID: 11400000, guid: a64c3f80fb0954e408d64499f55eafe5, type: 2}
+  - {fileID: 11400000, guid: 215ec7d523f12e6449cbd59e27013546, type: 2}
+  - {fileID: 11400000, guid: cc676faac791647418970e0425a28e3b, type: 2}
+  - {fileID: 11400000, guid: 9665c0353dcc7d6419ab4ddd08710b9b, type: 2}
   - {fileID: 11400000, guid: be5d7c765bd4b3a429fb9a85f855e2c8, type: 2}
   - {fileID: 11400000, guid: 24b9fb6e4a6cfe344bce6e5ae7e9dec9, type: 2}
   - {fileID: 11400000, guid: e9ee34c6c76a6eb40ab5a4ba6dc0efff, type: 2}

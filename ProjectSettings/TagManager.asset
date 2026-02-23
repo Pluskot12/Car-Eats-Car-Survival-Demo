@@ -68,6 +68,9 @@ TagManager:
   - name: Effects Behind
     uniqueID: 2026910327
     locked: 0
+  - name: Player Buildings
+    uniqueID: 2248255765
+    locked: 0
   - name: Player
     uniqueID: 2332299643
     locked: 0
