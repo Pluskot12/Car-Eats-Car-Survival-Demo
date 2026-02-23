@@ -7,5 +7,6 @@ namespace CarGame
     public class BuildingItem : ItemData
     {
         public Building prefab;
+        public float maxAngle;
     }
 }
