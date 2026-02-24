@@ -8,6 +8,26 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 343331059877190387, guid: 57e68bd4d4cdfe747b1fadb5295f7c7a, type: 3}
+      propertyPath: m_Size.x
+      value: 8.58
+      objectReference: {fileID: 0}
+    - target: {fileID: 343331059877190387, guid: 57e68bd4d4cdfe747b1fadb5295f7c7a, type: 3}
+      propertyPath: m_Size.y
+      value: 4.96
+      objectReference: {fileID: 0}
+    - target: {fileID: 343331059877190387, guid: 57e68bd4d4cdfe747b1fadb5295f7c7a, type: 3}
+      propertyPath: m_Offset.y
+      value: 2.48
+      objectReference: {fileID: 0}
+    - target: {fileID: 343331059877190387, guid: 57e68bd4d4cdfe747b1fadb5295f7c7a, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 8.58
+      objectReference: {fileID: 0}
+    - target: {fileID: 343331059877190387, guid: 57e68bd4d4cdfe747b1fadb5295f7c7a, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 4.96
+      objectReference: {fileID: 0}
     - target: {fileID: 2710115656359558022, guid: 57e68bd4d4cdfe747b1fadb5295f7c7a, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -50,7 +70,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3152666278334226030, guid: 57e68bd4d4cdfe747b1fadb5295f7c7a, type: 3}
       propertyPath: m_Name
-      value: gas_station 1
+      value: water_tower
       objectReference: {fileID: 0}
     - target: {fileID: 3598354673611586256, guid: 57e68bd4d4cdfe747b1fadb5295f7c7a, type: 3}
       propertyPath: m_Sprite

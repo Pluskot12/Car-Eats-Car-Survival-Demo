@@ -78,13 +78,14 @@ namespace CarGame
                 GameManager.Instance.Player.ApplyItemEffect((ConsumeableItemData)slots[selectedSlot].SlottedItem.ItemData);
                 PlayerInventory.Instance.InventoryController.OnItemUse(selectedSlot); 
             }
+            /*
             else if (slots[selectedSlot].SlottedItem.ItemData.GetType() == typeof(BuildingItem))
             {
                 if (BuildingManager.Instance.TryPlace((BuildingItem)slots[selectedSlot].SlottedItem.ItemData)) 
                 {
                     PlayerInventory.Instance.InventoryController.OnItemUse(selectedSlot);
                 }
-            }
+            }*/
         }
 
         public InventorySlotUI ActiveSlot() 

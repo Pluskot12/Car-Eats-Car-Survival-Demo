@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 443d89ec54de0de449a37bafc7091d24, type: 3}
   m_Name: Building - Simple Stone Wall
   m_EditorClassIdentifier: CarGame::CarGame.BuildingItem
-  displayName: Simple Wooden Wall
+  displayName: Simple Stone Wall
   sprite: {fileID: 21300000, guid: 38356a455e048174ea907ea7416a6c50, type: 3}
   maxStackSize: 1
   prefab: {fileID: 5844002745563753973, guid: 79a9dd24bd706ed44945f6eb04bd2d45, type: 3}

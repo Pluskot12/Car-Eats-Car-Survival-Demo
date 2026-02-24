@@ -6,8 +6,10 @@ namespace CarGame
     {
         [SerializeField] private GameObject visuals;
         [SerializeField] private SpriteRenderer spriteRenderer;
+        [SerializeField] private Collider2D col;
 
         public SpriteRenderer SpriteRenderer => spriteRenderer;
+        public Collider2D Collider => col;
 
         public Vector3 GetLeftCorner() 
         {

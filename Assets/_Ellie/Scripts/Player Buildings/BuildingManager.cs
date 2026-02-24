@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace CarGame
 {
@@ -7,14 +8,25 @@ namespace CarGame
         public static BuildingManager Instance { get; private set; }
 
         [SerializeField] private TerrainManager terrainManager;
+        [SerializeField] private LayerMask buildingLayer;
 
         [SerializeField] private Color validPlacementColor;
         [SerializeField] private Color invalidPlacementColor;
+
+        [Header("Progress Bar")]
+        [SerializeField] private float maxPlacementDistance = 3;
+        [SerializeField] private float buildTime = 3;
+        [SerializeField] private float drainSpeed = 3;
+        [SerializeField] private Image fillImage;
 
         private BuildingItem currentBuildingData;
         private Building currentBuilding;
 
         private bool canPlace;
+
+        Collider2D[] results = new Collider2D[10];
+        ContactFilter2D filter = new ContactFilter2D();
+        
 
         private void Awake()
         {
@@ -26,6 +38,9 @@ namespace CarGame
             }
 
             Instance = this;
+
+            filter.SetLayerMask(buildingLayer);
+            filter.useTriggers = true;
         }
         private void OnDrawGizmos()
         {
@@ -39,59 +54,121 @@ namespace CarGame
             Gizmos.DrawSphere(bottomLeft, 0.1f);
             Gizmos.DrawSphere(bottomRight, 0.1f);
         }
+        
         private void Update()
         {
-            if (currentBuilding) 
+            
+            if (currentBuilding == null)
             {
+                return;
+            }
+
+            if (Vector3.Distance(
+                GameManager.Instance.Player.transform.position,             
+                GameManager.Instance.MousePosition)
+                >= maxPlacementDistance) 
+            {
+
+            }
+
                 var hit = terrainManager.RaycastGroundAtMouse();
 
-                if (hit)
-                {
-                    var leftHit = terrainManager.RaycastGroundAt(currentBuilding.GetLeftCorner());
-                    var rightHit = terrainManager.RaycastGroundAt(currentBuilding.GetRightCorner());
-                    Vector2 slope = rightHit.point - leftHit.point;
-                    float angle = Vector2.Angle(slope, Vector2.right);
+            if (hit)
+            {
+                var leftHit = terrainManager.RaycastGroundAt(currentBuilding.GetLeftCorner());
+                var rightHit = terrainManager.RaycastGroundAt(currentBuilding.GetRightCorner());
+                Vector2 slope = rightHit.point - leftHit.point;
 
-                    if (angle <= currentBuildingData.maxAngle + 0.1f)
-                    {
-                        canPlace = true;
-                    }
-                    else
-                    {
-                        canPlace = false;
-                    }
+                canPlace = CanPlaceBuilding(slope);
 
-                    currentBuilding.transform.position = hit.point;
+                currentBuilding.transform.position = hit.point;
 
-
-                    if (currentBuildingData) 
-                    {
-                        float z = Mathf.Atan2(slope.y, slope.x) * Mathf.Rad2Deg;
-
-                        currentBuilding.transform.rotation = Quaternion.Euler(0, 0, z);
-                    }
-
-
-                }
-                else 
-                {
-                    canPlace = false;
-                }
+                float z = Mathf.Atan2(slope.y, slope.x) * Mathf.Rad2Deg;
+                currentBuilding.transform.rotation = Quaternion.Euler(0, 0, z);
 
                 if (canPlace)
                 {
                     currentBuilding.SpriteRenderer.color = validPlacementColor;
                 }
-                else 
+                else
                 {
                     currentBuilding.SpriteRenderer.color = invalidPlacementColor;
                 }
 
-                
-
-                
             }
+            else
+            {
+                canPlace = false;
+            }
+
+            UpdateProgress();
         }
+
+        private void UpdateProgress() 
+        {
+            if (canPlace && Input.GetMouseButton(0))
+            {
+                fillImage.fillAmount += Time.deltaTime / buildTime;
+            }
+            else
+            {
+                fillImage.fillAmount -= Time.deltaTime * drainSpeed;
+            }
+
+            if (fillImage.fillAmount >= 1f) 
+            {
+                TryPlace(currentBuildingData);
+            }
+
+            fillImage.fillAmount = Mathf.Clamp01(fillImage.fillAmount);
+        }
+
+        private bool CanPlaceBuilding(Vector2 slope) 
+        {
+            if (!IsWithinDistance()) 
+            {
+                return false;
+            }
+
+            if (!IsWithinAllowedAngle(slope))
+            {
+                return false;
+            }
+
+            if (IsBlockedByStructure()) 
+            {
+                return false;
+            }
+
+            return true;
+        }
+
+        private bool IsWithinDistance() 
+        {
+            Debug.Log(Vector3.Distance(GameManager.Instance.Player.transform.position, GameManager.Instance.MousePosition));
+            return Vector3.Distance(GameManager.Instance.Player.transform.position, GameManager.Instance.MousePosition) <= maxPlacementDistance;
+        }
+
+        private bool IsWithinAllowedAngle(Vector2 slope) 
+        {
+
+            float angle = Vector2.Angle(slope, Vector2.right);
+
+            if (angle <= currentBuildingData.maxAngle + 0.1f)
+            {
+                return true;
+            }
+
+            return false;
+        }
+
+        private bool IsBlockedByStructure() 
+        {
+            int count = currentBuilding.Collider.Overlap(filter, results);
+
+            return count > 0;
+        }
+
 
         public void OnBuildingSelected(BuildingItem building) 
         {

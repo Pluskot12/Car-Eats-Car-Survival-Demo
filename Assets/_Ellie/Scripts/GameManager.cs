@@ -1,6 +1,4 @@
-using System;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 namespace CarGame
 {
@@ -8,9 +6,16 @@ namespace CarGame
     {
         public static GameManager Instance { get; private set; }
 
-        public Player Player;
+        [SerializeField] private Camera mainCamera;
+        [SerializeField] private Player player;
 
         [SerializeField] private Vector3 spawnPoint; 
+
+        private Vector3 mousePosition;
+        public Vector3 MousePosition => GetMousePosition();
+
+        public Camera Camera => mainCamera;
+        public Player Player => player;
 
         private void Awake()
         {
@@ -27,6 +32,16 @@ namespace CarGame
         public void OnPlayerDeath()
         {
             UIMananger.Instance.ShowDeathScreen();
+        }
+
+        public Vector3 GetMousePosition() 
+        {
+            mousePosition = Input.mousePosition;
+            
+            mousePosition = mainCamera.ScreenToWorldPoint(mousePosition);
+            mousePosition.z = 0;
+            Debug.Log(mousePosition);
+            return mousePosition;
         }
     }
 }

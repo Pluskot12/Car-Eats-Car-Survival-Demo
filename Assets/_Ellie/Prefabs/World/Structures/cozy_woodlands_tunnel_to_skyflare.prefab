@@ -16,6 +16,26 @@ PrefabInstance:
       propertyPath: 'spawnTables.Array.data[0]'
       value: 
       objectReference: {fileID: 11400000, guid: 56f926a0b2356f04abcd663cf8b5d913, type: 2}
+    - target: {fileID: 343331059877190387, guid: 57e68bd4d4cdfe747b1fadb5295f7c7a, type: 3}
+      propertyPath: m_Size.x
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 343331059877190387, guid: 57e68bd4d4cdfe747b1fadb5295f7c7a, type: 3}
+      propertyPath: m_Size.y
+      value: 2.96
+      objectReference: {fileID: 0}
+    - target: {fileID: 343331059877190387, guid: 57e68bd4d4cdfe747b1fadb5295f7c7a, type: 3}
+      propertyPath: m_Offset.y
+      value: 1.48
+      objectReference: {fileID: 0}
+    - target: {fileID: 343331059877190387, guid: 57e68bd4d4cdfe747b1fadb5295f7c7a, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 343331059877190387, guid: 57e68bd4d4cdfe747b1fadb5295f7c7a, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 2.96
+      objectReference: {fileID: 0}
     - target: {fileID: 2710115656359558022, guid: 57e68bd4d4cdfe747b1fadb5295f7c7a, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
