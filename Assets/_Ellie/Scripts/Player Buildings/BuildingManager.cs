@@ -34,9 +34,10 @@ namespace CarGame
 
         private float buildProgress;
 
-        Collider2D[] results = new Collider2D[10];
-        ContactFilter2D filter = new ContactFilter2D();
-        
+        private Collider2D[] results = new Collider2D[10];
+        private ContactFilter2D filter = new ContactFilter2D();
+
+        private bool isBuilding;
 
         private void Awake()
         {
@@ -88,7 +89,10 @@ namespace CarGame
 
                 canPlace = CanPlaceBuilding(slope);
 
-                currentBuilding.transform.position = hit.point;
+                if (!isBuilding) 
+                { 
+                    currentBuilding.transform.position = hit.point;
+                }
 
                 float z = Mathf.Atan2(slope.y, slope.x) * Mathf.Rad2Deg;
                 currentBuilding.transform.rotation = Quaternion.Euler(0, 0, z);
@@ -100,10 +104,12 @@ namespace CarGame
 
                     if (Input.GetMouseButtonDown(0))
                     {
+                        isBuilding = true;
                         progressBar.OnClick(true);
                     }
                     else if (Input.GetMouseButtonUp(0))
                     {
+                        isBuilding = false;
                         progressBar.OnClick(false);
                     }
                 }
@@ -119,19 +125,25 @@ namespace CarGame
                 canPlace = false;
             }
 
+            if (isBuilding && GameManager.Instance.Player.CarController.GetRigidbody(CarController.PhysicsPart.Body).linearVelocity.magnitude > 1)
+            {
+                isBuilding = false;
+                canPlace = false;
+
+                progressBar.OnClick(false);
+            }
+
             UpdateProgress();
         }
-        bool isPlacing;
+
         private void UpdateProgress() 
         {
-            if (canPlace && Input.GetMouseButton(0))
+            if (canPlace && isBuilding)
             {
-                isPlacing = true;
                 buildProgress += Time.deltaTime / buildTime;
             }
             else
             {
-                isPlacing = false;
                 buildProgress -= Time.deltaTime * drainSpeed;
             }
 
@@ -151,6 +163,13 @@ namespace CarGame
 
         private bool CanPlaceBuilding(Vector2 slope) 
         {
+
+
+            if (isBuilding)
+            {
+                return true;
+            }
+
             if (!IsWithinDistance()) 
             {
                 return false;
