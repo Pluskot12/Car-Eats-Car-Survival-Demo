@@ -16,3 +16,5 @@ MonoBehaviour:
   sprite: {fileID: 21300000, guid: cfa8714d136f4b54e9554583968a026e, type: 3}
   maxStackSize: 1
   prefab: {fileID: 5844002745563753973, guid: 3b75ca002101b0140b400ae769910d96, type: 3}
+  maxAngle: 0
+  placementSound: {fileID: 8300000, guid: 577ce4170b6e7f647b6c6abac1401d1c, type: 3}

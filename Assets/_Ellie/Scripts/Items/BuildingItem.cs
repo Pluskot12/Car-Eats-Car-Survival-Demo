@@ -8,5 +8,6 @@ namespace CarGame
     {
         public Building prefab;
         public float maxAngle;
+        public AudioClip placementSound;
     }
 }

@@ -10,6 +10,11 @@ namespace CarGame
         [SerializeField] private TerrainManager terrainManager;
         [SerializeField] private LayerMask buildingLayer;
 
+
+        [Header("Audio")]
+        [SerializeField] private AudioSource audioSource;
+
+        [Header("Colors")]
         [SerializeField] private Color validPlacementColor;
         [SerializeField] private Color invalidPlacementColor;
 
@@ -221,6 +226,8 @@ namespace CarGame
             {
                 var b = Instantiate(currentBuildingData.prefab, currentBuilding.transform.position, currentBuilding.transform.rotation);
                 b.SpriteRenderer.color = Color.white;
+
+                audioSource.PlayOneShot(currentBuildingData.placementSound);
 
                 RemoveBuilding();
 
