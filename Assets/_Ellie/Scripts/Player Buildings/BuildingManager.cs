@@ -65,22 +65,15 @@ namespace CarGame
             
             if (currentBuilding == null)
             {
-                progressBar.Hide();
+                progressBar.Hide(false);
 
                 return;
             }
 
             progressBar.Show(currentBuilding.IndicatorPosition);
 
-            if (Vector3.Distance(
-                GameManager.Instance.Player.transform.position,             
-                GameManager.Instance.MousePosition)
-                >= maxPlacementDistance) 
-            {
 
-            }
-
-                var hit = terrainManager.RaycastGroundAtMouse();
+            var hit = terrainManager.RaycastGroundAtMouse();
 
             if (hit)
             {
@@ -99,6 +92,15 @@ namespace CarGame
                 {
                     progressBar.UpdateStatus(BuildingIndicatorUI.Status.Valid);
                     currentBuilding.SpriteRenderer.color = validPlacementColor;
+
+                    if (Input.GetMouseButtonDown(0))
+                    {
+                        progressBar.OnClick(true);
+                    }
+                    else if (Input.GetMouseButtonUp(0))
+                    {
+                        progressBar.OnClick(false);
+                    }
                 }
                 else
                 {
@@ -134,10 +136,9 @@ namespace CarGame
             {
                 if (TryPlace(currentBuildingData)) 
                 {
+                    progressBar.UpdateStatus(BuildingIndicatorUI.Status.Complete);
                     PlayerInventory.Instance.InventoryController.OnItemUse(inventorySlot);
                 }
-
-                progressBar.UpdateStatus(BuildingIndicatorUI.Status.Complete);
             }
             
             progressBar.UpdateProgress(buildProgress);
