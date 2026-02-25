@@ -115,8 +115,8 @@ namespace CarGame
 
             if (status == Status.Complete)
             {
-                Tween.PunchScale(backgroundParent, Vector3.one * 0.25f, 0.275f, 5);
-                Tween.PunchScale(progressBarParent, Vector3.one * 0.35f, 0.275f, 5).OnComplete(() => Hide(true));
+                Tween.PunchScale(backgroundParent, Vector3.one * 0.175f, 0.275f, 5);
+                Tween.PunchScale(progressBarParent, Vector3.one * 0.25f, 0.275f, 5).OnComplete(() => Hide(true));
             }
 
             
