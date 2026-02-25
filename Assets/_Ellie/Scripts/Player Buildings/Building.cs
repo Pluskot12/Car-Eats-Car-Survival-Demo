@@ -8,6 +8,7 @@ namespace CarGame
         [SerializeField] private SpriteRenderer spriteRenderer;
         [SerializeField] private Collider2D col;
 
+        public Vector3 IndicatorPosition => visuals.transform.position + Vector3.up * 1f;
         public SpriteRenderer SpriteRenderer => spriteRenderer;
         public Collider2D Collider => col;
 

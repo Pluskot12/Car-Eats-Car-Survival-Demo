@@ -140,11 +140,11 @@ namespace CarGame
 
             if (slots[selectedSlot].SlottedItem == null) 
             {
-                BuildingManager.Instance.OnBuildingSelected(null);
+                BuildingManager.Instance.OnBuildingSelected(null, -1);
             }
             else if (slots[selectedSlot].SlottedItem.ItemData is BuildingItem) 
             {
-                BuildingManager.Instance.OnBuildingSelected((BuildingItem)slots[selectedSlot].SlottedItem.ItemData);
+                BuildingManager.Instance.OnBuildingSelected((BuildingItem)slots[selectedSlot].SlottedItem.ItemData, selectedSlot);
             }
         }
 

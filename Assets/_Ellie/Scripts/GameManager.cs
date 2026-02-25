@@ -1,4 +1,5 @@
 using UnityEngine;
+using static UnityEngine.GraphicsBuffer;
 
 namespace CarGame
 {
@@ -37,11 +38,34 @@ namespace CarGame
         public Vector3 GetMousePosition() 
         {
             mousePosition = Input.mousePosition;
-            
             mousePosition = mainCamera.ScreenToWorldPoint(mousePosition);
             mousePosition.z = 0;
-            Debug.Log(mousePosition);
+            
             return mousePosition;
+        }
+
+        public Vector2 GetUIPosition(GameObject go) 
+        {
+            return RectTransformUtility.WorldToScreenPoint(mainCamera, go.transform.TransformPoint(Vector3.zero));
+        }
+
+        public Vector2 GetUIPosition(Vector3 position)
+        {
+            return RectTransformUtility.WorldToScreenPoint(mainCamera, position);
+        }
+
+        public Vector2 TestPos(Vector3 pos, Canvas canvas) 
+        {
+            Vector2 screenPos = mainCamera.WorldToScreenPoint(pos);
+
+            RectTransformUtility.ScreenPointToLocalPointInRectangle(
+                canvas.GetComponent<RectTransform>(),
+                screenPos,
+                canvas.renderMode == RenderMode.ScreenSpaceOverlay ? null : mainCamera,
+                out Vector2 localPoint
+            );
+
+           return localPoint;
         }
     }
 }

@@ -380,9 +380,9 @@ namespace CarGame
 
         public RaycastHit2D RaycastGroundAtMouse()
         {
-            var mousePos = Input.mousePosition;
-            mousePos.z = 0;
+            var mousePos = Input.mousePosition; 
             mousePos = Camera.main.ScreenToWorldPoint(mousePos);
+            mousePos.z = 0;
 
             var hit = RaycastGroundAt(mousePos);
 

@@ -13,16 +13,21 @@ namespace CarGame
         [SerializeField] private Color validPlacementColor;
         [SerializeField] private Color invalidPlacementColor;
 
-        [Header("Progress Bar")]
+        [Header("Build Settings")]
         [SerializeField] private float maxPlacementDistance = 3;
         [SerializeField] private float buildTime = 3;
-        [SerializeField] private float drainSpeed = 3;
-        [SerializeField] private Image fillImage;
+        [SerializeField] private float drainSpeed = 5;
+
+        [Header("Progress Bar")]
+        [SerializeField] private BuildingIndicatorUI progressBar;
+        
 
         private BuildingItem currentBuildingData;
         private Building currentBuilding;
 
         private bool canPlace;
+
+        private float buildProgress;
 
         Collider2D[] results = new Collider2D[10];
         ContactFilter2D filter = new ContactFilter2D();
@@ -60,8 +65,12 @@ namespace CarGame
             
             if (currentBuilding == null)
             {
+                progressBar.Hide();
+
                 return;
             }
+
+            progressBar.Show(currentBuilding.IndicatorPosition);
 
             if (Vector3.Distance(
                 GameManager.Instance.Player.transform.position,             
@@ -88,10 +97,12 @@ namespace CarGame
 
                 if (canPlace)
                 {
+                    progressBar.UpdateStatus(BuildingIndicatorUI.Status.Valid);
                     currentBuilding.SpriteRenderer.color = validPlacementColor;
                 }
                 else
                 {
+                    progressBar.UpdateStatus(BuildingIndicatorUI.Status.Invalid);
                     currentBuilding.SpriteRenderer.color = invalidPlacementColor;
                 }
 
@@ -103,24 +114,33 @@ namespace CarGame
 
             UpdateProgress();
         }
-
+        bool isPlacing;
         private void UpdateProgress() 
         {
             if (canPlace && Input.GetMouseButton(0))
             {
-                fillImage.fillAmount += Time.deltaTime / buildTime;
+                isPlacing = true;
+                buildProgress += Time.deltaTime / buildTime;
             }
             else
             {
-                fillImage.fillAmount -= Time.deltaTime * drainSpeed;
+                isPlacing = false;
+                buildProgress -= Time.deltaTime * drainSpeed;
             }
 
-            if (fillImage.fillAmount >= 1f) 
+            buildProgress = Mathf.Clamp01(buildProgress);
+
+            if (buildProgress >= 1f)
             {
-                TryPlace(currentBuildingData);
-            }
+                if (TryPlace(currentBuildingData)) 
+                {
+                    PlayerInventory.Instance.InventoryController.OnItemUse(inventorySlot);
+                }
 
-            fillImage.fillAmount = Mathf.Clamp01(fillImage.fillAmount);
+                progressBar.UpdateStatus(BuildingIndicatorUI.Status.Complete);
+            }
+            
+            progressBar.UpdateProgress(buildProgress);
         }
 
         private bool CanPlaceBuilding(Vector2 slope) 
@@ -145,7 +165,6 @@ namespace CarGame
 
         private bool IsWithinDistance() 
         {
-            Debug.Log(Vector3.Distance(GameManager.Instance.Player.transform.position, GameManager.Instance.MousePosition));
             return Vector3.Distance(GameManager.Instance.Player.transform.position, GameManager.Instance.MousePosition) <= maxPlacementDistance;
         }
 
@@ -169,9 +188,11 @@ namespace CarGame
             return count > 0;
         }
 
-
-        public void OnBuildingSelected(BuildingItem building) 
+        int inventorySlot;
+        public void OnBuildingSelected(BuildingItem building, int slot) 
         {
+            inventorySlot = slot;
+
             if (building == null) 
             {
                 RemoveBuilding();
