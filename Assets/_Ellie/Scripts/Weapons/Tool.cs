@@ -98,7 +98,7 @@ namespace CarGame
                     IDamageable damageable = hit.attachedRigidbody.GetComponent<IDamageable>();
                     if (damageable != null)
                     {
-                        damageable.TryDamage(combatDamage);
+                        damageable.TryDamage(combatDamage, gameObject);
                         connectedHits++;
                         continue;
                     }

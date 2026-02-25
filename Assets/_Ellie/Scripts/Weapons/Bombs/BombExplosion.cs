@@ -48,7 +48,7 @@ namespace CarGame
 
         protected virtual void ApplyEffect(Collider2D hit, IDamageable target, BombItem data) 
         {
-            target.TryDamage(data.damage);
+            target.TryDamage(data.damage, gameObject);
         }
 
 

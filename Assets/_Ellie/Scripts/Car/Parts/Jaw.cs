@@ -5,6 +5,7 @@ namespace CarGame
     public class Jaw : EnemyAttackSystem
     {
         [Header("References")]
+        [SerializeField] private GameObject attacker;
         [SerializeField] private Animator animator;
 
         [Header("Bite Settings")]
@@ -36,9 +37,19 @@ namespace CarGame
 
             if (hit != null)
             {
-                if (hit.attachedRigidbody.TryGetComponent(out IDamageable damageable))
+                if (hit.attachedRigidbody)
                 {
-                    damageable.TryDamage(damage);
+                    if (hit.attachedRigidbody.TryGetComponent(out IDamageable damageable))
+                    {
+                        damageable.TryDamage(damage, attacker);
+                    }
+                }
+                else 
+                {
+                    if (hit.TryGetComponent(out IDamageable damageable))
+                    {
+                        damageable.TryDamage(damage, attacker);
+                    }
                 }
             }
         }

@@ -161,7 +161,7 @@ namespace CarGame
                 {
                     hungerDrainTimer = 0;
                     audioSource.PlayOneShot(hungerDamageClip);
-                    GetComponent<IDamageable>().TryDamage(hungerDrain);
+                    GetComponent<IDamageable>().TryDamage(hungerDrain, gameObject);
                 }
 
                 if (triggerHungerSound)
@@ -423,7 +423,7 @@ namespace CarGame
             noiseGenerator.GenerateNoise(multiplier);
         }
 
-        public void TryDamage(int damage)
+        public void TryDamage(int damage, GameObject attacker = null)
         {
             if (dash.IsImmune) 
             {

@@ -408,7 +408,7 @@ namespace CarGame
             alerted = false;
         }
 
-        public void TryDamage(int damage)
+        public void TryDamage(int damage, GameObject attacker = null)
         {
             CurrentHealth = Mathf.Clamp(CurrentHealth - damage, 0, MaxHealth);
 

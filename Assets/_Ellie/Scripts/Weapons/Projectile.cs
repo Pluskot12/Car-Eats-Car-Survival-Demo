@@ -78,7 +78,7 @@ namespace CarGame
                 {
                     if (hit.rigidbody.gameObject.TryGetComponent(out IDamageable target)) 
                     {
-                        target.TryDamage(damage);
+                        target.TryDamage(damage, gameObject);
                     }
                 }
 

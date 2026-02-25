@@ -8,7 +8,7 @@ namespace CarGame
         {
             if (collision.collider.transform.root.TryGetComponent<IDamageable>(out IDamageable target))
             {
-                target.TryDamage(99999);
+                target.TryDamage(99999, gameObject);
             }
         }
     }

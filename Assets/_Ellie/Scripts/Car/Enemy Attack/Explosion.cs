@@ -79,7 +79,7 @@ namespace CarGame
                 ApplyKnockback(hit);
             }
 
-            target.TryDamage(damage);
+            target.TryDamage(damage, gameObject);
 
         }
 

@@ -7,7 +7,7 @@ namespace CarGame
         public int MaxHealth { get; set; }
         public int CurrentHealth { get; set; }
 
-        public void TryDamage(int damage);
+        public void TryDamage(int damage, GameObject attacker);
 
         public void OnHit(int damage);
         public void OnDeath();

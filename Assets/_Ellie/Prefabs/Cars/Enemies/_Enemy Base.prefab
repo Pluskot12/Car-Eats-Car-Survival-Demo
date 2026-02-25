@@ -69,6 +69,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aad0dd2959a94624d878a36707d8abfe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  attacker: {fileID: 3553150425493378300}
   animator: {fileID: 255955390197434800}
   minBite: 0.5
   maxBite: 1
@@ -76,7 +77,7 @@ MonoBehaviour:
   hitpoint: {fileID: 5053290905918578850}
   playerLayer:
     serializedVersion: 2
-    m_Bits: 1024
+    m_Bits: 16778240
   damage: 6
 --- !u!1 &392460361576212612
 GameObject:
@@ -361,7 +362,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: -1947857637
-  m_SortingLayer: 13
+  m_SortingLayer: 14
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
@@ -838,7 +839,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: -1533714651
-  m_SortingLayer: 11
+  m_SortingLayer: 12
   m_SortingOrder: 66
   m_MaskInteraction: 0
   m_Sprite: {fileID: 21300000, guid: bbbddf31dd3367d44a8649199c44b53d, type: 3}
@@ -1331,7 +1332,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: -1962667653
-  m_SortingLayer: 10
+  m_SortingLayer: 11
   m_SortingOrder: 100
   m_MaskInteraction: 0
   m_Sprite: {fileID: 21300000, guid: ab1241b6b80bf58468addbc376a2ef47, type: 3}
@@ -1796,7 +1797,7 @@ PrefabInstance:
       objectReference: {fileID: 21300000, guid: eec145676a3712e4dba9be80662b685a, type: 3}
     - target: {fileID: 4195703586013657116, guid: 0ae70d1ab4440b94d9e1351370ba581c, type: 3}
       propertyPath: m_SortingLayer
-      value: 11
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 4195703586013657116, guid: 0ae70d1ab4440b94d9e1351370ba581c, type: 3}
       propertyPath: m_SortingLayerID
@@ -2276,7 +2277,7 @@ PrefabInstance:
       objectReference: {fileID: 21300000, guid: eec145676a3712e4dba9be80662b685a, type: 3}
     - target: {fileID: 7876358325265291107, guid: 0ae70d1ab4440b94d9e1351370ba581c, type: 3}
       propertyPath: m_SortingLayer
-      value: 11
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 7876358325265291107, guid: 0ae70d1ab4440b94d9e1351370ba581c, type: 3}
       propertyPath: m_SortingLayerID
@@ -2420,8 +2421,6 @@ MonoBehaviour:
   lowAlertThreshold: 0
   testCanvas: {fileID: 7468167089145094401}
   bar: {fileID: 7481615491107639433}
-  raycastDistance: 100
-  wheelRadius: 0.3
   groundLayer:
     serializedVersion: 2
     m_Bits: 256
@@ -2444,7 +2443,7 @@ SortingGroup:
   m_GameObject: {fileID: 3553150425493378300}
   m_Enabled: 1
   m_SortingLayerID: -1533714651
-  m_SortingLayer: 11
+  m_SortingLayer: 12
   m_SortingOrder: 0
   m_SortAtRoot: 0
   m_Sort3DAs2D: 0
