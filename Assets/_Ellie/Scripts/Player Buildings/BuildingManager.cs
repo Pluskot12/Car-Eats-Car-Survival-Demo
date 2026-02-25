@@ -13,6 +13,7 @@ namespace CarGame
 
         [Header("Audio")]
         [SerializeField] private AudioSource audioSource;
+        [SerializeField] private AudioClip buildAudio;
 
         [Header("Colors")]
         [SerializeField] private Color validPlacementColor;
@@ -220,14 +221,14 @@ namespace CarGame
 
             if (building == null) 
             {
-                RemoveBuilding();
+                RemoveTempBuilding();
 
                 return;
             }
 
             if (currentBuilding != null) 
             {
-                RemoveBuilding();
+                RemoveTempBuilding();
             }
 
             currentBuildingData = building;
@@ -239,16 +240,19 @@ namespace CarGame
 
         public bool TryPlace(BuildingItem building) 
         {
-            Debug.Log("Trying to place " + building.displayName);
-
             if (canPlace) 
             {
                 var b = Instantiate(currentBuildingData.prefab, currentBuilding.transform.position, currentBuilding.transform.rotation);
                 b.SpriteRenderer.color = Color.white;
 
-                audioSource.PlayOneShot(currentBuildingData.placementSound);
+                audioSource.PlayOneShot(buildAudio);
 
-                RemoveBuilding();
+                if (currentBuildingData.placementSound) 
+                { 
+                    audioSource.PlayOneShot(currentBuildingData.placementSound);
+                }
+
+                RemoveTempBuilding();
 
                 return true;
             }
@@ -263,7 +267,7 @@ namespace CarGame
             currentBuilding = Instantiate(currentBuildingData.prefab, position.point, Quaternion.identity);
         }
 
-        private void RemoveBuilding() 
+        private void RemoveTempBuilding() 
         {
             if (currentBuilding != null) 
             { 

@@ -17,4 +17,4 @@ MonoBehaviour:
   maxStackSize: 1
   prefab: {fileID: 5844002745563753973, guid: c01037c62afb58d4e9c6a6b4396c9048, type: 3}
   maxAngle: 0
-  placementSound: {fileID: 8300000, guid: da572108638a6ab44a109970b76806c4, type: 3}
+  placementSound: {fileID: 0}
