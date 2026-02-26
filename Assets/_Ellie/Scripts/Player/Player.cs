@@ -442,7 +442,10 @@ namespace CarGame
             }
         }
 
-
+        public void UpgradeCar(WorkshopUI.UpgradeStage upgradeStage)
+        {
+            Debug.Log("Upgrade car");
+        }
     }
 
 }

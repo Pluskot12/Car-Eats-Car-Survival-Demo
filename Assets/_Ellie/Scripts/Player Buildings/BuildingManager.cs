@@ -40,6 +40,8 @@ namespace CarGame
 
         private bool isBuilding;
 
+        int inventorySlot;
+
         private void Awake()
         {
             if (Instance != null) 
@@ -54,6 +56,7 @@ namespace CarGame
             filter.SetLayerMask(buildingLayer);
             filter.useTriggers = true;
         }
+
         private void OnDrawGizmos()
         {
             if (currentBuilding == null)
@@ -71,16 +74,15 @@ namespace CarGame
         {
             HandleRightClick();
             
-
             if (currentBuilding == null)
             {
                 progressBar.Hide(false);
-
+                buildProgress = 0;
+                isBuilding = false;
                 return;
             }
 
             progressBar.Show(currentBuilding.IndicatorPosition);
-
 
             var hit = terrainManager.RaycastGroundAtMouse();
 
@@ -184,8 +186,6 @@ namespace CarGame
 
         private bool CanPlaceBuilding(Vector2 slope) 
         {
-
-
             if (isBuilding)
             {
                 return true;
@@ -234,10 +234,11 @@ namespace CarGame
             return count > 0;
         }
 
-        int inventorySlot;
         public void OnBuildingSelected(BuildingItem building, int slot) 
         {
             inventorySlot = slot;
+            buildProgress = 0;
+            isBuilding = false;
 
             if (building == null) 
             {

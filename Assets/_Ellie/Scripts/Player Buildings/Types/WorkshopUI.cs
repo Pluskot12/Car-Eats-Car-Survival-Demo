@@ -165,8 +165,13 @@ namespace CarGame
                 if (upgradeStage < 3)
                 {
                     UpdateStage(upgradeStage);
-                    UIMananger.Instance.PlayAudioClip(upgradeSound);
+                    UIMananger.Instance.PlayAudioClip(upgradeSound); 
+
+                    GameManager.Instance.Player.UpgradeCar(upgrades[upgradeStage]);
+
                     upgradeStage++;
+
+                    
                 }
             }
             else
@@ -177,13 +182,6 @@ namespace CarGame
 
         private void UpdateButton(bool valid)
         {
-            /*
-            if (!PlayerInventory.Instance.InventoryController.CanFit(currentRecipe.item, currentRecipe.quantity)) 
-            {
-                valid = false;
-            }
-            */
-
             craftButton.enabled = valid;
 
             if (valid)
