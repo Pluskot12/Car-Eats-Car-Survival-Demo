@@ -56,6 +56,10 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: 85e96596564a90e42bd7f5972e8bfec4, type: 3}
+    - target: {fileID: 8831368780724380168, guid: 81a4b03a53eabc94c86a6a6d706911df, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8845118397175370766, guid: 81a4b03a53eabc94c86a6a6d706911df, type: 3}
       propertyPath: m_Offset.y
       value: 0.28
@@ -67,5 +71,25 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 179251914639705651, guid: 81a4b03a53eabc94c86a6a6d706911df, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 133319219938718587}
   m_SourcePrefab: {fileID: 100100000, guid: 81a4b03a53eabc94c86a6a6d706911df, type: 3}
+--- !u!1 &5602328446064282137 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 179251914639705651, guid: 81a4b03a53eabc94c86a6a6d706911df, type: 3}
+  m_PrefabInstance: {fileID: 5747627355465239594}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &133319219938718587
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5602328446064282137}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd83742aca6a62341819e36418c2f221, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: CarGame::CarGame.Chest

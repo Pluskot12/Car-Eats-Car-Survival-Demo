@@ -20,20 +20,23 @@ namespace CarGame
         [SerializeField] private PlayerStatPanelUI statMeters;
         [SerializeField] private ClockUIPanel clock;
 
+        [Header("Buildings")]
+        [SerializeField] private WorkshopUI workshopUI;
+
 
         private void Awake()
         {
             Instance = this;
         }
 
-        public void ShowDeathScreen() 
+        public void ShowDeathScreen()
         {
             inventoryPanel.SetInteractable(false);
 
             StartCoroutine(DeathScreenDelayed());
         }
 
-        private IEnumerator DeathScreenDelayed() 
+        private IEnumerator DeathScreenDelayed()
         {
             yield return new WaitForSeconds(3f);
 
@@ -43,7 +46,7 @@ namespace CarGame
 
         }
 
-        public void ShowPlayerUI() 
+        public void ShowPlayerUI()
         {
             inventoryPanel.SetInteractable(true);
             inventoryPanel.Show();
@@ -51,7 +54,7 @@ namespace CarGame
             clock.Show();
         }
 
-        public void HidePlayerUI() 
+        public void HidePlayerUI()
         {
             inventoryPanel.Hide();
             statMeters.Hide();
@@ -76,7 +79,7 @@ namespace CarGame
             return false;
         }
 
-        public void PlayAudioClip(AudioClip clip) 
+        public void PlayAudioClip(AudioClip clip)
         {
             uiAudioSource.PlayOneShot(clip);
         }
@@ -87,6 +90,12 @@ namespace CarGame
         }
 
         public static bool IsHoldingItem;
+
+        #region Buildings
+
+
+
+        #endregion
 
     }
 }

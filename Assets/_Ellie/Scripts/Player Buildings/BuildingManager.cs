@@ -69,7 +69,9 @@ namespace CarGame
         
         private void Update()
         {
+            HandleRightClick();
             
+
             if (currentBuilding == null)
             {
                 progressBar.Hide(false);
@@ -135,6 +137,26 @@ namespace CarGame
             }
 
             UpdateProgress();
+        }
+
+        private void HandleRightClick()
+        {
+            if (Input.GetMouseButtonDown(1))
+            {
+                Vector2 worldPoint = GameManager.Instance.Camera.ScreenToWorldPoint(Input.mousePosition);
+
+                Collider2D hit = Physics2D.OverlapPoint(worldPoint, buildingLayer);
+
+                if (hit != null)
+                {
+                    Debug.Log($"Clicked on: {hit.gameObject.name}");
+
+                    if (hit.TryGetComponent<BuildingInteraction>(out BuildingInteraction building)) 
+                    {
+                        building.Interact(GameManager.Instance.Player);
+                    }
+                }
+            }
         }
 
         private void UpdateProgress() 
