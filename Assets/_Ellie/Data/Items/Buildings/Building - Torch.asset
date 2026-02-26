@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Building - Torch
   m_EditorClassIdentifier: CarGame::CarGame.BuildingItem
   displayName: Torch
-  sprite: {fileID: 21300000, guid: 2c70ae4a7526b1944a606dbd40e310ba, type: 3}
+  sprite: {fileID: 21300000, guid: 8f31ea8d5b9d9b84da5b4099e9aabd19, type: 3}
   maxStackSize: 1
   prefab: {fileID: 5844002745563753973, guid: 443fd5f9bf9897647b54ba1035c87b80, type: 3}
   maxAngle: 0
