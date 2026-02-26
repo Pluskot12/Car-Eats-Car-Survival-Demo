@@ -149,8 +149,6 @@ namespace CarGame
 
                 if (hit != null)
                 {
-                    Debug.Log($"Clicked on: {hit.gameObject.name}");
-
                     if (hit.TryGetComponent<BuildingInteraction>(out BuildingInteraction building)) 
                     {
                         building.Interact(GameManager.Instance.Player);

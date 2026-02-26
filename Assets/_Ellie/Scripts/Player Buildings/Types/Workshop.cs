@@ -30,7 +30,6 @@ namespace CarGame
         public void TryInteract(Player player)
         {
             float distance = Vector3.Distance(transform.position, player.transform.position);
-            Debug.Log("Interact " + distance);
 
             if (distance <= maxDistance) 
             {
@@ -42,9 +41,6 @@ namespace CarGame
                 {
                     CloseUI();
                 }
-
-                isShowing = !isShowing;
-                
             }
         }
 
@@ -52,13 +48,14 @@ namespace CarGame
         {
             this.player = player;
 
+            isShowing = true;
             workshopUI.Show(player, true);
         }
 
         private void CloseUI()
         {
             player = null;
-
+            isShowing = false;
             workshopUI.Hide(true);
         }
 

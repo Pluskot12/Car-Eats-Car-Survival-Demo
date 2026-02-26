@@ -1419,6 +1419,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 5897659024377372798, guid: 559351dc4928c4b4eb3d4434956425a2, type: 3}
   m_PrefabInstance: {fileID: 1171663862878060972}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &7947996768172778069 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 9083306213166703609, guid: 559351dc4928c4b4eb3d4434956425a2, type: 3}
+  m_PrefabInstance: {fileID: 1171663862878060972}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f2ea1e1c19bbd04fb7186e3ebfdddcf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: CarGame::CarGame.CraftingIngredientItemUI
 --- !u!1001 &1451661362155453016
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1533,6 +1544,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 5897659024377372798, guid: 559351dc4928c4b4eb3d4434956425a2, type: 3}
   m_PrefabInstance: {fileID: 1451661362155453016}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &7650266328116828577 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 9083306213166703609, guid: 559351dc4928c4b4eb3d4434956425a2, type: 3}
+  m_PrefabInstance: {fileID: 1451661362155453016}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f2ea1e1c19bbd04fb7186e3ebfdddcf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: CarGame::CarGame.CraftingIngredientItemUI
 --- !u!1001 &4027054154581273417
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1631,7 +1653,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6883665919727709852, guid: aac0d32068136a641ac37c68cf866fb4, type: 3}
       propertyPath: m_Name
-      value: Canvas
+      value: Workshop UI Canvas
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1675,6 +1697,15 @@ MonoBehaviour:
   canvas: {fileID: 9064255319714709041}
   raycaster: {fileID: 4372574392456170284}
   maxedImage: {fileID: 4131522769776248934}
+  craftButton: {fileID: 583118616541983958}
+  slots:
+  - {fileID: 7947996768172778069}
+  - {fileID: 189985374325610908}
+  - {fileID: 4529228545837432500}
+  - {fileID: 7650266328116828577}
+  craftButtonValid: {fileID: 21300000, guid: b885e9d4ba67de74682b7d43addc7a64, type: 3}
+  craftButtonInvalid: {fileID: 21300000, guid: d884f9be6c41f704dbdd4242459a0cb9, type: 3}
+  upgradeSound: {fileID: 8300000, guid: ee64e8162e070544ca61af6600f5d618, type: 3}
   stat1: {fileID: 5536774371832379968}
   stat2: {fileID: 4662228351138883151}
   stat3: {fileID: 1505856107051469816}
@@ -1690,16 +1721,19 @@ MonoBehaviour:
     stat3: 3
     stat4: 4
     stat5: 5
+    items: []
   - stat1: 2
     stat2: 3
     stat3: 4
     stat4: 5
     stat5: 6
+    items: []
   - stat1: 3
     stat2: 4
     stat3: 5
     stat4: 6
     stat5: 7
+    items: []
 --- !u!224 &8395450270517293417 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4854979220816796192, guid: aac0d32068136a641ac37c68cf866fb4, type: 3}
@@ -1824,6 +1858,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 5897659024377372798, guid: 559351dc4928c4b4eb3d4434956425a2, type: 3}
   m_PrefabInstance: {fileID: 4671763048301894989}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &4529228545837432500 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 9083306213166703609, guid: 559351dc4928c4b4eb3d4434956425a2, type: 3}
+  m_PrefabInstance: {fileID: 4671763048301894989}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f2ea1e1c19bbd04fb7186e3ebfdddcf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: CarGame::CarGame.CraftingIngredientItemUI
 --- !u!1001 &5449609727812166053
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2439,6 +2484,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 559351dc4928c4b4eb3d4434956425a2, type: 3}
+--- !u!114 &189985374325610908 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 9083306213166703609, guid: 559351dc4928c4b4eb3d4434956425a2, type: 3}
+  m_PrefabInstance: {fileID: 8983718431787645541}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f2ea1e1c19bbd04fb7186e3ebfdddcf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: CarGame::CarGame.CraftingIngredientItemUI
 --- !u!224 &3275284551705238043 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 5897659024377372798, guid: 559351dc4928c4b4eb3d4434956425a2, type: 3}
