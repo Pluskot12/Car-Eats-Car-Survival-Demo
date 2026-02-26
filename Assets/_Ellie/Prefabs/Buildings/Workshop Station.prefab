@@ -1721,19 +1721,29 @@ MonoBehaviour:
     stat3: 3
     stat4: 4
     stat5: 5
-    items: []
+    items:
+    - item: {fileID: 11400000, guid: dc2b451c6b66237479da37a515047f91, type: 2}
+      quantity: 5
   - stat1: 2
     stat2: 3
     stat3: 4
     stat4: 5
     stat5: 6
-    items: []
+    items:
+    - item: {fileID: 11400000, guid: dc2b451c6b66237479da37a515047f91, type: 2}
+      quantity: 5
+    - item: {fileID: 11400000, guid: eebccc480c2d42548ba823933ee66812, type: 2}
+      quantity: 5
   - stat1: 3
     stat2: 4
     stat3: 5
     stat4: 6
     stat5: 7
-    items: []
+    items:
+    - item: {fileID: 11400000, guid: dc2b451c6b66237479da37a515047f91, type: 2}
+      quantity: 10
+    - item: {fileID: 11400000, guid: eebccc480c2d42548ba823933ee66812, type: 2}
+      quantity: 10
 --- !u!224 &8395450270517293417 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4854979220816796192, guid: aac0d32068136a641ac37c68cf866fb4, type: 3}

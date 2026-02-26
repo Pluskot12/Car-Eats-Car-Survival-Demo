@@ -56,19 +56,40 @@ namespace CarGame
         {
             currentRecipe = upgrades[0].items;
             UpdateLabels(0);
+
+            
         }
 
+        private void OnEnable()
+        {
+            PlayerInventory.Instance.InventoryController.AnyValueChanged += InventoryController_AnyValueChanged;
+        }
+
+        private void OnDisable()
+        {
+            PlayerInventory.Instance.InventoryController.AnyValueChanged -= InventoryController_AnyValueChanged;
+        }
+
+        private void InventoryController_AnyValueChanged(InventoryItem[] obj)
+        {
+            UpdateSlots();
+        }
 
         private void UpdateStage(int stage) 
         {
             stars[stage].Activate(true);
-            currentRecipe = upgrades[stage].items;
+            
             UpdateLabels(stage + 1);
-
-            if (stage == upgrades.Length - 1) 
+            
+            if (stage == upgrades.Length - 1)
             {
                 maxedImage.enabled = true;
                 Tween.PunchScale(maxedImage.transform, Vector3.one * 0.05f, 0.15f, 5);
+            }
+            else 
+            {
+                currentRecipe = upgrades[stage + 1].items;
+                UpdateSlots();
             }
         }
 
@@ -120,12 +141,7 @@ namespace CarGame
 
         public void OnUpgradeButton()
         {
-            if (upgradeStage < 3)
-            {
-                UpdateStage(upgradeStage);
 
-                upgradeStage++;
-            }
 
 
             int requried = currentRecipe.Length;
@@ -141,30 +157,17 @@ namespace CarGame
 
             if (valid == requried)
             {
-
                 foreach (var ingredient in currentRecipe)
                 {
                     PlayerInventory.Instance.InventoryController.RemoveItems(ingredient.item, ingredient.quantity);
                 }
 
-                Debug.LogWarning("UPGRADE");
-
-                /*
-                if (PlayerInventory.Instance.InventoryController.CanFit(currentRecipe.item, currentRecipe.quantity))
+                if (upgradeStage < 3)
                 {
-                    int leftover = PlayerInventory.Instance.InventoryController.OnItemPickup(currentRecipe.item, currentRecipe.quantity, durability);
-
-                    if (leftover > 0)
-                    {
-                        ItemSpawner.Instance.SpawnItem(currentRecipe.item, leftover, durability, GameManager.Instance.Player.transform.position, Vector2.zero);
-                    }
+                    UpdateStage(upgradeStage);
+                    UIMananger.Instance.PlayAudioClip(upgradeSound);
+                    upgradeStage++;
                 }
-                else
-                {
-                    ItemSpawner.Instance.SpawnItem(currentRecipe.item, currentRecipe.quantity, durability, GameManager.Instance.Player.transform.position, Vector2.zero);
-                }
-                */
-                UIMananger.Instance.PlayAudioClip(upgradeSound);
             }
             else
             {
