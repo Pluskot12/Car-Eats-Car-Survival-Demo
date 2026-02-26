@@ -1,16 +1,19 @@
 using System.Collections.Generic;
 using UnityEngine;
-using static CarGame.DamageSystem;
-
+using UnityEngine.Events;
 namespace CarGame
 {
-    public class BuildingDamageSystem : MonoBehaviour
+    public class BuildingDamageSystem : MonoBehaviour, IDamageable
     {
         [Header("References")]
         [SerializeField] private SpriteRenderer spriteRenderer;
         [SerializeField] private AudioSource source;
         [SerializeField] private GameObject onDeathParts;
         [SerializeField] private Collider2D blockingCollider;
+        [SerializeField] private HitEffect hitEffect;
+
+        [Header("Health")]
+        [SerializeField] private int health;
 
         [Header("Audio")]
         [SerializeField] private List<AudioClip> hitSounds;
@@ -19,7 +22,68 @@ namespace CarGame
         [Header("Stages")]
         [SerializeField] private List<DamageSystem.DamageStage> damageStages;
 
+        [SerializeField] private UnityEvent<int, GameObject> OnDamageTaken;
+
         private Sprite currentSprite;
+
+        public int MaxHealth { get => health; set => health = value; }
+        public int CurrentHealth { get; set; }
+
+        private bool isDead;
+
+        private void Awake()
+        {
+            CurrentHealth = MaxHealth;
+        }
+
+        public void TryDamage(int damage, GameObject attacker)
+        {
+            if (isDead)
+            {
+                return;
+            }
+
+            OnDamageTaken.Invoke(damage, attacker);
+
+            CurrentHealth -= damage;
+            float percentage = (float)CurrentHealth / MaxHealth * 100f;
+
+            if (CurrentHealth <= 0)
+            {
+                OnDeath();
+            }
+            else
+            {
+                OnHit(damage);
+            }
+        }
+
+        public void OnHit(int damage)
+        {
+            float percentage = (float)CurrentHealth / MaxHealth * 100f;
+            UpdateSprite(percentage);
+
+            if (hitEffect) 
+            {
+                HitEffect effect = Instantiate(hitEffect, transform.position, Quaternion.identity);
+            }
+        }
+
+
+        public void OnDeath()
+        {
+            isDead = true;
+
+            source.PlayOneShot(deathSound);
+
+            onDeathParts.transform.SetParent(null);
+            onDeathParts.SetActive(true);
+
+            blockingCollider.enabled = false;
+            spriteRenderer.enabled = false;
+
+            Destroy(onDeathParts, deathSound.length * 5f);
+        }
 
         public void UpdateSprite(float healthPercentage, bool playSound = true)
         {
@@ -41,7 +105,7 @@ namespace CarGame
             }
         }
 
-        private void SetState(DamageStage stage, bool playSound = true)
+        private void SetState(DamageSystem.DamageStage stage, bool playSound = true)
         {
             if (stage.sprite == null)
                 return;
@@ -54,18 +118,6 @@ namespace CarGame
 
         }
 
-        public void OnDeath()
-        {
-            source.PlayOneShot(deathSound);
-
-            onDeathParts.transform.SetParent(null);
-            onDeathParts.SetActive(true);
-
-            blockingCollider.enabled = false;
-            spriteRenderer.enabled = false;
-
-            Destroy(onDeathParts, deathSound.length * 5f);
-        }
 
     }
 }

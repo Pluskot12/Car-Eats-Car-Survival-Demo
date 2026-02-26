@@ -442,9 +442,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73fd3fcf68f4e39489f404153aa7a048, type: 3}
   m_Name: 
   m_EditorClassIdentifier: CarGame::CarGame.Trap
-  damageSystem: {fileID: 2053657688523777137}
   damage: 10
-  health: 50
 --- !u!114 &2053657688523777137
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -461,11 +459,28 @@ MonoBehaviour:
   source: {fileID: 9150366908640230480}
   onDeathParts: {fileID: 8106010741364046662}
   blockingCollider: {fileID: 7806419973973269090}
+  hitEffect: {fileID: 0}
+  health: 50
   hitSounds:
   - {fileID: 8300000, guid: 04c0366b27fed434baf2e689bfaeaa42, type: 3}
   - {fileID: 8300000, guid: c2e0ef266d0dbcc438b7bc6c4559d8f1, type: 3}
   deathSound: {fileID: 8300000, guid: 86b63cd1376802646bf669824d8a7a25, type: 3}
   damageStages: []
+  OnDamageTaken:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2359233736838016344}
+        m_TargetAssemblyTypeName: CarGame.Trap, CarGame
+        m_MethodName: OnDamageTaken
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!60 &7806419973973269090
 PolygonCollider2D:
   m_ObjectHideFlags: 0
