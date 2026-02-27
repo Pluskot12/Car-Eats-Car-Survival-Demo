@@ -218,3 +218,4 @@ MonoBehaviour:
   spriteRenderer: {fileID: 3598354673611586256}
   spawnTables:
   - {fileID: 11400000, guid: 22eceb13d1a5ff546883d2a9fa4f72bf, type: 2}
+  randomLootCrate: {fileID: 3440241662424113678, guid: e436b4f2c26934c4aad7f7d6b2e683a1, type: 3}

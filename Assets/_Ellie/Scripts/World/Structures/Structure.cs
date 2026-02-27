@@ -9,6 +9,7 @@ namespace CarGame
         [SerializeField] private SpriteRenderer spriteRenderer;
         public SpriteRenderer SpriteRenderer => spriteRenderer;
         [SerializeField] private List<SpawnTable> spawnTables;
+        [SerializeField] private Chest randomLootCrate;
 
         private List<Vector3> spawnedPositions = new List<Vector3>();
         private float minDistance = 0.5f;
@@ -29,6 +30,8 @@ namespace CarGame
         {
             spawnedPositions.Clear();
 
+            SpawnRandomCrate();
+
             List<ObjectsToSpawn> objectsToSpawns = new List<ObjectsToSpawn>();
             foreach (SpawnTable table in spawnTables)
             {
@@ -43,6 +46,22 @@ namespace CarGame
                     Instantiate(o.gameObject, spawnPos, Quaternion.identity, transform);
                     spawnedPositions.Add(spawnPos);
                 }
+            }
+        }
+
+        private void SpawnRandomCrate() 
+        {
+            if (randomLootCrate == null) 
+            {
+                Debug.LogWarning("No random chest for " + gameObject.name);
+                return;
+            }
+
+            Vector3 spawnPos = GetPositionWithMinDistance();
+            if (spawnPos != Vector3.zero)
+            {
+                Chest chest = Instantiate(randomLootCrate, spawnPos, Quaternion.identity, transform);
+                spawnedPositions.Add(spawnPos);
             }
         }
 
