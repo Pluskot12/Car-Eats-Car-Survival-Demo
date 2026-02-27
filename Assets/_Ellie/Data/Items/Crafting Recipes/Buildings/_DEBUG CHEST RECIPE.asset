@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 81da550d3336bfd428a44bdd11c0926a, type: 3}
-  m_Name: Recipe - Slasher Head
+  m_Name: _DEBUG CHEST RECIPE
   m_EditorClassIdentifier: CarGame::CarGame.CraftingRecipe
-  item: {fileID: 11400000, guid: c3f141448f026854b9d7241f06c384fc, type: 2}
+  item: {fileID: 11400000, guid: 29f7094cd5c91484b80bb4a57e2e866d, type: 2}
   quantity: 1
   type: 1
   ingredients: []
