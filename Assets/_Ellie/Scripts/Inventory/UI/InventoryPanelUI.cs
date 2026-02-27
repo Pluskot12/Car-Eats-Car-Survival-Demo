@@ -195,12 +195,12 @@ namespace CarGame
             ItemSpawner.Instance.DropItem(item.SlottedItem.ItemData, item.SlottedItem.Quantity, item.SlottedItem.Durability, position, force, true);
         }
 
-        private InventorySlotUI clonedSlot;
+        [SerializeField] private InventorySlotUI clonedSlot;
         public InventorySlotUI ClonedSlot => clonedSlot;
 
         private void CreateClone()
         {
-            clonedSlot = Instantiate(inventorySlotPrefab, transform.root);
+            // clonedSlot = Instantiate(inventorySlotPrefab, transform.root);
             clonedSlot.Frame.enabled = false;
             clonedSlot.CanvasGroup.blocksRaycasts = false;
             clonedSlot.transform.localScale *= 1.15f;
