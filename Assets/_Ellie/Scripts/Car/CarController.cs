@@ -416,11 +416,19 @@ namespace CarGame
         }
 
 
-
-
         public float GetMaxSpeed()
         {
             return maxSpeed;
+        }
+
+        public void SetHorsepower(float hp)
+        {
+            horsepower = hp;
+        }
+
+        public float GetHorsepower()
+        {
+            return horsepower;
         }
 
         public void Teleport(Vector3 spawnPoint)

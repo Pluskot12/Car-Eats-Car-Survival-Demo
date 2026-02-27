@@ -442,9 +442,22 @@ namespace CarGame
             }
         }
 
+        private float speedUpgrade;
+        private float fuelUpgrade;
+        private float horsePowerUpgrade;
+
         public void UpgradeCar(WorkshopUI.UpgradeStage upgradeStage)
         {
-            Debug.Log("Upgrade car");
+            speedUpgrade = upgradeStage.stat1 / PlayerStatPanelUI.SPEED_MULTI;
+            fuelUpgrade = upgradeStage.stat2;
+            horsePowerUpgrade = upgradeStage.stat3;
+
+            carController.SetMaxSpeed(carController.GetMaxSpeed() + speedUpgrade);
+            carController.SetHorsepower(carController.GetHorsepower() + horsePowerUpgrade);
+
+            maxHunger += fuelUpgrade;
+            currentHunger += fuelUpgrade;
+            UpdateHunger();
         }
     }
 
