@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 443d89ec54de0de449a37bafc7091d24, type: 3}
-  m_Name: Building - Small Chest
+  m_Name: Building - Slasher Head Trophy
   m_EditorClassIdentifier: CarGame::CarGame.BuildingItem
-  displayName: Small Chest
-  sprite: {fileID: 21300000, guid: 38d388a0ef6b5b24292bd00ac6ee84e3, type: 3}
+  displayName: Slasher Head Trophy
+  sprite: {fileID: 21300000, guid: d04e735ebb7a7414c988a7db39c91601, type: 3}
   maxStackSize: 1
-  prefab: {fileID: 9186645082698693760, guid: 7821a0121e1f1734a8e0a67a28db14e0, type: 3}
+  prefab: {fileID: 5844002745563753973, guid: 8a1c68e9d229029408c54bdea8e79105, type: 3}
   maxAngle: 0
   placementSound: {fileID: 0}

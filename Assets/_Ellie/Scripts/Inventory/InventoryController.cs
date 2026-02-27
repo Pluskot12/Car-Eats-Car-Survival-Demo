@@ -22,6 +22,8 @@ namespace CarGame
         private Inventory inventory;
         public Inventory Inventory => inventory;
 
+        public int ItemCount => inventory.ItemsCount();
+
         private void Awake()
         {
             inventory = new Inventory(capacity);

@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Audio;
 using UnityEngine.UI;
 
 namespace CarGame
@@ -7,7 +8,13 @@ namespace CarGame
     {
         [SerializeField] private ChestUI chestUI;
         [SerializeField] private float maxDistance = 1f;
+        [SerializeField] private InventoryController inventory;
 
+        [SerializeField] private bool destroyWhenEmpty;
+        [SerializeField] private GameObject explodingParts;
+        [SerializeField] private AudioSource audioSource;
+        [SerializeField] private AudioClip explodingSound;
+ 
         private Player player;
         private bool isShowing;
 
@@ -57,8 +64,28 @@ namespace CarGame
             player = null;
             isShowing = false;
             chestUI.Hide(true);
+
+            if (destroyWhenEmpty) 
+            {
+                if (inventory.ItemCount == 0) 
+                {
+                    DestroyChest();
+                }
+            }
         }
 
+        private void DestroyChest()
+        {
+            explodingParts.transform.SetParent(null);
+            explodingParts.SetActive(true);
+
+            audioSource.transform.SetParent(null);
+            audioSource.PlayOneShot(explodingSound);
+            Destroy(audioSource, explodingSound.length * 3f);
+
+            gameObject.SetActive(false);
+            Destroy(explodingParts, 1f);
+        }
 
     }
 }

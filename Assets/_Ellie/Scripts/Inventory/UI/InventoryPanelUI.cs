@@ -185,7 +185,6 @@ namespace CarGame
         {
             if (secondaryInventory != null) 
             {
-                Debug.Log("boop");
                 bool main = RectTransformUtility.RectangleContainsScreenPoint(inventoryRect, mousePosition);
                 bool secondary = RectTransformUtility.RectangleContainsScreenPoint(secondaryInventory, mousePosition);
                 return main || secondary;

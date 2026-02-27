@@ -1524,7 +1524,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 179251914639705651, guid: 81a4b03a53eabc94c86a6a6d706911df, type: 3}
       propertyPath: m_Name
-      value: Small Chest
+      value: _Item Container Base
       objectReference: {fileID: 0}
     - target: {fileID: 439405614362305673, guid: 81a4b03a53eabc94c86a6a6d706911df, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1644,6 +1644,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: CarGame::CarGame.Chest
   chestUI: {fileID: 6698484253423773049}
   maxDistance: 1.75
+  inventory: {fileID: 1379976978712842552}
+  destroyWhenEmpty: 0
 --- !u!114 &1379976978712842552
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -320,5 +320,20 @@ namespace CarGame
             Array.Clear(items, 0, items.Length);
             AnyValueChanged.Invoke(items);
         }
+
+        public int ItemsCount() 
+        {
+            int count = 0;
+
+            foreach (var item in items) 
+            {
+                if (item != null) 
+                {
+                    count++;
+                }
+            }
+
+            return count;
+        }
     }
 }
