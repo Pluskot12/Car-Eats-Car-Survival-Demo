@@ -9,6 +9,8 @@ namespace CarGame
 {
     public class InventoryPanelUI : MonoBehaviour
     {
+        public static InventoryPanelUI Instance { get; private set; }
+
         [SerializeField] private Canvas canvas;
         [SerializeField] private GraphicRaycaster raycaster;
 
@@ -48,6 +50,11 @@ namespace CarGame
         private Camera cam;
 
         private bool isShowing;
+
+        private void Awake()
+        {
+            Instance = this;
+        }
 
         private void Start()
         {
@@ -166,13 +173,25 @@ namespace CarGame
                 eventData.pressEventCamera
             );
         }
+        RectTransform secondaryInventory;
+
+        public void SetSecondary(RectTransform secondary) 
+        {
+            secondaryInventory = secondary;
+        }
+        
 
         public bool IsInsideInventoryRect(Vector2 mousePosition)
         {
-            return RectTransformUtility.RectangleContainsScreenPoint(
-                inventoryRect,
-                mousePosition
-            );
+            if (secondaryInventory != null) 
+            {
+                Debug.Log("boop");
+                bool main = RectTransformUtility.RectangleContainsScreenPoint(inventoryRect, mousePosition);
+                bool secondary = RectTransformUtility.RectangleContainsScreenPoint(secondaryInventory, mousePosition);
+                return main || secondary;
+            }
+
+            return RectTransformUtility.RectangleContainsScreenPoint(inventoryRect, mousePosition);
         }
 
         public void DropItem(InventorySlotUI inventorySlotUI, Vector2 screenPos)
