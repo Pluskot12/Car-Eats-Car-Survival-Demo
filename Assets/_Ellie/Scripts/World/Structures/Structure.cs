@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using static CarGame.SpawnTable;
@@ -15,6 +16,8 @@ namespace CarGame
         private float minDistance = 0.5f;
 
         private Biome biome;
+
+        Vector3 randomLootCratePosition;
 
         private void Start()
         {
@@ -60,7 +63,9 @@ namespace CarGame
             Vector3 spawnPos = GetPositionWithMinDistance();
             if (spawnPos != Vector3.zero)
             {
+                randomLootCratePosition = spawnPos;
                 Chest chest = Instantiate(randomLootCrate, spawnPos, Quaternion.identity, transform);
+                chest.SetAttachedStructure(this);
                 spawnedPositions.Add(spawnPos);
             }
         }
@@ -99,5 +104,18 @@ namespace CarGame
             return position;
         }
 
+        public void OnChestLooted(Chest chest)
+        {
+            spawnedPositions.Remove(randomLootCratePosition);
+
+            StartCoroutine(RespawnChest());
+        }
+
+        private IEnumerator RespawnChest() 
+        {
+            yield return new WaitForSeconds(10f);
+
+            SpawnRandomCrate();
+        }
     }
 }

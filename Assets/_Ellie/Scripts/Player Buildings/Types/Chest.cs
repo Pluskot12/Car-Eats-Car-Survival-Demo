@@ -14,7 +14,8 @@ namespace CarGame
         [SerializeField] private GameObject explodingParts;
         [SerializeField] private AudioSource audioSource;
         [SerializeField] private AudioClip explodingSound;
- 
+
+        private Structure attachedToStructure;
         private Player player;
         private bool isShowing;
 
@@ -85,6 +86,16 @@ namespace CarGame
 
             gameObject.SetActive(false);
             Destroy(explodingParts, 1f);
+
+            if (attachedToStructure) 
+            {
+                attachedToStructure.OnChestLooted(this);
+            }
+        }
+
+        public void SetAttachedStructure(Structure structure) 
+        {
+            attachedToStructure = structure;
         }
 
     }
