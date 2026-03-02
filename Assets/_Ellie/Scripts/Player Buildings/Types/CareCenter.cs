@@ -9,7 +9,11 @@ namespace CarGame
 
         [SerializeField] private int healthPerTick;
         [SerializeField] private float secondsPerTick;
-        
+
+        [Header("Flag")]
+        [SerializeField] private SpriteRenderer flag;
+        [SerializeField] private Color[] colors;
+
         private Player player;
         private float timer;
 
@@ -36,6 +40,11 @@ namespace CarGame
                     audioSource.PlayOneShot(healSound);
                 }
             }
+        }
+
+        public void OnPlace(Building building) 
+        {
+            flag.color = colors[Random.Range(0, colors.Length)];
         }
 
         private void OnTriggerEnter2D(Collider2D collision)

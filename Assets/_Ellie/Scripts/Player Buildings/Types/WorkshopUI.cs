@@ -1,9 +1,7 @@
 using PrimeTween;
 using System;
 using TMPro;
-using UnityEditor.SceneManagement;
 using UnityEngine;
-using UnityEngine.Audio;
 using UnityEngine.UI;
 using static CarGame.CraftingRecipe;
 

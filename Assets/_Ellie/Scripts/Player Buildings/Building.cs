@@ -11,6 +11,7 @@ namespace CarGame
         [SerializeField] private Collider2D col;
 
         [Header("Events"), Space()]
+        [SerializeField] private UnityEvent<Building> OnPlace;
         [SerializeField] private UnityEvent<Player> OnInteract;
 
         public Vector3 IndicatorPosition => visuals.transform.position + Vector3.up * 1f;
@@ -30,7 +31,12 @@ namespace CarGame
 
             return new Vector2(transform.position.x + halfWidth, transform.position.y);
         }
-        
+
+        public void Place() 
+        {
+            OnPlace.Invoke(this);
+        }
+
         public void Interact(Player player)
         {
             OnInteract.Invoke(player);
