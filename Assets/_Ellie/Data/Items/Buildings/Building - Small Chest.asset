@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: CarGame::CarGame.BuildingItem
   displayName: Small Chest
   sprite: {fileID: 21300000, guid: 38d388a0ef6b5b24292bd00ac6ee84e3, type: 3}
-  maxStackSize: 1
+  maxStackSize: 5
   prefab: {fileID: 9186645082698693760, guid: 7821a0121e1f1734a8e0a67a28db14e0, type: 3}
   maxAngle: 0
   placementSound: {fileID: 0}

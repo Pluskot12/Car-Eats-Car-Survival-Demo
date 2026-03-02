@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: CarGame::CarGame.BuildingItem
   displayName: Workshop
   sprite: {fileID: 21300000, guid: 29a7a4d6e08f7c847af4c4179cea0ece, type: 3}
-  maxStackSize: 1
+  maxStackSize: 5
   prefab: {fileID: 5844002745563753973, guid: 3b75ca002101b0140b400ae769910d96, type: 3}
   maxAngle: 0
   placementSound: {fileID: 8300000, guid: 577ce4170b6e7f647b6c6abac1401d1c, type: 3}

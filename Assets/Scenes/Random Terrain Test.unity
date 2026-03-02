@@ -354905,7 +354905,7 @@ MonoBehaviour:
   validPlacementColor: {r: 1, g: 1, b: 1, a: 0.78431374}
   invalidPlacementColor: {r: 1, g: 1, b: 1, a: 0.78431374}
   maxPlacementDistance: 1.75
-  buildTime: 3
+  buildTime: 1.5
   drainSpeed: 5
   progressBar: {fileID: 439202090}
 --- !u!1 &1141872065

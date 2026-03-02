@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: CarGame::CarGame.BuildingItem
   displayName: Hedgehog Trap
   sprite: {fileID: 21300000, guid: e555a076a964fd344beb34691802b2db, type: 3}
-  maxStackSize: 1
+  maxStackSize: 5
   prefab: {fileID: 5844002745563753973, guid: 710a9a841c5e9a64ba5afb99360ff0b1, type: 3}
   maxAngle: 45
   placementSound: {fileID: 0}

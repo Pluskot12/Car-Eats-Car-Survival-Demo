@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: CarGame::CarGame.BuildingItem
   displayName: Random Loot Chest
   sprite: {fileID: 21300000, guid: 6b57c260b80875b4f9fd2ee87451c2c3, type: 3}
-  maxStackSize: 1
+  maxStackSize: 5
   prefab: {fileID: 9186645082698693760, guid: e436b4f2c26934c4aad7f7d6b2e683a1, type: 3}
   maxAngle: 0
   placementSound: {fileID: 0}
