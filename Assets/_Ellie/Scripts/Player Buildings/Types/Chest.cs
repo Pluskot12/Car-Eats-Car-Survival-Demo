@@ -31,7 +31,7 @@ namespace CarGame
                 if (Vector2.Distance(transform.position, player.transform.position) > maxDistance)
                 {
                     CloseUI();
-                    InventoryPanelUI.Instance.OnChestInteraction(false);
+                    InventoryPanelUI.Instance.OnChestInteraction(false, chestUI);
                 }
             }
         }
@@ -46,13 +46,13 @@ namespace CarGame
                 {
                     OpenUI(player);
 
-                    InventoryPanelUI.Instance.OnChestInteraction(true);
+                    InventoryPanelUI.Instance.OnChestInteraction(true, chestUI);
                 }
                 else
                 {
                     CloseUI();
 
-                    InventoryPanelUI.Instance.OnChestInteraction(false);
+                    InventoryPanelUI.Instance.OnChestInteraction(false, chestUI);
                 }
             }
         }

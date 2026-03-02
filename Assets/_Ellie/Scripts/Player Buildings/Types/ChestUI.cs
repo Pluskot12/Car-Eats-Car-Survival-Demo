@@ -34,7 +34,7 @@ namespace CarGame
             isShowing = true;
             canvas.enabled = true;
 
-            InventoryPanelUI.Instance.SetSecondary(this);
+            //InventoryPanelUI.Instance.SetSecondary(this);
 
             if (animate)
             {
@@ -47,7 +47,7 @@ namespace CarGame
             chest.SetShowing(false);
             isShowing = false;
 
-            InventoryPanelUI.Instance.SetSecondary(null);
+            // InventoryPanelUI.Instance.SetSecondary(null);
 
             if (animate)
             {

@@ -146,15 +146,23 @@ namespace CarGame
 
             if (!isShowing) 
             {
-                HideSecondary(true);
+                SetSecondary(null);
             }
         }
 
-        public void OnChestInteraction(bool open) 
+        public void OnChestInteraction(bool open, IPanelUI chest) 
         {
-            Debug.Log("hello " + open);
             isShowing = open;
             ShowInventory(open);
+
+            if (open) 
+            { 
+                SetSecondary(chest);
+            }
+            else 
+            { 
+                SetSecondary(null);
+            }
 
             if (open == false && craftingListPanel.IsShowing) 
             { 
@@ -193,19 +201,28 @@ namespace CarGame
 
         IPanelUI secondaryInventory;
 
-        public void SetSecondary(IPanelUI secondary) 
+        private void SetSecondary(IPanelUI secondary) 
         {
+            if (secondaryInventory != null) 
+            {
+                secondaryInventory.Hide(true);
+            }
+
             secondaryInventory = secondary;
         }
 
-        public void HideSecondary(bool animate) 
+        private void HideSecondary(bool animate) 
         {
             if (secondaryInventory == null) 
             {
                 return;
             }
 
+
             secondaryInventory.Hide(animate);
+
+
+            secondaryInventory = null;
         }
         
 
