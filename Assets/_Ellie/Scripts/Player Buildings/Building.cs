@@ -14,7 +14,7 @@ namespace CarGame
         [SerializeField] private UnityEvent<Building> OnPlace;
         [SerializeField] private UnityEvent<Player> OnInteract;
 
-        public Vector3 IndicatorPosition => visuals.transform.position + Vector3.up * 1f;
+        public Vector3 IndicatorPosition => spriteRenderer.bounds.center;
         public SpriteRenderer SpriteRenderer => spriteRenderer;
         public Collider2D Collider => col;
 
