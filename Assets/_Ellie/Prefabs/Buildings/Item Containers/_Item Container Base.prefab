@@ -25,13 +25,13 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 493720417457124565}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8731579261561590612}
-  m_Father: {fileID: 1791454145702927012}
+  m_Father: {fileID: 7247278432846556082}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -104,7 +104,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 7562569251664576554}
+  - {fileID: 7247278432846556082}
   m_Father: {fileID: 2024686140527475918}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -226,7 +226,7 @@ MonoBehaviour:
   m_Spacing: {x: 7, y: 4}
   m_Constraint: 1
   m_ConstraintCount: 5
---- !u!1 &8596585697989057519
+--- !u!1 &6636792784411039689
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -234,73 +234,34 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 4015601439475838468}
-  - component: {fileID: 5907542714513157951}
-  - component: {fileID: 5124692668368643901}
+  - component: {fileID: 7247278432846556082}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Animation Parent
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!224 &4015601439475838468
+  m_IsActive: 1
+--- !u!224 &7247278432846556082
 RectTransform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8596585697989057519}
+  m_GameObject: {fileID: 6636792784411039689}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 2024686140527475918}
+  m_Children:
+  - {fileID: 7562569251664576554}
+  m_Father: {fileID: 1791454145702927012}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 1014, y: 574}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!222 &5907542714513157951
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8596585697989057519}
-  m_CullTransparentMesh: 1
---- !u!114 &5124692668368643901
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8596585697989057519}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 28fc29c4adbfb944d9ba9309d8faaaa6, type: 3}
-  m_Type: 0
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
 --- !u!1001 &823406283740748171
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1646,6 +1607,9 @@ MonoBehaviour:
   maxDistance: 1.75
   inventory: {fileID: 1379976978712842552}
   destroyWhenEmpty: 0
+  explodingParts: {fileID: 0}
+  audioSource: {fileID: 0}
+  explodingSound: {fileID: 0}
 --- !u!114 &1379976978712842552
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2298,9 +2262,6 @@ PrefabInstance:
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 4854979220816796192, guid: aac0d32068136a641ac37c68cf866fb4, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 4015601439475838468}
-    - targetCorrespondingSourceObject: {fileID: 4854979220816796192, guid: aac0d32068136a641ac37c68cf866fb4, type: 3}
-      insertIndex: -1
       addedObject: {fileID: 1791454145702927012}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 6883665919727709852, guid: aac0d32068136a641ac37c68cf866fb4, type: 3}
@@ -2327,7 +2288,11 @@ MonoBehaviour:
   canvas: {fileID: 1536067132392092566}
   raycaster: {fileID: 6067758157289604747}
   inventory: {fileID: 2058676416357703024}
+  chest: {fileID: 133319219938718587}
   rect: {fileID: 7562569251664576554}
+  animationParent: {fileID: 7247278432846556082}
+  offPosition: -350
+  inDuration: 0.2
 --- !u!223 &1536067132392092566 stripped
 Canvas:
   m_CorrespondingSourceObject: {fileID: 5343604909488592248, guid: aac0d32068136a641ac37c68cf866fb4, type: 3}

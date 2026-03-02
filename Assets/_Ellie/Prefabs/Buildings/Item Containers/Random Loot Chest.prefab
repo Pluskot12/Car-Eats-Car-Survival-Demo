@@ -330,6 +330,14 @@ PrefabInstance:
       propertyPath: testItems.Array.data[2].quantity
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1791454145702927012, guid: c01037c62afb58d4e9c6a6b4396c9048, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 232
+      objectReference: {fileID: 0}
+    - target: {fileID: 1791454145702927012, guid: c01037c62afb58d4e9c6a6b4396c9048, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -288
+      objectReference: {fileID: 0}
     - target: {fileID: 1991618023760913046, guid: c01037c62afb58d4e9c6a6b4396c9048, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -500,11 +508,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5321770095183292579, guid: c01037c62afb58d4e9c6a6b4396c9048, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 4.671795
+      value: 619.2928
       objectReference: {fileID: 0}
     - target: {fileID: 5321770095183292579, guid: c01037c62afb58d4e9c6a6b4396c9048, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.63222003
+      value: 12.40332
       objectReference: {fileID: 0}
     - target: {fileID: 5321770095183292579, guid: c01037c62afb58d4e9c6a6b4396c9048, type: 3}
       propertyPath: m_LocalPosition.z

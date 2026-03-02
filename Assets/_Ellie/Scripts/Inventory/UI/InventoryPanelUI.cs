@@ -103,7 +103,6 @@ namespace CarGame
 
             }
 
-
             if (clonedSlot.SlottedItem != null)
             {
                 Vector2 pos;
@@ -144,10 +143,16 @@ namespace CarGame
 
             craftingListPanel.Show(isShowing);
             craftingRecipePanel.Show(isShowing);
+
+            if (!isShowing) 
+            {
+                HideSecondary(true);
+            }
         }
 
         public void OnChestInteraction(bool open) 
         {
+            Debug.Log("hello " + open);
             isShowing = open;
             ShowInventory(open);
 
@@ -185,11 +190,22 @@ namespace CarGame
                 eventData.pressEventCamera
             );
         }
-        RectTransform secondaryInventory;
 
-        public void SetSecondary(RectTransform secondary) 
+        IPanelUI secondaryInventory;
+
+        public void SetSecondary(IPanelUI secondary) 
         {
             secondaryInventory = secondary;
+        }
+
+        public void HideSecondary(bool animate) 
+        {
+            if (secondaryInventory == null) 
+            {
+                return;
+            }
+
+            secondaryInventory.Hide(animate);
         }
         
 
@@ -198,7 +214,7 @@ namespace CarGame
             if (secondaryInventory != null) 
             {
                 bool main = RectTransformUtility.RectangleContainsScreenPoint(inventoryRect, mousePosition);
-                bool secondary = RectTransformUtility.RectangleContainsScreenPoint(secondaryInventory, mousePosition);
+                bool secondary = RectTransformUtility.RectangleContainsScreenPoint(secondaryInventory.Rect, mousePosition);
                 return main || secondary;
             }
 
