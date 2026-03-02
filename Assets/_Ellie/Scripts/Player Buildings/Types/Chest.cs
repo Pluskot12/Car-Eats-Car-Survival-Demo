@@ -44,10 +44,14 @@ namespace CarGame
                 if (!isShowing)
                 {
                     OpenUI(player);
+
+                    InventoryPanelUI.Instance.OnChestInteraction(true);
                 }
                 else
                 {
                     CloseUI();
+
+                    InventoryPanelUI.Instance.OnChestInteraction(false);
                 }
             }
         }

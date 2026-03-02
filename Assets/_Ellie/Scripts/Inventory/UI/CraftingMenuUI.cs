@@ -19,6 +19,8 @@ namespace CarGame
         [SerializeField] private float inDuration = 0.2f;
 
         bool isShowing;
+
+        public bool IsShowing => isShowing;
         
         private void Start()
         {

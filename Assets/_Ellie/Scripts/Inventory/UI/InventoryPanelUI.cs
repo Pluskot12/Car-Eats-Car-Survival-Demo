@@ -146,6 +146,18 @@ namespace CarGame
             craftingRecipePanel.Show(isShowing);
         }
 
+        public void OnChestInteraction(bool open) 
+        {
+            isShowing = open;
+            ShowInventory(open);
+
+            if (open == false && craftingListPanel.IsShowing) 
+            { 
+                craftingListPanel.Show(false);
+                craftingRecipePanel.Show(false);
+            }
+        }
+
         private void ShowInventory(bool show, bool animate = true)
         {
             UpdateButtonSprite();
