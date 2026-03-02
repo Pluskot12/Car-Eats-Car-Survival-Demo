@@ -265,7 +265,7 @@ namespace CarGame
             {
                 var b = Instantiate(currentBuildingData.prefab, currentBuilding.transform.position, currentBuilding.transform.rotation);
                 b.SpriteRenderer.color = Color.white;
-
+                b.OnBuildingPlaced();
                 audioSource.PlayOneShot(buildAudio);
 
                 if (currentBuildingData.placementSound) 

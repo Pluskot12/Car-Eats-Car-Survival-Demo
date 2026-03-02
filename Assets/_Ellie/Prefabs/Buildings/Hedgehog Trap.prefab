@@ -234,6 +234,38 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2223015872265380319, guid: 81a4b03a53eabc94c86a6a6d706911df, type: 3}
+      propertyPath: OnPlace.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2223015872265380319, guid: 81a4b03a53eabc94c86a6a6d706911df, type: 3}
+      propertyPath: OnPlace.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2223015872265380319, guid: 81a4b03a53eabc94c86a6a6d706911df, type: 3}
+      propertyPath: OnPlace.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 6217307393892056541}
+    - target: {fileID: 2223015872265380319, guid: 81a4b03a53eabc94c86a6a6d706911df, type: 3}
+      propertyPath: OnPlace.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2223015872265380319, guid: 81a4b03a53eabc94c86a6a6d706911df, type: 3}
+      propertyPath: OnPlace.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Activate
+      objectReference: {fileID: 0}
+    - target: {fileID: 2223015872265380319, guid: 81a4b03a53eabc94c86a6a6d706911df, type: 3}
+      propertyPath: OnPlace.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: CarGame.EnemyBlocker, CarGame
+      objectReference: {fileID: 0}
+    - target: {fileID: 2223015872265380319, guid: 81a4b03a53eabc94c86a6a6d706911df, type: 3}
+      propertyPath: OnPlace.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_BoolArgument
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2223015872265380319, guid: 81a4b03a53eabc94c86a6a6d706911df, type: 3}
+      propertyPath: OnPlace.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 8831368780724380168, guid: 81a4b03a53eabc94c86a6a6d706911df, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -284,7 +316,10 @@ PrefabInstance:
       addedObject: {fileID: 2053657688523777137}
     - targetCorrespondingSourceObject: {fileID: 179251914639705651, guid: 81a4b03a53eabc94c86a6a6d706911df, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 7806419973973269090}
+      addedObject: {fileID: 6217307393892056541}
+    - targetCorrespondingSourceObject: {fileID: 179251914639705651, guid: 81a4b03a53eabc94c86a6a6d706911df, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5267751012722358320}
   m_SourcePrefab: {fileID: 100100000, guid: 81a4b03a53eabc94c86a6a6d706911df, type: 3}
 --- !u!212 &3840725770131467810 stripped
 SpriteRenderer:
@@ -329,7 +364,7 @@ MonoBehaviour:
   spriteRenderer: {fileID: 3840725770131467810}
   source: {fileID: 9150366908640230480}
   onDeathParts: {fileID: 8106010741364046662}
-  blockingCollider: {fileID: 7806419973973269090}
+  blockingCollider: {fileID: 5267751012722358320}
   hitEffect: {fileID: 0}
   health: 50
   hitSounds:
@@ -352,8 +387,22 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!60 &7806419973973269090
-PolygonCollider2D:
+--- !u!114 &6217307393892056541
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5602328446064282137}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ac77a029108968429dd4f0630385a26, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: CarGame::CarGame.EnemyBlocker
+  blockingCollider: {fileID: 5267751012722358320}
+  enabledOnAwake: 0
+--- !u!61 &5267751012722358320
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -386,7 +435,7 @@ PolygonCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: 0.45}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -396,16 +445,8 @@ PolygonCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Points:
-    m_Paths:
-    - - {x: 0.21577406, y: 0.41194344}
-      - {x: 0, y: 0.31252545}
-      - {x: -0.22718367, y: 0.41805473}
-      - {x: -0.081654444, y: 0.18768354}
-      - {x: -0.22043237, y: 0.0044069886}
-      - {x: 0.21518463, y: -0.0034646988}
-      - {x: 0.052001357, y: 0.18396705}
-  m_UseDelaunayMesh: 1
+  m_Size: {x: 0.45, y: 1}
+  m_EdgeRadius: 0
 --- !u!1001 &8034181329381019943
 PrefabInstance:
   m_ObjectHideFlags: 0

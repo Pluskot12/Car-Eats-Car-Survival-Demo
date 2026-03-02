@@ -32,7 +32,7 @@ namespace CarGame
             return new Vector2(transform.position.x + halfWidth, transform.position.y);
         }
 
-        public void Place() 
+        public void OnBuildingPlaced() 
         {
             OnPlace.Invoke(this);
         }
