@@ -14,6 +14,8 @@ namespace CarGame
         [SerializeField] private UnityEvent<Building> OnPlace;
         [SerializeField] private UnityEvent<Player> OnInteract;
 
+        private bool canInteract;
+
         public Vector3 IndicatorPosition => spriteRenderer.bounds.center;
         public SpriteRenderer SpriteRenderer => spriteRenderer;
         public Collider2D Collider => col;
@@ -34,11 +36,18 @@ namespace CarGame
 
         public void OnBuildingPlaced() 
         {
+            canInteract = true;
+
             OnPlace.Invoke(this);
         }
 
         public void Interact(Player player)
         {
+            if (!canInteract) 
+            {
+                return;
+            }
+
             OnInteract.Invoke(player);
         }
 

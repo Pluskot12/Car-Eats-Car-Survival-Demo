@@ -126,11 +126,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6071029442316892069, guid: 5308862eaed65bd47ab704ea665fdbbd, type: 3}
       propertyPath: items.Array.data[1].maxDrop
-      value: 100
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 6071029442316892069, guid: 5308862eaed65bd47ab704ea665fdbbd, type: 3}
       propertyPath: items.Array.data[1].minDrop
-      value: 50
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 6071029442316892069, guid: 5308862eaed65bd47ab704ea665fdbbd, type: 3}
       propertyPath: items.Array.data[2].maxDrop

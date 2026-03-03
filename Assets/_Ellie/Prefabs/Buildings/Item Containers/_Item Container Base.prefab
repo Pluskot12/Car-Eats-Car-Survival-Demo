@@ -1604,7 +1604,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: CarGame::CarGame.Chest
   chestUI: {fileID: 6698484253423773049}
-  maxDistance: 1.75
+  maxDistance: 2
   inventory: {fileID: 1379976978712842552}
   destroyWhenEmpty: 0
   explodingParts: {fileID: 0}
