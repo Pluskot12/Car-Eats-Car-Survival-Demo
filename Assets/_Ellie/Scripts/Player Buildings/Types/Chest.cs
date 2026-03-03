@@ -60,6 +60,14 @@ namespace CarGame
         public void SetShowing(bool showing) 
         {
             isShowing = showing;
+
+            if (destroyWhenEmpty)
+            {
+                if (inventory.ItemCount == 0)
+                {
+                    DestroyChest();
+                }
+            }
         }
 
         private void OpenUI(Player player)
@@ -84,17 +92,31 @@ namespace CarGame
             }
         }
 
+        bool isDestroyed;
+
         private void DestroyChest()
         {
+            if (isDestroyed)
+            {
+                return;
+            }
+
+            isDestroyed = true;
+
             explodingParts.transform.SetParent(null);
             explodingParts.SetActive(true);
 
             audioSource.transform.SetParent(null);
             audioSource.PlayOneShot(explodingSound);
-            Destroy(audioSource, explodingSound.length * 3f);
+            Destroy(audioSource.gameObject, explodingSound.length * 3f);
+
+            chestUI.transform.SetParent(null);
+            Destroy(chestUI.gameObject, 3f);
 
             gameObject.SetActive(false);
-            Destroy(explodingParts, 1f);
+            Destroy(explodingParts, 10f);
+
+            Destroy(gameObject, 10f);
 
             if (attachedToStructure) 
             {
