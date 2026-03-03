@@ -23,6 +23,7 @@ namespace CarGame
                 if (Vector2.Distance(transform.position, player.transform.position) > maxDistance) 
                 {
                     CloseUI();
+                    InventoryPanelUI.Instance.OnChestInteraction(false, workshopUI);
                 }
             }
         }
@@ -31,15 +32,19 @@ namespace CarGame
         {
             float distance = Vector3.Distance(transform.position, player.transform.position);
 
-            if (distance <= maxDistance) 
+            if (distance <= maxDistance)
             {
                 if (!isShowing)
                 {
                     OpenUI(player);
+
+                    InventoryPanelUI.Instance.OnChestInteraction(true, workshopUI);
                 }
-                else 
+                else
                 {
                     CloseUI();
+
+                    InventoryPanelUI.Instance.OnChestInteraction(false, workshopUI);
                 }
             }
         }
@@ -59,6 +64,9 @@ namespace CarGame
             workshopUI.Hide(true);
         }
 
-
+        public void SetShowing(bool showing)
+        {
+            isShowing = showing;
+        }
     }
 }

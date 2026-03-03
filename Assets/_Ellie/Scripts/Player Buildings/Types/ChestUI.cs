@@ -34,8 +34,6 @@ namespace CarGame
             isShowing = true;
             canvas.enabled = true;
 
-            //InventoryPanelUI.Instance.SetSecondary(this);
-
             if (animate)
             {
                 Animate();
@@ -47,8 +45,6 @@ namespace CarGame
             chest.SetShowing(false);
             isShowing = false;
 
-            // InventoryPanelUI.Instance.SetSecondary(null);
-
             if (animate)
             {
                 Animate();
@@ -59,6 +55,7 @@ namespace CarGame
                 raycaster.enabled = false;
             }
         }
+
         private void Animate()
         {
             Tween.UIAnchoredPositionY(animationParent, endValue: isShowing ? 0 : offPosition, duration: inDuration, ease: Ease.InOutQuart).OnComplete(() => AnimationComplete());

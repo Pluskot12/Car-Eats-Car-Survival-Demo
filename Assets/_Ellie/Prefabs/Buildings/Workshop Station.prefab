@@ -335,6 +335,42 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!1 &2105661668799069753
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4091425531553419770}
+  m_Layer: 5
+  m_Name: Parent
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &4091425531553419770
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2105661668799069753}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 2546577607162109324}
+  m_Father: {fileID: 8395450270517293417}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 285, y: -320}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &2356246450954202024
 GameObject:
   m_ObjectHideFlags: 0
@@ -420,7 +456,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2546577607162109324}
   m_Layer: 5
-  m_Name: GameObject
+  m_Name: Animation Parent
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -433,7 +469,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2803224845777859318}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -444,11 +480,11 @@ RectTransform:
   - {fileID: 1972941092990833665}
   - {fileID: 7308543689034531445}
   - {fileID: 5618116139949137631}
-  m_Father: {fileID: 8395450270517293417}
+  m_Father: {fileID: 4091425531553419770}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 285, y: -320}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &3073774926738716005
@@ -1660,7 +1696,7 @@ PrefabInstance:
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 4854979220816796192, guid: aac0d32068136a641ac37c68cf866fb4, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 2546577607162109324}
+      addedObject: {fileID: 4091425531553419770}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 6883665919727709852, guid: aac0d32068136a641ac37c68cf866fb4, type: 3}
       insertIndex: 1
@@ -1696,6 +1732,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: CarGame::CarGame.WorkshopUI
   canvas: {fileID: 9064255319714709041}
   raycaster: {fileID: 4372574392456170284}
+  rect: {fileID: 2917126708032952690}
+  workshop: {fileID: -3007716685988128029}
   maxedImage: {fileID: 4131522769776248934}
   craftButton: {fileID: 583118616541983958}
   slots:
@@ -1744,6 +1782,9 @@ MonoBehaviour:
       quantity: 10
     - item: {fileID: 11400000, guid: eebccc480c2d42548ba823933ee66812, type: 2}
       quantity: 10
+  animationParent: {fileID: 2546577607162109324}
+  offPosition: -400
+  inDuration: 0.2
 --- !u!224 &8395450270517293417 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4854979220816796192, guid: aac0d32068136a641ac37c68cf866fb4, type: 3}

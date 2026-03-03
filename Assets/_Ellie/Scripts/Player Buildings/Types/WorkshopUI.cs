@@ -8,10 +8,12 @@ using static CarGame.CraftingRecipe;
 
 namespace CarGame
 {
-    public class WorkshopUI : MonoBehaviour
+    public class WorkshopUI : MonoBehaviour, IPanelUI
     {
         [SerializeField] private Canvas canvas;
         [SerializeField] private GraphicRaycaster raycaster;
+        [SerializeField] private RectTransform rect;
+        [SerializeField] private Workshop workshop;
         [SerializeField] private Image maxedImage;
 
         [SerializeField] private Button craftButton;
@@ -35,6 +37,13 @@ namespace CarGame
         [Header("Upgrade")]
         [SerializeField] private UpgradeStage[] upgrades;
 
+        [Header("Animation Settings")]
+        [SerializeField] private RectTransform animationParent;
+        [SerializeField] private float offPosition = -340f;
+        [SerializeField] private float inDuration = 0.2f;
+
+        private bool isShowing;
+
         [Serializable] public struct UpgradeStage 
         {
             public int stat1;
@@ -50,12 +59,14 @@ namespace CarGame
 
         Ingredient[] currentRecipe;
 
+        public RectTransform Rect => rect;
+
         private void Awake()
         {
             currentRecipe = upgrades[0].items;
             UpdateLabels(0);
 
-            
+            animationParent.anchoredPosition = new Vector2(0, offPosition);
         }
 
         private void OnEnable()
@@ -193,28 +204,49 @@ namespace CarGame
         }
 
 
-
-        public void Show(Player player, bool animate) 
+        public void Show(Player player, bool animate)
         {
+            workshop.SetShowing(true);
+            isShowing = true;
             canvas.enabled = true;
-            raycaster.enabled = true;
-            UpdateSlots();
-            if (animate) 
-            {
 
+            //InventoryPanelUI.Instance.SetSecondary(this);
+
+            if (animate)
+            {
+                Animate();
             }
         }
 
         public void Hide(bool animate)
         {
+            workshop.SetShowing(false);
+            isShowing = false;
+
             if (animate)
             {
-                // Disable after animation
+                Animate();
+            }
+            else
+            {
                 canvas.enabled = false;
                 raycaster.enabled = false;
             }
+        }
+
+        private void Animate()
+        {
+            Tween.UIAnchoredPositionY(animationParent, endValue: isShowing ? 0 : offPosition, duration: inDuration, ease: Ease.InOutQuart).OnComplete(() => AnimationComplete());
+        }
+
+        private void AnimationComplete()
+        {
+            if (isShowing)
+            {
+                raycaster.enabled = true;
+            }
             else
-            { 
+            {
                 canvas.enabled = false;
                 raycaster.enabled = false;
             }
