@@ -61,9 +61,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 6071029442316892069, guid: 5308862eaed65bd47ab704ea665fdbbd, type: 3}
+      propertyPath: drops
+      value: 
+      objectReference: {fileID: 11400000, guid: 5c7ff2f7830b4b348b90ac3fbb8baabf, type: 2}
+    - target: {fileID: 6071029442316892069, guid: 5308862eaed65bd47ab704ea665fdbbd, type: 3}
       propertyPath: maxItems
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 6071029442316892069, guid: 5308862eaed65bd47ab704ea665fdbbd, type: 3}
+      propertyPath: dropTable
+      value: 
+      objectReference: {fileID: 11400000, guid: 5c7ff2f7830b4b348b90ac3fbb8baabf, type: 2}
     - target: {fileID: 6071029442316892069, guid: 5308862eaed65bd47ab704ea665fdbbd, type: 3}
       propertyPath: items.Array.size
       value: 6

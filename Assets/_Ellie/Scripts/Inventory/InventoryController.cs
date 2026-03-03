@@ -22,6 +22,7 @@ namespace CarGame
         private Inventory inventory;
         public Inventory Inventory => inventory;
 
+        public int Capacity => capacity;
         public int ItemCount => inventory.ItemsCount();
 
         private void Awake()
@@ -139,6 +140,12 @@ namespace CarGame
         public int RemoveItems(ItemData item, int amount) 
         {
             return inventory.RemoveItems(item, amount);
+        }
+
+        public void TryAddItem(ItemData item, int amount) 
+        {
+            int durability = -1;
+            inventory.TryAdd(item, amount, durability);
         }
 
         public void AddAtIndex(int index, ItemData data, int q, int d) 

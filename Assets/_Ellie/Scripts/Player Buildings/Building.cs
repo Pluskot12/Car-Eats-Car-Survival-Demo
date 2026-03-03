@@ -60,5 +60,10 @@ namespace CarGame
             Gizmos.DrawSphere(bottomLeft, 0.1f);
             Gizmos.DrawSphere(bottomRight, 0.1f);
         }
+
+        public void SetInteractable(bool interactable)
+        {
+            canInteract = interactable;
+        }
     }
 }

@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 using static CarGame.DropTable;
 
 namespace CarGame
@@ -20,7 +21,7 @@ namespace CarGame
         [Header("Drops")]
         [SerializeField] private int minItems = 1;
         [SerializeField] private int maxItems = 3;
-        [SerializeField] private List<DropTable.Item> items;
+        [SerializeField] private DropTable dropTable;
 
         public void TryInteract()
         {
@@ -62,7 +63,7 @@ namespace CarGame
 
         private IEnumerable<DroppedItem> Roll(int minItems, int maxItems, float multiplier = 1f)
         {
-            List<DropTable.Item> shuffledItems = new List<DropTable.Item>(items);
+            List<DropTable.Item> shuffledItems = new List<DropTable.Item>(dropTable.items);
             for (int i = shuffledItems.Count - 1; i > 0; i--)
             {
                 int j = Random.Range(0, i + 1);

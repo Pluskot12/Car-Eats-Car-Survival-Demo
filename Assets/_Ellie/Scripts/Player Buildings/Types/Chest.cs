@@ -6,11 +6,16 @@ namespace CarGame
 {
     public class Chest : MonoBehaviour
     {
+        [SerializeField] private Building building;
         [SerializeField] private ChestUI chestUI;
         [SerializeField] private float maxDistance = 1f;
         [SerializeField] private InventoryController inventory;
 
+        [Header("Random Loot")]
+        [SerializeField] private ChestRandomLoot randomLoot;
         [SerializeField] private bool destroyWhenEmpty;
+
+        [Header("Misc")]
         [SerializeField] private GameObject explodingParts;
         [SerializeField] private AudioSource audioSource;
         [SerializeField] private AudioClip explodingSound;
@@ -18,6 +23,8 @@ namespace CarGame
         private Structure attachedToStructure;
         private Player player;
         private bool isShowing;
+
+        private bool init;
 
         private void Start()
         {
@@ -34,6 +41,17 @@ namespace CarGame
                     InventoryPanelUI.Instance.OnChestInteraction(false, chestUI);
                 }
             }
+        }
+
+        public void OnPlace(Building b) 
+        {
+            if (randomLoot) 
+            { 
+                randomLoot.RandomizeContent(inventory);
+            }
+
+            building.SetInteractable(true);
+            init = true;
         }
 
         public void TryInteract(Player player)
@@ -96,6 +114,11 @@ namespace CarGame
 
         private void DestroyChest()
         {
+            if (!init) 
+            {
+                return;
+            }
+
             if (isDestroyed)
             {
                 return;
@@ -127,6 +150,8 @@ namespace CarGame
         public void SetAttachedStructure(Structure structure) 
         {
             attachedToStructure = structure;
+
+            OnPlace(null);
         }
 
     }

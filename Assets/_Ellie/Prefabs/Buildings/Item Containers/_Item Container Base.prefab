@@ -1603,9 +1603,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd83742aca6a62341819e36418c2f221, type: 3}
   m_Name: 
   m_EditorClassIdentifier: CarGame::CarGame.Chest
+  building: {fileID: 5844002745563753973}
   chestUI: {fileID: 6698484253423773049}
   maxDistance: 2
   inventory: {fileID: 1379976978712842552}
+  randomLoot: {fileID: 0}
   destroyWhenEmpty: 0
   explodingParts: {fileID: 0}
   audioSource: {fileID: 0}
@@ -1625,6 +1627,17 @@ MonoBehaviour:
   inventoryUI: {fileID: 2058676416357703024}
   capacity: 20
   testItems: []
+--- !u!114 &5844002745563753973 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2223015872265380319, guid: 81a4b03a53eabc94c86a6a6d706911df, type: 3}
+  m_PrefabInstance: {fileID: 5747627355465239594}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5602328446064282137}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 263eb81877e949548b1363642e3af1ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: CarGame::CarGame.Building
 --- !u!1001 &5838445434050327536
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -22,7 +22,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2947319606507597543, guid: 5308862eaed65bd47ab704ea665fdbbd, type: 3}
       propertyPath: m_Name
-      value: Box Blue 1
+      value: Box Green
       objectReference: {fileID: 0}
     - target: {fileID: 3584194424317800850, guid: 5308862eaed65bd47ab704ea665fdbbd, type: 3}
       propertyPath: m_LocalPosition.x
@@ -73,9 +73,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: 191b1b97692d0594781f41af73950fb3, type: 3}
     - target: {fileID: 6071029442316892069, guid: 5308862eaed65bd47ab704ea665fdbbd, type: 3}
+      propertyPath: drops
+      value: 
+      objectReference: {fileID: 11400000, guid: 33af92e2ad4b052488d07015d3cd080c, type: 2}
+    - target: {fileID: 6071029442316892069, guid: 5308862eaed65bd47ab704ea665fdbbd, type: 3}
       propertyPath: maxItems
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 6071029442316892069, guid: 5308862eaed65bd47ab704ea665fdbbd, type: 3}
+      propertyPath: dropTable
+      value: 
+      objectReference: {fileID: 11400000, guid: 33af92e2ad4b052488d07015d3cd080c, type: 2}
     - target: {fileID: 6071029442316892069, guid: 5308862eaed65bd47ab704ea665fdbbd, type: 3}
       propertyPath: items.Array.size
       value: 7

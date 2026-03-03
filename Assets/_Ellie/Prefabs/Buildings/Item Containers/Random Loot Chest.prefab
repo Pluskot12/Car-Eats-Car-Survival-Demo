@@ -259,6 +259,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 133319219938718587, guid: c01037c62afb58d4e9c6a6b4396c9048, type: 3}
+      propertyPath: randomLoot
+      value: 
+      objectReference: {fileID: 900810238030910617}
+    - target: {fileID: 133319219938718587, guid: c01037c62afb58d4e9c6a6b4396c9048, type: 3}
       propertyPath: audioSource
       value: 
       objectReference: {fileID: 3539172828228628282}
@@ -304,7 +308,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1379976978712842552, guid: c01037c62afb58d4e9c6a6b4396c9048, type: 3}
       propertyPath: testItems.Array.size
-      value: 3
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1379976978712842552, guid: c01037c62afb58d4e9c6a6b4396c9048, type: 3}
       propertyPath: testItems.Array.data[0].item
@@ -574,6 +578,30 @@ PrefabInstance:
       propertyPath: m_Name
       value: Random Loot Chest
       objectReference: {fileID: 0}
+    - target: {fileID: 5844002745563753973, guid: c01037c62afb58d4e9c6a6b4396c9048, type: 3}
+      propertyPath: OnPlace.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5844002745563753973, guid: c01037c62afb58d4e9c6a6b4396c9048, type: 3}
+      propertyPath: OnPlace.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 3440241662424113678}
+    - target: {fileID: 5844002745563753973, guid: c01037c62afb58d4e9c6a6b4396c9048, type: 3}
+      propertyPath: OnPlace.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5844002745563753973, guid: c01037c62afb58d4e9c6a6b4396c9048, type: 3}
+      propertyPath: OnPlace.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnPlace
+      objectReference: {fileID: 0}
+    - target: {fileID: 5844002745563753973, guid: c01037c62afb58d4e9c6a6b4396c9048, type: 3}
+      propertyPath: OnPlace.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: CarGame.Chest, CarGame
+      objectReference: {fileID: 0}
+    - target: {fileID: 5844002745563753973, guid: c01037c62afb58d4e9c6a6b4396c9048, type: 3}
+      propertyPath: OnPlace.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 7348086552620773071, guid: c01037c62afb58d4e9c6a6b4396c9048, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -626,8 +654,44 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 5321770095183292579, guid: c01037c62afb58d4e9c6a6b4396c9048, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2581403512661796376}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5602328446064282137, guid: c01037c62afb58d4e9c6a6b4396c9048, type: 3}
+      insertIndex: 3
+      addedObject: {fileID: 900810238030910617}
   m_SourcePrefab: {fileID: 100100000, guid: c01037c62afb58d4e9c6a6b4396c9048, type: 3}
+--- !u!114 &3440241662424113678 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 133319219938718587, guid: c01037c62afb58d4e9c6a6b4396c9048, type: 3}
+  m_PrefabInstance: {fileID: 3343804591797178741}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7194760462089476972}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd83742aca6a62341819e36418c2f221, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: CarGame::CarGame.Chest
+--- !u!1 &7194760462089476972 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5602328446064282137, guid: c01037c62afb58d4e9c6a6b4396c9048, type: 3}
+  m_PrefabInstance: {fileID: 3343804591797178741}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &900810238030910617
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7194760462089476972}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c11ca2ebf9e3ad4cadbd2c21d82facd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: CarGame::CarGame.ChestRandomLoot
+  minItems: 1
+  maxItems: 9
+  dropsTables:
+  - {fileID: 11400000, guid: 33af92e2ad4b052488d07015d3cd080c, type: 2}
+  - {fileID: 11400000, guid: 5c7ff2f7830b4b348b90ac3fbb8baabf, type: 2}
 --- !u!4 &7475180692223457750 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5321770095183292579, guid: c01037c62afb58d4e9c6a6b4396c9048, type: 3}
