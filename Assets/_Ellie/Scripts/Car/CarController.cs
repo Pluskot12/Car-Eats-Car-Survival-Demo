@@ -430,15 +430,53 @@ namespace CarGame
         {
             return horsepower;
         }
-
+        bool teleporting;
         public void Teleport(Vector3 spawnPoint)
         {
-
-            StartCoroutine(Beep(spawnPoint));
-
+            teleporting = true;
+            //StartCoroutine(Beep(spawnPoint));
+            StartCoroutine(TeleportTo(spawnPoint));
         }
+
+        public IEnumerator TeleportTo(Vector2 targetPosition)
+        {
+            Debug.LogWarning("Respawning is buggy");
+
+            foreach (var body in bodies)
+            {
+                Rigidbody2D rb = body.body;
+
+                rb.simulated = false;
+
+                yield return new WaitForFixedUpdate();
+
+                moveInput = 0;
+                rotInput = 0;
+
+                
+
+                transform.rotation = Quaternion.identity;
+                transform.position = targetPosition + Vector2.up;
+                yield return new WaitForFixedUpdate();
+                ResetRb(body);
+
+                yield return new WaitForFixedUpdate();
+
+                rb.simulated = true;
+            }
+
+            //yield return new WaitForFixedUpdate();
+
+            //AlignToGround(gameObject, 1f);
+
+            yield return new WaitForFixedUpdate();
+
+            teleporting = false;
+        }
+
         private IEnumerator Beep(Vector3 spawnPoint) 
         {
+            Debug.Log(spawnPoint);
             //gameObject.SetActive(false);
             car.position = spawnPoint;
             car.transform.localScale = Vector3.one;
@@ -453,7 +491,7 @@ namespace CarGame
 
             yield return new WaitForSeconds(0.5f);
 
-            //car.position = spawnPoint;
+            car.position = spawnPoint;
 
             yield return new WaitForSeconds(0.5f);
 

@@ -42,6 +42,12 @@ namespace CarGame
             }
         }
 
+        public void SetSpawn(Player player) 
+        {
+            Debug.Log("respawn set");
+            GameManager.Instance.SetSpawnPoint(transform.position);
+        }
+
         public void OnPlace(Building building) 
         {
             flag.color = colors[Random.Range(0, colors.Length)];

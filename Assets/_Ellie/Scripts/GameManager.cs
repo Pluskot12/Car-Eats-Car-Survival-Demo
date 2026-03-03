@@ -29,6 +29,11 @@ namespace CarGame
             // SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
 
+        public void SetSpawnPoint(Vector3 spawnPoint) 
+        {
+            this.spawnPoint = spawnPoint;
+        }
+
         public void OnPlayerDeath()
         {
             UIMananger.Instance.ShowDeathScreen();
