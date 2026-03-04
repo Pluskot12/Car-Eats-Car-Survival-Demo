@@ -2,6 +2,7 @@ using System;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.Rendering;
+using UnityEngine.UIElements;
 
 namespace CarGame
 {
@@ -44,7 +45,7 @@ namespace CarGame
             return new Vector2(transform.position.x + halfWidth, transform.position.y);
         }
 
-        public void OnBuildingPlaced(BuildingAttachmentSlot slot) 
+        public void OnBuildingPlaced(Building building, BuildingAttachmentSlot slot) 
         {
             canInteract = true;
             col.enabled = true;
@@ -52,6 +53,9 @@ namespace CarGame
             if (slot != null) 
             {
                 slot.AddAttachment(this);
+
+                SortingGroup.sortingLayerName = building.SortingGroup.sortingLayerName;
+                SortingGroup.sortingOrder = building.SortingGroup.sortingOrder + 1;
             }
 
             OnPlace.Invoke(this);

@@ -11,6 +11,7 @@ namespace CarGame
 
         public void Interact(Player player) 
         {
+            Debug.Log("interact");
             building.Interact(player);
         }
         

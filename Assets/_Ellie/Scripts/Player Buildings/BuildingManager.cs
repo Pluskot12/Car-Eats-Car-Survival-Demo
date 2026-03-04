@@ -1,6 +1,3 @@
-using System;
-using System.Collections.Generic;
-using UnityEditor.Graphs;
 using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.UI;
@@ -172,8 +169,10 @@ namespace CarGame
             }
             else 
             {
+                if (!isBuilding) { 
                 OnMouseExitBuilding(hoveringBInteraction);
                 hoveringBInteraction = null;
+                }
             }
 
             if (Input.GetMouseButtonDown(1))
@@ -299,7 +298,7 @@ namespace CarGame
             {
                 var b = Instantiate(currentBuildingData.prefab, currentBuilding.transform.position, currentBuilding.transform.rotation);
                 b.SpriteRenderer.color = Color.white;
-                b.OnBuildingPlaced(hoveringAttachmentSlot);
+                b.OnBuildingPlaced(hoveringBuilding, hoveringAttachmentSlot);
                 audioSource.PlayOneShot(buildAudio);
 
                 if (currentBuildingData.placementSound) 
@@ -359,6 +358,8 @@ namespace CarGame
                 currentBuilding.SpriteRenderer.sortingLayerName = building.Building.SpriteRenderer.sortingLayerName;
                 currentBuilding.SpriteRenderer.sortingOrder = building.Building.SpriteRenderer.sortingOrder + 10;
                 currentBuilding.SortingGroup.sortingLayerName = building.Building.SortingGroup.sortingLayerName;
+                currentBuilding.SortingGroup.sortingOrder = building.Building.SortingGroup.sortingOrder + 1;
+
             }
         }
 
@@ -373,7 +374,6 @@ namespace CarGame
 
             if (!currentBuilding.Attachable) 
             {
-                Debug.Log("no");
                 return;
             }
 

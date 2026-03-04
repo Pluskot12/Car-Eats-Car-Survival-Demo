@@ -266,6 +266,18 @@ PrefabInstance:
       propertyPath: OnPlace.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 2569660323887170284, guid: 81a4b03a53eabc94c86a6a6d706911df, type: 3}
+      propertyPath: m_SortingLayer
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 2569660323887170284, guid: 81a4b03a53eabc94c86a6a6d706911df, type: 3}
+      propertyPath: m_SortingOrder
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 2569660323887170284, guid: 81a4b03a53eabc94c86a6a6d706911df, type: 3}
+      propertyPath: m_SortingLayerID
+      value: -1533714651
+      objectReference: {fileID: 0}
     - target: {fileID: 8831368780724380168, guid: 81a4b03a53eabc94c86a6a6d706911df, type: 3}
       propertyPath: m_Sprite
       value: 

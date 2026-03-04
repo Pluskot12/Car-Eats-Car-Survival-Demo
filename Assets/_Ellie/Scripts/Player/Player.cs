@@ -88,6 +88,8 @@ namespace CarGame
 
         public void Respawn(Vector3 spawnPoint) 
         {
+            body.simulated = true;
+
             carController.Teleport(spawnPoint);
 
             CurrentHealth = MaxHealth;
@@ -105,7 +107,7 @@ namespace CarGame
 
             attachmentController.ShowAttachment();
 
-            body.simulated = true;
+             //body.simulated = true;
 
             IsDead = false;
         }

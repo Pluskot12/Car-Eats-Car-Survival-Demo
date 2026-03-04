@@ -58,7 +58,7 @@ namespace CarGame
         private class Bodies 
         {
             public Rigidbody2D body;
-            public Vector3 startPosition;
+            public Vector2 startPosition;
 
             public Bodies(Rigidbody2D b, Vector3 pos) 
             {
@@ -70,7 +70,7 @@ namespace CarGame
         private void Start()
         {
             bodies = new List<Bodies>();
-            bodies.Add(new Bodies(car, car.transform.localPosition));
+            bodies.Add(new Bodies(car, Vector2.zero));
             bodies.Add(new Bodies(frontWheel, frontWheel.transform.localPosition));
             bodies.Add(new Bodies(backWheel, backWheel.transform.localPosition));
         }
@@ -154,6 +154,11 @@ namespace CarGame
         bool disableEngine;
         private void FixedUpdate()
         {
+            if (teleporting)
+            {
+                return;
+            }
+
             if (disableEngine) return;
 
             if (Mathf.Abs(moveInput) > 0.01f)
@@ -435,41 +440,128 @@ namespace CarGame
         {
             teleporting = true;
             //StartCoroutine(Beep(spawnPoint));
-            StartCoroutine(TeleportTo(spawnPoint));
+            //StartCoroutine(TeleportTooo(spawnPoint));
+
+            Teleportt(spawnPoint + Vector3.up);
+
+            
         }
 
+        public void Teleportt(Vector2 newPosition)
+        {
+            moveInput = 0;
+            rotInput = 0;
+         
+            var mainRb = bodies[0].body;
+            var wheel1Rb = bodies[1].body;
+            var wheel2Rb = bodies[2].body;
+
+            // Disable simulation
+            /*
+           mainRb.simulated = false;
+           wheel1Rb.simulated = false;
+           wheel2Rb.simulated = false;
+            */
+            // Move everything
+
+            mainRb.linearVelocity = Vector2.zero;
+            mainRb.angularVelocity = 0f;
+
+            wheel1Rb.linearVelocity = Vector2.zero;
+            wheel1Rb.angularVelocity = 0f;
+
+            wheel2Rb.linearVelocity = Vector2.zero;
+            wheel2Rb.angularVelocity = 0f;
+
+            mainRb.rotation = 0;
+            wheel1Rb.rotation = 0;
+            wheel2Rb.rotation = 0;
+
+            mainRb.position = newPosition;
+            wheel1Rb.position = newPosition + bodies[1].startPosition;
+            wheel2Rb.position = newPosition + bodies[2].startPosition;
+
+            // Clear velocities
+            mainRb.linearVelocity = Vector2.zero;
+            mainRb.angularVelocity = 0f;
+
+            wheel1Rb.linearVelocity = Vector2.zero;
+            wheel1Rb.angularVelocity = 0f;
+
+            wheel2Rb.linearVelocity = Vector2.zero;
+            wheel2Rb.angularVelocity = 0f;
+
+            mainRb.rotation = 0;
+            wheel1Rb.rotation = 0;
+            wheel2Rb.rotation = 0;
+
+            // Re-enable physics
+            /*
+            mainRb.simulated = true;
+            wheel1Rb.simulated = true;
+            wheel2Rb.simulated = true;
+            */
+            //mainRb.Sleep();
+            //wheel1Rb.Sleep();
+            //wheel2Rb.Sleep();
+
+            StartCoroutine(Wait());
+        }
+        public IEnumerator Wait() 
+        {
+            yield return new WaitForSeconds(0.25f);
+
+            teleporting = false;
+        }
+        public IEnumerator TeleportTooo(Vector2 targetPosition)
+        {
+            yield return new WaitForFixedUpdate();
+            foreach (var body in bodies)
+            {
+                ResetRbAtPos(body, targetPosition);
+
+            }
+            yield return new WaitForFixedUpdate();
+
+            teleporting = false;
+        }
         public IEnumerator TeleportTo(Vector2 targetPosition)
         {
-            Debug.LogWarning("Respawning is buggy");
+            foreach (var body in bodies)
+            {
+                body.body.angularVelocity = 0f;
+                body.body.linearVelocity = Vector2.zero;
+
+                //body.body.simulated = false;
+                body.body.bodyType = RigidbodyType2D.Kinematic;
+            }
+
+            //transform.position = targetPosition;
+
+            yield return new WaitForFixedUpdate();
 
             foreach (var body in bodies)
             {
-                Rigidbody2D rb = body.body;
+                body.body.rotation = 0;
+                Debug.Log("start " + body.startPosition);
+                body.body.position = targetPosition + Vector2.up + body.startPosition;
 
-                rb.simulated = false;
-
-                yield return new WaitForFixedUpdate();
-
-                moveInput = 0;
-                rotInput = 0;
-
-                
-
-                transform.rotation = Quaternion.identity;
-                transform.position = targetPosition + Vector2.up;
-                yield return new WaitForFixedUpdate();
-                ResetRb(body);
-
-                yield return new WaitForFixedUpdate();
-
-                rb.simulated = true;
             }
 
-            //yield return new WaitForFixedUpdate();
+            yield return new WaitForFixedUpdate();
 
-            //AlignToGround(gameObject, 1f);
+            foreach (var body in bodies)
+            {
+                //body.body.simulated = true;
+                body.body.bodyType = RigidbodyType2D.Dynamic;
+            }
 
             yield return new WaitForFixedUpdate();
+
+            // AlignToGround(gameObject, 1f);
+            // yield return new WaitForFixedUpdate();
+
+            yield return new WaitForSeconds(0.15f);
 
             teleporting = false;
         }
@@ -494,18 +586,37 @@ namespace CarGame
             car.position = spawnPoint;
 
             yield return new WaitForSeconds(0.5f);
-
             //gameObject.SetActive(true);
         }
+
+        private void ResetRbAtPos(Bodies body, Vector2 pos)
+        {
+            body.body.bodyType = RigidbodyType2D.Static;
+
+            body.body.interpolation = RigidbodyInterpolation2D.None;
+
+            body.body.angularVelocity = 0f;
+            body.body.linearVelocity = Vector2.zero;
+
+            //body.body.position = Ve
+            body.body.rotation = 0;
+            body.body.position = pos + body.startPosition;
+            
+
+            body.body.bodyType = RigidbodyType2D.Dynamic;
+            body.body.interpolation = RigidbodyInterpolation2D.Interpolate;
+        }
+
         private void ResetRb(Bodies body) 
         {
             body.body.bodyType = RigidbodyType2D.Static;
 
             body.body.interpolation = RigidbodyInterpolation2D.None;
-            //body.body.angularVelocity = 0f;
-            //body.body.linearVelocity = Vector2.zero;
+            
+            body.body.angularVelocity = 0f;
+            body.body.linearVelocity = Vector2.zero;
 
-
+            //body.body.position = Ve
             body.body.transform.localPosition = body.startPosition;
             body.body.transform.rotation = Quaternion.Euler(Vector2.zero);
 

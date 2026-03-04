@@ -22,6 +22,14 @@ namespace CarGame
             Instance = this;
         }
 
+        private void Update()
+        {
+            if (Input.GetKeyDown(KeyCode.B)) 
+            {
+                Player.Respawn(spawnPoint);
+            }
+        }
+
         public void Respawn()
         {
             Player.Respawn(spawnPoint);
