@@ -1,4 +1,8 @@
+using System;
+using System.Collections.Generic;
+using UnityEditor.Graphs;
 using UnityEngine;
+using UnityEngine.Rendering;
 using UnityEngine.UI;
 
 namespace CarGame
@@ -95,8 +99,16 @@ namespace CarGame
                 canPlace = CanPlaceBuilding(slope);
 
                 if (!isBuilding) 
-                { 
-                    currentBuilding.transform.position = hit.point;
+                {
+                    if (hoveringAttachmentSlot) 
+                    {
+                        currentBuilding.transform.position = hoveringAttachmentSlot.transform.position;
+                    }
+                    else 
+                    {
+                        currentBuilding.transform.position = hit.point;
+                    }
+                    
                 }
 
                 float z = Mathf.Atan2(slope.y, slope.x) * Mathf.Rad2Deg;
@@ -140,21 +152,35 @@ namespace CarGame
 
             UpdateProgress();
         }
-
+        BuildingInteraction hoveringBInteraction;
         private void HandleRightClick()
         {
+            Vector2 worldPoint = GameManager.Instance.Camera.ScreenToWorldPoint(Input.mousePosition);
+            Collider2D hit = Physics2D.OverlapPoint(worldPoint, buildingLayer);
+
+            if (hit && hit.TryGetComponent<BuildingInteraction>(out BuildingInteraction building))
+            {
+                if (hoveringBInteraction != building)
+                {
+                    hoveringBInteraction = building;
+
+                    OnMouseEnterBuilding(hoveringBInteraction);
+                }
+
+                OnMouseOverBuilding(hoveringBInteraction);
+                // building.Interact(GameManager.Instance.Player);
+            }
+            else 
+            {
+                OnMouseExitBuilding(hoveringBInteraction);
+                hoveringBInteraction = null;
+            }
+
             if (Input.GetMouseButtonDown(1))
             {
-                Vector2 worldPoint = GameManager.Instance.Camera.ScreenToWorldPoint(Input.mousePosition);
-
-                Collider2D hit = Physics2D.OverlapPoint(worldPoint, buildingLayer);
-
-                if (hit != null)
+                if (hoveringBInteraction)
                 {
-                    if (hit.TryGetComponent<BuildingInteraction>(out BuildingInteraction building)) 
-                    {
-                        building.Interact(GameManager.Instance.Player);
-                    }
+                    hoveringBInteraction.Interact(GameManager.Instance.Player);
                 }
             }
         }
@@ -187,6 +213,11 @@ namespace CarGame
         private bool CanPlaceBuilding(Vector2 slope) 
         {
             if (isBuilding)
+            {
+                return true;
+            }
+
+            if (hoveringAttachmentSlot) 
             {
                 return true;
             }
@@ -226,11 +257,14 @@ namespace CarGame
 
             return false;
         }
-
+        /*/
+         *             List<Collider2D> results = new List<Collider2D>();
+            int count = Physics2D.OverlapCollider(currentBuilding.Collider, results);
+        */
         private bool IsBlockedByStructure() 
         {
             int count = currentBuilding.Collider.Overlap(filter, results);
-
+            Debug.Log("count " + count);
             return count > 0;
         }
 
@@ -254,7 +288,7 @@ namespace CarGame
 
             currentBuildingData = building;
 
-            SpawnBuilding();
+            SpawnBuildingPreview();
 
             Debug.Log("Selected " + building.displayName);
         }
@@ -265,7 +299,7 @@ namespace CarGame
             {
                 var b = Instantiate(currentBuildingData.prefab, currentBuilding.transform.position, currentBuilding.transform.rotation);
                 b.SpriteRenderer.color = Color.white;
-                b.OnBuildingPlaced();
+                b.OnBuildingPlaced(hoveringAttachmentSlot);
                 audioSource.PlayOneShot(buildAudio);
 
                 if (currentBuildingData.placementSound) 
@@ -281,11 +315,12 @@ namespace CarGame
             return false;
         }
 
-        private void SpawnBuilding() 
+        private void SpawnBuildingPreview() 
         {
             var position = terrainManager.RaycastGroundAtMouse();
 
             currentBuilding = Instantiate(currentBuildingData.prefab, position.point, Quaternion.identity);
+            currentBuilding.SetPreview();
         }
 
         private void RemoveTempBuilding() 
@@ -299,5 +334,72 @@ namespace CarGame
             currentBuildingData = null;
             
         }
+
+        #region Building Interaction
+
+        private Building hoveringBuilding;
+        private BuildingAttachmentSlot hoveringAttachmentSlot;
+        private RenderingLayerMask hoveringMask;
+        private int hoveringOrder;
+        private SortingGroup hoveringSortingGroup;
+
+
+        public void OnMouseEnterBuilding(BuildingInteraction building)
+        {
+            hoveringBuilding = building.Building;
+
+            if (currentBuilding != null) 
+            {
+                //hoveringMask = hoveringBuilding.SpriteRenderer.renderingLayerMask;
+                hoveringMask = currentBuilding.SpriteRenderer.renderingLayerMask;
+                //hoveringOrder = hoveringBuilding.SpriteRenderer.sortingOrder;
+                hoveringOrder = currentBuilding.SpriteRenderer.sortingOrder;
+                hoveringSortingGroup = currentBuilding.SortingGroup;
+
+                currentBuilding.SpriteRenderer.sortingLayerName = building.Building.SpriteRenderer.sortingLayerName;
+                currentBuilding.SpriteRenderer.sortingOrder = building.Building.SpriteRenderer.sortingOrder + 10;
+                currentBuilding.SortingGroup.sortingLayerName = building.Building.SortingGroup.sortingLayerName;
+            }
+        }
+
+        public void OnMouseOverBuilding(BuildingInteraction building)
+        {
+            hoveringAttachmentSlot = null;
+
+            if (building.Building.AttachmentSlots.Length == 0) 
+            {
+                return;
+            }
+
+            float maxDistance = 0.75f;
+
+            foreach (var slot in building.Building.AttachmentSlots) 
+            {
+                if (slot.Occupied) 
+                {
+                    continue;
+                }
+
+                float distance = Vector3.Distance(GameManager.Instance.MousePosition, slot.transform.position);
+
+                if (Vector3.Distance(GameManager.Instance.MousePosition, slot.transform.position) <= maxDistance) 
+                {
+                    hoveringAttachmentSlot = slot;
+                    maxDistance = distance;
+
+                    hoveringMask = building.Building.SpriteRenderer.renderingLayerMask;
+                    hoveringOrder = building.Building.SpriteRenderer.sortingOrder;
+                }
+            }
+        }
+
+        public void OnMouseExitBuilding(BuildingInteraction building)
+        {
+            hoveringBuilding = null;
+            hoveringAttachmentSlot = null;
+        }
+
+        #endregion
+
     }
 }

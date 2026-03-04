@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 439405614362305673}
   - component: {fileID: 2223015872265380319}
+  - component: {fileID: 2569660323887170284}
   m_Layer: 0
   m_Name: _Building
   m_TagString: Untagged
@@ -48,9 +49,27 @@ MonoBehaviour:
   visuals: {fileID: 6606368058725016932}
   spriteRenderer: {fileID: 8831368780724380168}
   col: {fileID: 8845118397175370766}
+  sortingGroup: {fileID: 2569660323887170284}
+  attachmentSlots: []
+  OnPlace:
+    m_PersistentCalls:
+      m_Calls: []
   OnInteract:
     m_PersistentCalls:
       m_Calls: []
+--- !u!210 &2569660323887170284
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 179251914639705651}
+  m_Enabled: 1
+  m_SortingLayerID: -2046711531
+  m_SortingLayer: 10
+  m_SortingOrder: 0
+  m_SortAtRoot: 0
+  m_Sort3DAs2D: 0
 --- !u!1 &4332043580697338317
 GameObject:
   m_ObjectHideFlags: 0
