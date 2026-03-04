@@ -264,7 +264,7 @@ namespace CarGame
         private bool IsBlockedByStructure() 
         {
             int count = currentBuilding.Collider.Overlap(filter, results);
-            Debug.Log("count " + count);
+
             return count > 0;
         }
 
@@ -365,6 +365,13 @@ namespace CarGame
         public void OnMouseOverBuilding(BuildingInteraction building)
         {
             hoveringAttachmentSlot = null;
+
+            if (!currentBuilding.Attachable) 
+            {
+                Debug.Log("no");
+                return;
+            }
+
 
             if (building.Building.AttachmentSlots.Length == 0) 
             {

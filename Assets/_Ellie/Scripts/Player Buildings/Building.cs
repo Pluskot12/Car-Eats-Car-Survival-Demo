@@ -11,6 +11,7 @@ namespace CarGame
         [SerializeField] private SpriteRenderer spriteRenderer;
         [SerializeField] private Collider2D col;
         [SerializeField] private SortingGroup sortingGroup;
+        [SerializeField] private bool attachable;
 
         [SerializeField] private BuildingAttachmentSlot[] attachmentSlots;
 
@@ -26,6 +27,8 @@ namespace CarGame
         public SpriteRenderer SpriteRenderer => spriteRenderer;
         public Collider2D Collider => col;
         public SortingGroup SortingGroup {  get { return sortingGroup; } set { sortingGroup = value; }  }
+
+        public bool Attachable => attachable;
 
         public Vector3 GetLeftCorner() 
         {
