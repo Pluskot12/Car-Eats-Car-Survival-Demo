@@ -366,6 +366,11 @@ namespace CarGame
         {
             hoveringAttachmentSlot = null;
 
+            if (currentBuilding == null) 
+            {
+                return;
+            }
+
             if (!currentBuilding.Attachable) 
             {
                 Debug.Log("no");
