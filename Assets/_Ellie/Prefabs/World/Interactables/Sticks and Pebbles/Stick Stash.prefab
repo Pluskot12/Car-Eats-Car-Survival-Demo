@@ -164,8 +164,12 @@ PrefabInstance:
       objectReference: {fileID: 21300000, guid: b8cda6fcd1f2092479ac2260af9d46f9, type: 3}
     - target: {fileID: 6071029442316892069, guid: 5308862eaed65bd47ab704ea665fdbbd, type: 3}
       propertyPath: maxItems
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6071029442316892069, guid: 5308862eaed65bd47ab704ea665fdbbd, type: 3}
+      propertyPath: dropTable
+      value: 
+      objectReference: {fileID: 11400000, guid: f6f72a842afec4846bb9b4763e565b64, type: 2}
     - target: {fileID: 6071029442316892069, guid: 5308862eaed65bd47ab704ea665fdbbd, type: 3}
       propertyPath: items.Array.size
       value: 1
