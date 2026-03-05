@@ -121,7 +121,7 @@ namespace CarGame
             }
         }
 
-        private void UpdateButtonSprite()
+        private void UpdateButtonSprite(bool animate = true)
         {
             if (isShowing)
             {
@@ -131,13 +131,18 @@ namespace CarGame
             {
                 inventoryButton.sprite = inventoryButtonOpen;
             }
+
+            if (animate) 
+            { 
+                Tween.PunchScale(inventoryButton.transform, strength: Vector3.one * 0.2f, duration: .3f, frequency: 7);
+            }
         }
 
         public void OnInventoryButton()
         {
             isShowing = !isShowing;
 
-            Tween.PunchScale(inventoryButton.transform, strength: Vector3.one * 0.2f, duration: .3f, frequency: 7);
+            
 
             ShowInventory(isShowing);
 
@@ -173,8 +178,7 @@ namespace CarGame
 
         private void ShowInventory(bool show, bool animate = true)
         {
-            UpdateButtonSprite();
-
+            UpdateButtonSprite(animate);
             if (animate)
             {
                 audioSource.PlayOneShot(show ? openAudio : closeAudio);
