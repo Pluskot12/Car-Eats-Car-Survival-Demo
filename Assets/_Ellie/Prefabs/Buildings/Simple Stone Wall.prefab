@@ -189,11 +189,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 263320088808670709, guid: 6602b31fa0930364fb1fc90a4abeab71, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.03
+      value: 0.027
       objectReference: {fileID: 0}
     - target: {fileID: 263320088808670709, guid: 6602b31fa0930364fb1fc90a4abeab71, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.662
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 263320088808670709, guid: 6602b31fa0930364fb1fc90a4abeab71, type: 3}
       propertyPath: m_LocalPosition.z
@@ -383,9 +383,21 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2223015872265380319, guid: 81a4b03a53eabc94c86a6a6d706911df, type: 3}
+      propertyPath: allowedAttachments.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2223015872265380319, guid: 81a4b03a53eabc94c86a6a6d706911df, type: 3}
       propertyPath: 'attachmentSlots.Array.data[0]'
       value: 
       objectReference: {fileID: 1457992694401723845}
+    - target: {fileID: 2223015872265380319, guid: 81a4b03a53eabc94c86a6a6d706911df, type: 3}
+      propertyPath: 'allowedAttachments.Array.data[0]'
+      value: 
+      objectReference: {fileID: 5844002745563753973, guid: 443fd5f9bf9897647b54ba1035c87b80, type: 3}
+    - target: {fileID: 2223015872265380319, guid: 81a4b03a53eabc94c86a6a6d706911df, type: 3}
+      propertyPath: 'allowedAttachments.Array.data[1]'
+      value: 
+      objectReference: {fileID: 5844002745563753973, guid: 8a1c68e9d229029408c54bdea8e79105, type: 3}
     - target: {fileID: 2223015872265380319, guid: 81a4b03a53eabc94c86a6a6d706911df, type: 3}
       propertyPath: OnPlace.m_PersistentCalls.m_Calls.Array.size
       value: 1
@@ -495,7 +507,7 @@ PrefabInstance:
       addedObject: {fileID: 5933724942603470630}
     - targetCorrespondingSourceObject: {fileID: 179251914639705651, guid: 81a4b03a53eabc94c86a6a6d706911df, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 298193571072671917}
+      addedObject: {fileID: 3491826816438290177}
   m_SourcePrefab: {fileID: 100100000, guid: 81a4b03a53eabc94c86a6a6d706911df, type: 3}
 --- !u!212 &3840725770131467810 stripped
 SpriteRenderer:
@@ -527,7 +539,7 @@ MonoBehaviour:
   spriteRenderer: {fileID: 3840725770131467810}
   source: {fileID: 5608985560933865382}
   onDeathParts: {fileID: 7319116175430159496}
-  blockingCollider: {fileID: 298193571072671917}
+  blockingCollider: {fileID: 3491826816438290177}
   hitEffect: {fileID: 0}
   health: 200
   hitSounds:
@@ -559,10 +571,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ac77a029108968429dd4f0630385a26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: CarGame::CarGame.EnemyBlocker
-  blockingCollider: {fileID: 298193571072671917}
+  blockingCollider: {fileID: 3491826816438290177}
   enabledOnAwake: 0
---- !u!61 &298193571072671917
-BoxCollider2D:
+--- !u!60 &3491826816438290177
+PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -595,7 +607,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 1.33}
+  m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -605,8 +617,14 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.7, y: 2.79}
-  m_EdgeRadius: 0
+  m_Points:
+    m_Paths:
+    - - {x: 0.026166916, y: 2.9294703}
+      - {x: -0.47197062, y: 2.6681507}
+      - {x: -0.23935932, y: -0.046835303}
+      - {x: 0.2393595, y: -0.046835244}
+      - {x: 0.53730106, y: 2.668151}
+  m_UseDelaunayMesh: 1
 --- !u!1001 &6064116841212918888
 PrefabInstance:
   m_ObjectHideFlags: 0

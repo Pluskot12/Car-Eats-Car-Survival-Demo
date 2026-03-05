@@ -1,3 +1,4 @@
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.UI;
@@ -390,6 +391,15 @@ namespace CarGame
                 if (slot.Occupied) 
                 {
                     continue;
+                }
+
+                if (building.Building.AllowedAttachments.Contains(currentBuilding))
+                {
+                    Debug.Log("yep");
+                }
+                else 
+                {
+                    Debug.Log("nope");
                 }
 
                 float distance = Vector3.Distance(GameManager.Instance.MousePosition, slot.transform.position);

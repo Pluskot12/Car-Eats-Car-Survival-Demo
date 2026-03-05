@@ -15,12 +15,14 @@ namespace CarGame
         [SerializeField] private bool attachable;
 
         [SerializeField] private BuildingAttachmentSlot[] attachmentSlots;
+        [SerializeField] private Building[] allowedAttachments;
 
         [Header("Events"), Space()]
         [SerializeField] private UnityEvent<Building> OnPlace;
         [SerializeField] private UnityEvent<Player> OnInteract;
 
         public BuildingAttachmentSlot[] AttachmentSlots => attachmentSlots;
+        public Building[] AllowedAttachments => allowedAttachments;
 
         private bool canInteract;
 

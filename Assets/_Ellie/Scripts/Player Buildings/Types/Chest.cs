@@ -19,6 +19,8 @@ namespace CarGame
         [SerializeField] private GameObject explodingParts;
         [SerializeField] private AudioSource audioSource;
         [SerializeField] private AudioClip explodingSound;
+        [SerializeField] private AudioClip openAudio;
+        [SerializeField] private AudioClip closeAudio;
 
         private Structure attachedToStructure;
         private Player player;
@@ -64,11 +66,21 @@ namespace CarGame
                 {
                     OpenUI(player);
 
+                    if (openAudio) 
+                    { 
+                        audioSource.PlayOneShot(openAudio);
+                    }
+
                     InventoryPanelUI.Instance.OnChestInteraction(true, chestUI);
                 }
                 else
                 {
                     CloseUI();
+
+                    if (closeAudio)
+                    {
+                        audioSource.PlayOneShot(closeAudio);
+                    }
 
                     InventoryPanelUI.Instance.OnChestInteraction(false, chestUI);
                 }

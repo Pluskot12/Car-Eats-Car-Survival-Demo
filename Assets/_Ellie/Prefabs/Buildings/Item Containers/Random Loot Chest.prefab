@@ -245,11 +245,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 237795081401623637, guid: fa8a92912832f2242a6078d03544ebf1, type: 3}
   m_PrefabInstance: {fileID: 2350366138046710349}
   m_PrefabAsset: {fileID: 0}
---- !u!82 &3539172828228628282 stripped
-AudioSource:
-  m_CorrespondingSourceObject: {fileID: 1262001180522425719, guid: fa8a92912832f2242a6078d03544ebf1, type: 3}
-  m_PrefabInstance: {fileID: 2350366138046710349}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &3343804591797178741
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -262,10 +257,6 @@ PrefabInstance:
       propertyPath: randomLoot
       value: 
       objectReference: {fileID: 900810238030910617}
-    - target: {fileID: 133319219938718587, guid: c01037c62afb58d4e9c6a6b4396c9048, type: 3}
-      propertyPath: audioSource
-      value: 
-      objectReference: {fileID: 3539172828228628282}
     - target: {fileID: 133319219938718587, guid: c01037c62afb58d4e9c6a6b4396c9048, type: 3}
       propertyPath: explodingParts
       value: 

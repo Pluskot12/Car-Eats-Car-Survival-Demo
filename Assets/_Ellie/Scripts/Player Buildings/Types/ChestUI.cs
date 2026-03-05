@@ -17,6 +17,8 @@ namespace CarGame
         [SerializeField] private float offPosition = -340f;
         [SerializeField] private float inDuration = 0.2f;
 
+        private Vector2 offPos;
+
         public RectTransform Rect => rect;
 
         bool isShowing;
@@ -56,9 +58,17 @@ namespace CarGame
             }
         }
 
+        Tween tween;
+
         private void Animate()
         {
-            Tween.UIAnchoredPositionY(animationParent, endValue: isShowing ? 0 : offPosition, duration: inDuration, ease: Ease.InOutQuart).OnComplete(() => AnimationComplete());
+            if (tween.isAlive) 
+            {
+                tween.Stop();
+            }
+            
+            //tween = Tween.LocalPositionAtSpeed(animationParent, endValue: isShowing ? 0 : offPosition, duration: inDuration, ease: Ease.InOutQuart).OnComplete(() => AnimationComplete());
+            tween = Tween.UIAnchoredPositionY(animationParent, endValue: isShowing ? 0 : offPosition, duration: inDuration, ease: Ease.InOutQuart).OnComplete(() => AnimationComplete());
         }
 
         private void AnimationComplete() 
