@@ -475,7 +475,7 @@ MonoBehaviour:
   tooCloseDistance: 0.5
   visionMask:
     serializedVersion: 2
-    m_Bits: 1280
+    m_Bits: 16778496
 --- !u!1 &1608650492832386818
 GameObject:
   m_ObjectHideFlags: 0

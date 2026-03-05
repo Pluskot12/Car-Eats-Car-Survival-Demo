@@ -138,7 +138,7 @@ namespace CarGame
                 GameManager.Instance.Player.Attachments.AttachItem(slots[selectedSlot].SlottedItem.ItemData, selectedSlot, playSound);
             }
 
-            if (slots[selectedSlot].SlottedItem == null) 
+            if (slots[selectedSlot].SlottedItem == null || slots[selectedSlot].SlottedItem.ItemData is not BuildingItem) 
             {
                 BuildingManager.Instance.OnBuildingSelected(null, -1);
             }
