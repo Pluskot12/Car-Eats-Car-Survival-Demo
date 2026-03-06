@@ -151,6 +151,7 @@ namespace CarGame
             UpdateProgress();
         }
         BuildingInteraction hoveringBInteraction;
+        BuildingInteraction clickedBInteraction;
         private void HandleRightClick()
         {
             Vector2 worldPoint = GameManager.Instance.Camera.ScreenToWorldPoint(Input.mousePosition);
@@ -177,28 +178,48 @@ namespace CarGame
                 }
             }
 
+
+
+
+            // Clicks
+
+            if (hoveringBInteraction == null) 
+            {
+                interactionTimer = 0;
+                return;
+            }
+
             if (Input.GetMouseButtonDown(1))
             {
-                if (hoveringBInteraction)
+                clickedBInteraction = hoveringBInteraction;
+                interactionTimer = 0;
+            }
+            else if (Input.GetMouseButton(1) && clickedBInteraction == hoveringBInteraction)
+            {
+                if (interactionTimer >= 0.5f)
                 {
-                    hoveringBInteraction.Interact(GameManager.Instance.Player);
 
-                    if (interactionTimer >= 0.5f) 
-                    {
-
-                        hoveringBInteraction.Building.RemoveBuilding();
-                    }
+                    hoveringBInteraction.Building.RemoveBuilding();
                 }
 
                 interactionTimer += Time.deltaTime;
             }
-            else 
+            else if (Input.GetMouseButtonUp(1) && clickedBInteraction == hoveringBInteraction)
             {
-                interactionTimer = 0;
-            }
+                if (interactionTimer < removeInteractionTime) 
+                {
+                    if (hoveringBInteraction)
+                    {
+                        hoveringBInteraction.Interact(GameManager.Instance.Player);
 
-            Debug.Log(interactionTimer);
+                    }
+                }
+
+                clickedBInteraction = null;
+            }
         }
+
+        float removeInteractionTime = 0.5f;
         float interactionTimer;
         private void UpdateProgress() 
         {
