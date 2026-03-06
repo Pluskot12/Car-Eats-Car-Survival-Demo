@@ -1,4 +1,6 @@
 using System;
+using System.Net.Mail;
+using UnityEditor.Graphs;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.Rendering;
@@ -28,6 +30,7 @@ namespace CarGame
         public BuildingItem[] AllowedAttachments => allowedAttachments;
 
         private bool canInteract;
+        private bool isAttachment;
 
         public Vector3 IndicatorPosition => spriteRenderer.bounds.center;
         public SpriteRenderer SpriteRenderer => spriteRenderer;
@@ -58,6 +61,8 @@ namespace CarGame
             if (slot != null) 
             {
                 slot.AddAttachment(this);
+
+                isAttachment = true;
 
                 SortingGroup.sortingLayerName = building.SortingGroup.sortingLayerName;
                 SortingGroup.sortingOrder = building.SortingGroup.sortingOrder + 1;
@@ -102,6 +107,31 @@ namespace CarGame
         public void SetPreview()
         {
             col.gameObject.layer = LayerMask.NameToLayer("Ignore Raycast");
+        }
+
+        public void RemoveBuilding() 
+        {
+            if (isAttachment) 
+            {
+                Debug.Log("Is attachment, do something");
+            }
+
+            if (attachmentSlots.Length > 0) 
+            {
+                foreach (var slot in attachmentSlots) 
+                {
+                    RemoveAttachment(slot);
+                }
+            }
+
+            ItemSpawner.Instance.SpawnItem(data, 1, transform.position);
+
+            Destroy(gameObject);
+        }
+
+        public void RemoveAttachment(BuildingAttachmentSlot slot) 
+        {
+            slot.RemoveAttachment();
         }
     }
 }

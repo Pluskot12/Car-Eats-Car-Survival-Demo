@@ -170,9 +170,10 @@ namespace CarGame
             }
             else 
             {
-                if (!isBuilding) { 
-                OnMouseExitBuilding(hoveringBInteraction);
-                hoveringBInteraction = null;
+                if (!isBuilding) 
+                { 
+                    OnMouseExitBuilding(hoveringBInteraction);
+                    hoveringBInteraction = null;
                 }
             }
 
@@ -181,10 +182,24 @@ namespace CarGame
                 if (hoveringBInteraction)
                 {
                     hoveringBInteraction.Interact(GameManager.Instance.Player);
-                }
-            }
-        }
 
+                    if (interactionTimer >= 0.5f) 
+                    {
+
+                        hoveringBInteraction.Building.RemoveBuilding();
+                    }
+                }
+
+                interactionTimer += Time.deltaTime;
+            }
+            else 
+            {
+                interactionTimer = 0;
+            }
+
+            Debug.Log(interactionTimer);
+        }
+        float interactionTimer;
         private void UpdateProgress() 
         {
             if (canPlace && isBuilding)

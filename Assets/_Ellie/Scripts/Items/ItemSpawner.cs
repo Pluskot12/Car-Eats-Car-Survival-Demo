@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using static CarGame.DropTable;
+using static UnityEngine.GraphicsBuffer;
 
 namespace CarGame
 {
@@ -108,6 +109,13 @@ namespace CarGame
             return dir * maxForce;
         }
 
+        public ItemPickup SpawnItem(ItemData item, int quantity, Vector3 position, bool dropped = false)
+        {
+            int durability = GetMaxDurability(item);
+            Vector3 force = Vector3.up * 150f;
+
+            return SpawnItem(item, quantity, durability, position, force, dropped);
+        }
 
         public ItemPickup SpawnItem(ItemData item, int quantity, int durability, Vector3 position, Vector3 force, bool dropped = false)
         {

@@ -1,21 +1,28 @@
+using System;
 using UnityEngine;
 
 namespace CarGame
 {
     public class BuildingAttachmentSlot : MonoBehaviour
     {
-        private Building attached;
+        private Building attachment;
 
-        public bool Occupied => attached != null;
+        public bool Occupied => attachment != null;
 
         public void AddAttachment(Building b) 
         {
-            attached = b;
+            attachment = b;
         }
 
         public void RemoveAttachment() 
         {
-            attached = null;
+            if (attachment == null) 
+            {
+                return;
+            }
+
+            attachment.RemoveBuilding();
+            attachment = null;
         }
 
         [ContextMenu("Align Center")]
