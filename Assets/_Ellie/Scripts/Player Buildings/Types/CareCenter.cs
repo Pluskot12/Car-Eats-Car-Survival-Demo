@@ -17,11 +17,18 @@ namespace CarGame
         private Player player;
         private float timer;
 
+        private bool activated;
+
         private void Update()
         {
             if (Input.GetKeyDown(KeyCode.L)) 
             {
                 GameManager.Instance.Player.TryDamage(10);
+            }
+
+            if (!activated) 
+            {
+                return;
             }
 
             if (player == null) 
@@ -51,6 +58,8 @@ namespace CarGame
         public void OnPlace(Building building) 
         {
             flag.color = colors[Random.Range(0, colors.Length)];
+
+            activated = true;
         }
 
         private void OnTriggerEnter2D(Collider2D collision)
