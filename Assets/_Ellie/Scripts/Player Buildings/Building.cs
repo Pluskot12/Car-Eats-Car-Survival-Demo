@@ -3,11 +3,13 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.Rendering;
 using UnityEngine.UIElements;
+using static UnityEngine.Analytics.IAnalytic;
 
 namespace CarGame
 {
     public class Building : MonoBehaviour
     {
+        [SerializeField] private BuildingItem data;
         [SerializeField] private GameObject visuals;
         [SerializeField] private SpriteRenderer spriteRenderer;
         [SerializeField] private Collider2D col;
@@ -15,14 +17,15 @@ namespace CarGame
         [SerializeField] private bool attachable;
 
         [SerializeField] private BuildingAttachmentSlot[] attachmentSlots;
-        [SerializeField] private Building[] allowedAttachments;
+        [SerializeField] private BuildingItem[] allowedAttachments;
 
         [Header("Events"), Space()]
         [SerializeField] private UnityEvent<Building> OnPlace;
         [SerializeField] private UnityEvent<Player> OnInteract;
 
+        public BuildingItem Data => data;
         public BuildingAttachmentSlot[] AttachmentSlots => attachmentSlots;
-        public Building[] AllowedAttachments => allowedAttachments;
+        public BuildingItem[] AllowedAttachments => allowedAttachments;
 
         private bool canInteract;
 

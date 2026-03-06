@@ -379,6 +379,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2223015872265380319, guid: 81a4b03a53eabc94c86a6a6d706911df, type: 3}
+      propertyPath: data
+      value: 
+      objectReference: {fileID: 11400000, guid: 40b6519b576f71044bc60096bd0937ed, type: 2}
+    - target: {fileID: 2223015872265380319, guid: 81a4b03a53eabc94c86a6a6d706911df, type: 3}
       propertyPath: attachmentSlots.Array.size
       value: 1
       objectReference: {fileID: 0}
@@ -393,11 +397,11 @@ PrefabInstance:
     - target: {fileID: 2223015872265380319, guid: 81a4b03a53eabc94c86a6a6d706911df, type: 3}
       propertyPath: 'allowedAttachments.Array.data[0]'
       value: 
-      objectReference: {fileID: 5844002745563753973, guid: 443fd5f9bf9897647b54ba1035c87b80, type: 3}
+      objectReference: {fileID: 11400000, guid: 3858c2b19dde50e41aa977972f717c2d, type: 2}
     - target: {fileID: 2223015872265380319, guid: 81a4b03a53eabc94c86a6a6d706911df, type: 3}
       propertyPath: 'allowedAttachments.Array.data[1]'
       value: 
-      objectReference: {fileID: 5844002745563753973, guid: 8a1c68e9d229029408c54bdea8e79105, type: 3}
+      objectReference: {fileID: 11400000, guid: c3f141448f026854b9d7241f06c384fc, type: 2}
     - target: {fileID: 2223015872265380319, guid: 81a4b03a53eabc94c86a6a6d706911df, type: 3}
       propertyPath: OnPlace.m_PersistentCalls.m_Calls.Array.size
       value: 1

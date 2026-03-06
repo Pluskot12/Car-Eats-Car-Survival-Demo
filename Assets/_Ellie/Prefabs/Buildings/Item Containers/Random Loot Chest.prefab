@@ -570,6 +570,10 @@ PrefabInstance:
       value: Random Loot Chest
       objectReference: {fileID: 0}
     - target: {fileID: 5844002745563753973, guid: c01037c62afb58d4e9c6a6b4396c9048, type: 3}
+      propertyPath: data
+      value: 
+      objectReference: {fileID: 11400000, guid: 29f7094cd5c91484b80bb4a57e2e866d, type: 2}
+    - target: {fileID: 5844002745563753973, guid: c01037c62afb58d4e9c6a6b4396c9048, type: 3}
       propertyPath: OnPlace.m_PersistentCalls.m_Calls.Array.size
       value: 1
       objectReference: {fileID: 0}

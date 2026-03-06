@@ -205,6 +205,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2223015872265380319, guid: 81a4b03a53eabc94c86a6a6d706911df, type: 3}
+      propertyPath: data
+      value: 
+      objectReference: {fileID: 11400000, guid: c3f141448f026854b9d7241f06c384fc, type: 2}
+    - target: {fileID: 2223015872265380319, guid: 81a4b03a53eabc94c86a6a6d706911df, type: 3}
       propertyPath: attachable
       value: 1
       objectReference: {fileID: 0}

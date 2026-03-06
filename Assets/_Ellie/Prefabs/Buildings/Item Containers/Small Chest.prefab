@@ -481,6 +481,10 @@ PrefabInstance:
       value: Small Chest
       objectReference: {fileID: 0}
     - target: {fileID: 5844002745563753973, guid: c01037c62afb58d4e9c6a6b4396c9048, type: 3}
+      propertyPath: data
+      value: 
+      objectReference: {fileID: 11400000, guid: 903a2201b38f1f246a3a11edcc6a80e4, type: 2}
+    - target: {fileID: 5844002745563753973, guid: c01037c62afb58d4e9c6a6b4396c9048, type: 3}
       propertyPath: attachable
       value: 1
       objectReference: {fileID: 0}
@@ -499,7 +503,7 @@ PrefabInstance:
     - target: {fileID: 5844002745563753973, guid: c01037c62afb58d4e9c6a6b4396c9048, type: 3}
       propertyPath: 'allowedAttachments.Array.data[0]'
       value: 
-      objectReference: {fileID: 9186645082698693760}
+      objectReference: {fileID: 11400000, guid: 903a2201b38f1f246a3a11edcc6a80e4, type: 2}
     - target: {fileID: 6698484253423773049, guid: c01037c62afb58d4e9c6a6b4396c9048, type: 3}
       propertyPath: inventoryParent
       value: 
@@ -618,17 +622,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5321770095183292579, guid: c01037c62afb58d4e9c6a6b4396c9048, type: 3}
   m_PrefabInstance: {fileID: 3343804591797178741}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &9186645082698693760 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5844002745563753973, guid: c01037c62afb58d4e9c6a6b4396c9048, type: 3}
-  m_PrefabInstance: {fileID: 3343804591797178741}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 263eb81877e949548b1363642e3af1ae, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: CarGame::CarGame.Building
 --- !u!1001 &7679287447300313863
 PrefabInstance:
   m_ObjectHideFlags: 0

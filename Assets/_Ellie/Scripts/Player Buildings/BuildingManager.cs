@@ -217,7 +217,7 @@ namespace CarGame
                 return true;
             }
 
-            if (hoveringAttachmentSlot) 
+            if (hoveringAttachmentSlot && IsWithinDistance()) 
             {
                 return true;
             }
@@ -393,24 +393,23 @@ namespace CarGame
                     continue;
                 }
 
-                if (building.Building.AllowedAttachments.Contains(currentBuilding))
+                if (building.Building.AllowedAttachments.Contains(currentBuilding.Data))
                 {
-                    Debug.Log("yep");
-                }
-                else 
-                {
-                    Debug.Log("nope");
-                }
+                    float distance = Vector3.Distance(GameManager.Instance.MousePosition, slot.transform.position);
 
-                float distance = Vector3.Distance(GameManager.Instance.MousePosition, slot.transform.position);
+                    if (Vector3.Distance(GameManager.Instance.MousePosition, slot.transform.position) <= maxDistance)
+                    {
+                        hoveringAttachmentSlot = slot;
+                        maxDistance = distance;
 
-                if (Vector3.Distance(GameManager.Instance.MousePosition, slot.transform.position) <= maxDistance) 
-                {
-                    hoveringAttachmentSlot = slot;
-                    maxDistance = distance;
+                        hoveringMask = building.Building.SpriteRenderer.renderingLayerMask;
+                        hoveringOrder = building.Building.SpriteRenderer.sortingOrder;
 
-                    hoveringMask = building.Building.SpriteRenderer.renderingLayerMask;
-                    hoveringOrder = building.Building.SpriteRenderer.sortingOrder;
+                        currentBuilding.SpriteRenderer.sortingLayerName = building.Building.SpriteRenderer.sortingLayerName;
+                        currentBuilding.SpriteRenderer.sortingOrder = building.Building.SpriteRenderer.sortingOrder + 10;
+                        currentBuilding.SortingGroup.sortingLayerName = building.Building.SortingGroup.sortingLayerName;
+                        currentBuilding.SortingGroup.sortingOrder = building.Building.SortingGroup.sortingOrder + 1;
+                    }
                 }
             }
         }
