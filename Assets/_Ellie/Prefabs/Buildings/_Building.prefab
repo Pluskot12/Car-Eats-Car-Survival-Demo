@@ -46,11 +46,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 263eb81877e949548b1363642e3af1ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: CarGame::CarGame.Building
+  data: {fileID: 0}
   visuals: {fileID: 6606368058725016932}
   spriteRenderer: {fileID: 8831368780724380168}
   col: {fileID: 8845118397175370766}
   sortingGroup: {fileID: 2569660323887170284}
+  attachable: 0
   attachmentSlots: []
+  allowedAttachments: []
   OnPlace:
     m_PersistentCalls:
       m_Calls: []
@@ -82,7 +85,7 @@ GameObject:
   - component: {fileID: 8831368780724380168}
   - component: {fileID: 8845118397175370766}
   - component: {fileID: 4013193099517812292}
-  m_Layer: 20
+  m_Layer: 18
   m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}

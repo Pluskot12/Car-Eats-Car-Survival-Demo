@@ -436,18 +436,18 @@ namespace CarGame
             return horsepower;
         }
         bool teleporting;
-        public void Teleport(Vector3 spawnPoint)
+        public void Teleport(Vector3 spawnPoint, Action beep)
         {
             teleporting = true;
             //StartCoroutine(Beep(spawnPoint));
             //StartCoroutine(TeleportTooo(spawnPoint));
 
-            Teleportt(spawnPoint + Vector3.up);
+            Teleportt(spawnPoint + Vector3.up, beep);
 
             
         }
 
-        public void Teleportt(Vector2 newPosition)
+        public void Teleportt(Vector2 newPosition, Action beep)
         {
             moveInput = 0;
             rotInput = 0;
@@ -505,13 +505,15 @@ namespace CarGame
             //wheel1Rb.Sleep();
             //wheel2Rb.Sleep();
 
-            StartCoroutine(Wait());
+            StartCoroutine(Wait(beep));
         }
-        public IEnumerator Wait() 
+        public IEnumerator Wait(Action beep) 
         {
             yield return new WaitForSeconds(0.25f);
 
             teleporting = false;
+
+            beep.Invoke();
         }
         public IEnumerator TeleportTooo(Vector2 targetPosition)
         {

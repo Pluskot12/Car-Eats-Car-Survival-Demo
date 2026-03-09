@@ -10,7 +10,8 @@ namespace CarGame
         public static BuildingManager Instance { get; private set; }
 
         [SerializeField] private TerrainManager terrainManager;
-        [SerializeField] private LayerMask buildingLayer;
+        [SerializeField] private LayerMask buildingBlockingLayer;
+        [SerializeField] private LayerMask buildingRightClickLayer;
 
 
         [Header("Audio")]
@@ -38,7 +39,8 @@ namespace CarGame
         private float buildProgress;
 
         private Collider2D[] results = new Collider2D[10];
-        private ContactFilter2D filter = new ContactFilter2D();
+        private ContactFilter2D blockingFilter = new ContactFilter2D();
+        private ContactFilter2D clickFilter = new ContactFilter2D();
 
         private bool isBuilding;
 
@@ -55,8 +57,11 @@ namespace CarGame
 
             Instance = this;
 
-            filter.SetLayerMask(buildingLayer);
-            filter.useTriggers = true;
+            blockingFilter.SetLayerMask(buildingBlockingLayer);
+            blockingFilter.useTriggers = true;
+
+            clickFilter.SetLayerMask(buildingRightClickLayer);
+            clickFilter.useTriggers = true;
         }
 
         private void OnDrawGizmos()
@@ -155,7 +160,7 @@ namespace CarGame
         private void HandleRightClick()
         {
             Vector2 worldPoint = GameManager.Instance.Camera.ScreenToWorldPoint(Input.mousePosition);
-            Collider2D hit = Physics2D.OverlapPoint(worldPoint, buildingLayer);
+            Collider2D hit = Physics2D.OverlapPoint(worldPoint, buildingRightClickLayer);
 
             if (hit && hit.TryGetComponent<BuildingInteraction>(out BuildingInteraction building))
             {
@@ -299,7 +304,7 @@ namespace CarGame
         */
         private bool IsBlockedByStructure() 
         {
-            int count = currentBuilding.Collider.Overlap(filter, results);
+            int count = currentBuilding.Collider.Overlap(blockingFilter, results);
 
             return count > 0;
         }

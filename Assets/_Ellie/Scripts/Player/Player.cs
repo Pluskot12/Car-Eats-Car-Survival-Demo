@@ -90,7 +90,8 @@ namespace CarGame
         {
             body.simulated = true;
 
-            carController.Teleport(spawnPoint);
+
+
 
             CurrentHealth = MaxHealth;
 
@@ -107,9 +108,14 @@ namespace CarGame
 
             attachmentController.ShowAttachment();
 
-             //body.simulated = true;
+            carController.Teleport(spawnPoint, () =>
+            {
+                IsDead = false; Debug.Log("teleportcomplete");
+            });
 
-            IsDead = false;
+            //body.simulated = true;
+
+            //IsDead = false;
         }
 
         private void Update()
@@ -232,7 +238,7 @@ namespace CarGame
         public void Pickup(ItemPickup item)
         {
             // Add item to inventory
-            //Debug.LogFormat("Picked up {1} ({0}) Durability: {2}", item.Data.displayName, item.Quantity, item.Durability);
+            Debug.LogFormat("Picked up {1} ({0}) Durability: {2}", item.Data.displayName, item.Quantity, item.Durability);
             int leftover = PlayerInventory.Instance.InventoryController.OnItemPickup(item.Data, item.Quantity, item.Durability);
 
             if (leftover <= 0)
