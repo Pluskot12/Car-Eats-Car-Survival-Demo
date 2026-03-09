@@ -21,7 +21,7 @@ namespace CarGame
                 return;
             }
 
-            attachment.RemoveBuilding();
+            attachment.RemoveBuilding(true);
             attachment = null;
         }
 

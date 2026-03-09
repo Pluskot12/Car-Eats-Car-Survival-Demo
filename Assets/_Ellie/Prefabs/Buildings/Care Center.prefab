@@ -269,7 +269,7 @@ MonoBehaviour:
   audioSource: {fileID: 8295628151249637108}
   healSound: {fileID: 8300000, guid: 13d841072cce1b346a2a2d356ea1967b, type: 3}
   healthPerTick: 1
-  secondsPerTick: 1
+  secondsPerTick: 5
   flag: {fileID: 7590302099642979348}
   colors:
   - {r: 1, g: 0, b: 0, a: 1}

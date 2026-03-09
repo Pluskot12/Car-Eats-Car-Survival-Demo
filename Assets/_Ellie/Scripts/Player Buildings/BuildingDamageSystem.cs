@@ -1,11 +1,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+
 namespace CarGame
 {
     public class BuildingDamageSystem : MonoBehaviour, IDamageable
     {
         [Header("References")]
+        [SerializeField] private Building building;
         [SerializeField] private SpriteRenderer spriteRenderer;
         [SerializeField] private AudioSource source;
         [SerializeField] private GameObject onDeathParts;
@@ -74,7 +76,9 @@ namespace CarGame
         {
             isDead = true;
 
+            source.transform.SetParent(null);
             source.PlayOneShot(deathSound);
+            Destroy(source, 10f);
 
             onDeathParts.transform.SetParent(null);
             onDeathParts.SetActive(true);
@@ -82,7 +86,9 @@ namespace CarGame
             blockingCollider.enabled = false;
             spriteRenderer.enabled = false;
 
-            Destroy(onDeathParts, deathSound.length * 5f);
+            building.RemoveBuilding(false);
+
+            Destroy(onDeathParts, 10f);
         }
 
         public void UpdateSprite(float healthPercentage, bool playSound = true)

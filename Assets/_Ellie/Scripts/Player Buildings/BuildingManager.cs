@@ -199,7 +199,7 @@ namespace CarGame
                 if (interactionTimer >= 0.5f)
                 {
 
-                    hoveringBInteraction.Building.RemoveBuilding();
+                    hoveringBInteraction.Building.RemoveBuilding(true);
                 }
 
                 interactionTimer += Time.deltaTime;

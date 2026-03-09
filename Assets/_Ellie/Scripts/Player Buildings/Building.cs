@@ -109,7 +109,7 @@ namespace CarGame
             col.gameObject.layer = LayerMask.NameToLayer("Ignore Raycast");
         }
 
-        public void RemoveBuilding() 
+        public void RemoveBuilding(bool spawnItem) 
         {
             if (isAttachment) 
             {
@@ -124,7 +124,10 @@ namespace CarGame
                 }
             }
 
-            ItemSpawner.Instance.SpawnItem(data, 1, transform.position);
+            if (spawnItem) 
+            { 
+                ItemSpawner.Instance.SpawnItem(data, 1, transform.position);
+            }
 
             Destroy(gameObject);
         }

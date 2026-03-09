@@ -540,6 +540,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b28ab4a4eda53c40bff5c2865162b55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: CarGame::CarGame.BuildingDamageSystem
+  building: {fileID: 5844002745563753973}
   spriteRenderer: {fileID: 3840725770131467810}
   source: {fileID: 5608985560933865382}
   onDeathParts: {fileID: 7319116175430159496}
@@ -629,6 +630,17 @@ PolygonCollider2D:
       - {x: 0.2393595, y: -0.046835244}
       - {x: 0.53730106, y: 2.668151}
   m_UseDelaunayMesh: 1
+--- !u!114 &5844002745563753973 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2223015872265380319, guid: 81a4b03a53eabc94c86a6a6d706911df, type: 3}
+  m_PrefabInstance: {fileID: 5747627355465239594}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5602328446064282137}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 263eb81877e949548b1363642e3af1ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: CarGame::CarGame.Building
 --- !u!1001 &6064116841212918888
 PrefabInstance:
   m_ObjectHideFlags: 0
