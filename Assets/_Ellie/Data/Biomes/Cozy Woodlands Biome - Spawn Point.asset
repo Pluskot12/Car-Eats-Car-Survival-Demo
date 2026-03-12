@@ -40,7 +40,7 @@ MonoBehaviour:
   backgroundSprite:
     sprite: {fileID: 21300000, guid: 5bfd42aaef3637348b78c47d8080eecb, type: 3}
     yOffset: 0
-  dayAmbience: {fileID: 8300000, guid: 3acffd04a3cc98c46949827e46a777bf, type: 3}
+  dayAmbience: {fileID: 8300000, guid: f8f63c8f26d73a74fbac133c78caf146, type: 3}
   duskAmbience: {fileID: 0}
   nightAmbience: {fileID: 0}
   enemies: []
