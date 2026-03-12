@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.Rendering;
@@ -29,7 +30,9 @@ namespace CarGame
 
         [Header("Progress Bar")]
         [SerializeField] private BuildingIndicatorUI progressBar;
-        
+
+        private List<Building> placedBuildings = new();
+        public List<Building> PlacedBuildings => placedBuildings;
 
         private BuildingItem currentBuildingData;
         private Building currentBuilding;
@@ -348,6 +351,8 @@ namespace CarGame
                     audioSource.PlayOneShot(currentBuildingData.placementSound);
                 }
 
+                placedBuildings.Add(b);
+
                 RemoveTempBuilding();
 
                 return true;
@@ -459,6 +464,11 @@ namespace CarGame
         {
             hoveringBuilding = null;
             hoveringAttachmentSlot = null;
+        }
+
+        public void RemoveBuilding(Building building)
+        {
+            placedBuildings.Remove(building);
         }
 
         #endregion

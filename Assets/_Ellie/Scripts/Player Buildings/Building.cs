@@ -124,6 +124,8 @@ namespace CarGame
                 ItemSpawner.Instance.SpawnItem(data, 1, transform.position);
             }
 
+            BuildingManager.Instance.RemoveBuilding(this);
+
             Destroy(gameObject);
         }
 

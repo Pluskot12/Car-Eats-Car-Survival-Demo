@@ -18,8 +18,13 @@ namespace CarGame
 
         public List<EnemyController> randomSpawnedEnemies = new List<EnemyController>();
 
-        private Vector3 left = new Vector2(-0.2f, 0);
-        private Vector3 right = new Vector2(1.2f, 0);
+        //private Vector3 left = new Vector2(-1, 0);
+        //private Vector3 right = new Vector2(2, 0);
+
+        [SerializeField] float buildingDistance = 5f;
+        [SerializeField] float distancePerIteration = 1f;
+        private Vector3 left = new Vector2(-1, 0);
+        private Vector3 right = new Vector2(2, 0);
 
 
         [SerializeField] private bool canSpawn;
@@ -83,17 +88,56 @@ namespace CarGame
                 //Debug.Log("Spawning");
                 SpawnRandomEnemyOffScreen();
             }
-            else 
+
+        }
+
+        private bool BlockedByBuilding(Vector3 position) 
+        {
+            foreach (var building in BuildingManager.Instance.PlacedBuildings) 
             {
-                //Debug.Log("Failed roll");
+                if (Vector3.Distance(building.transform.position, position) <= buildingDistance) 
+                {
+                    //Debug.Log("Spawn Blocked");
+                    return true;
+                }
             }
 
+            return false;
         }
 
         private void SpawnRandomEnemyOffScreen() 
         {
             Vector3 position = GameManager.Instance.Player.transform.position;
-            position.x = cam.ViewportToWorldPoint(Random.value >= 0.5f ? left : right).x;
+
+            Vector3 offset = left;
+            bool spawnRight = Random.value >= 0.5f;
+            if (spawnRight)
+            {
+                offset = right;
+            }
+
+            position.x = cam.ViewportToWorldPoint(offset).x;
+            int i = 0;
+            
+            while (BlockedByBuilding(position) && i < 3) 
+            {
+                if (spawnRight)
+                {
+                    position.x += (distancePerIteration * (i + 1));
+                }
+                else 
+                {
+                    position.x -= (distancePerIteration * (i + 1));
+                }
+
+                i++;
+            }
+
+            if (BlockedByBuilding(position))
+            {
+                return;
+            }
+
 
             RaycastHit2D hit = Physics2D.Raycast(
                 position + Vector3.up * 100f,
@@ -102,15 +146,17 @@ namespace CarGame
                 groundLayer
             );
 
+
+
             // Dont spawn on DeadEnd
-            if (hit.transform.gameObject.TryGetComponent<Biome>(out Biome biome)) 
+            if (hit.transform.gameObject.TryGetComponent<Biome>(out Biome biome))
             {
-                if (biome.Type == BiomeType.DeadEnd) 
+                if (biome.Type == BiomeType.DeadEnd)
                 {
                     return;
                 }
             }
-            
+
             var enemy = GetEnemy(position);
 
             if (enemy != null)

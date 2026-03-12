@@ -2429,7 +2429,7 @@ MonoBehaviour:
   moveRandom: 1
   waitDuration: 2
   waitRandom: 2
-  maxWanderDistance: 5
+  maxWanderDistance: 15
   idleMoveSpeed: 3
   chaseMoveSpeed: 10
   minIdleNoise: 3
