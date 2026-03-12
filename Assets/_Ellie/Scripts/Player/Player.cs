@@ -90,9 +90,6 @@ namespace CarGame
         {
             body.simulated = true;
 
-
-
-
             CurrentHealth = MaxHealth;
 
             currentHunger = maxHunger;
@@ -454,18 +451,74 @@ namespace CarGame
         private float fuelUpgrade;
         private float horsePowerUpgrade;
 
-        public void UpgradeCar(WorkshopUI.UpgradeStage upgradeStage)
+        [SerializeField] private PlayerWorkshopUpgrades workshopUpgrades;
+        public int WorkshopUpgradeLevel => workshopUpgrades.UpgradeLevel;
+
+        public void OnWorkshopUpgrade(WorkshopUI.UpgradeStage upgradeStage)
         {
-            speedUpgrade = upgradeStage.stat1 / PlayerStatPanelUI.SPEED_MULTI;
-            fuelUpgrade = upgradeStage.stat2;
-            horsePowerUpgrade = upgradeStage.stat3;
+            workshopUpgrades.Upgrade();
 
-            carController.SetMaxSpeed(carController.GetMaxSpeed() + speedUpgrade);
-            carController.SetHorsepower(carController.GetHorsepower() + horsePowerUpgrade);
+            // Speed
+            carController.SetMaxSpeed(CalcMaxSpeed());
+            
+            // Horsepower
+            carController.SetHorsepower(CalcMaxHorsepower());
 
-            maxHunger += fuelUpgrade;
-            currentHunger += fuelUpgrade;
+            // Hunger
+            maxHunger = CalcMaxHunger();
+            currentHunger = maxHunger;
             UpdateHunger();
+
+            // Health
+            MaxHealth = CalcMaxHealth();
+            AddHealth(MaxHealth);
+
+            // Turbo
+            maxTurbo = CalcMaxTurbo();
+            currentTurbo = maxTurbo;
+        }
+
+        private float baseSpeed;
+        private float baseHunger;
+
+        private int baseHealth;
+        private int baseHorsepower;
+        private int baseTurbo;
+
+
+        private float CalcMaxSpeed() 
+        {
+            float speed = baseSpeed;
+            speed += workshopUpgrades.CurrentUpgrades.speed / PlayerStatPanelUI.SPEED_MULTI;
+            return speed;
+        }
+
+        private float CalcMaxHorsepower()
+        {
+            float horsepower = baseHorsepower;
+            horsepower += workshopUpgrades.CurrentUpgrades.horsepower;
+            return horsepower;
+        }
+
+        private float CalcMaxHunger()
+        {
+            float hunger = baseHunger;
+            hunger += workshopUpgrades.CurrentUpgrades.hunger;
+            return hunger;
+        }
+
+        private float CalcMaxTurbo()
+        {
+            float turbo = baseTurbo;
+            turbo += workshopUpgrades.CurrentUpgrades.turbo;
+            return turbo;
+        }
+
+        private int CalcMaxHealth()
+        {
+            int health = baseHealth;
+            health += workshopUpgrades.CurrentUpgrades.health;
+            return health;
         }
     }
 

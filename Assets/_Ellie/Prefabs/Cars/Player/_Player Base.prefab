@@ -1291,6 +1291,77 @@ Transform:
   m_Children: []
   m_Father: {fileID: 4115067673463933568}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &6894848835521415448
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1658334630234003423}
+  - component: {fileID: 9060077060568582003}
+  m_Layer: 10
+  m_Name: Workshop Upgrades
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1658334630234003423
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6894848835521415448}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2435189080803565683}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &9060077060568582003
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6894848835521415448}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6041b352654b4504880e7afcf5fb48e0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: CarGame::CarGame.PlayerWorkshopUpgrades
+  player: {fileID: 8864949352622690495}
+  upgrades:
+  - health: 50
+    hunger: 5
+    speed: 10
+    horsepower: 20
+    turbo: 3
+    items: []
+  - health: 50
+    hunger: 5
+    speed: 10
+    horsepower: 10
+    turbo: 5
+    items: []
+  - health: 100
+    hunger: 15
+    speed: 10
+    horsepower: 15
+    turbo: 5
+    items: []
+  currentUpgrades:
+    health: 0
+    hunger: 0
+    speed: 0
+    horsepower: 0
+    turbo: 0
+    items: []
 --- !u!1 &6983651167326662856
 GameObject:
   m_ObjectHideFlags: 0
@@ -3446,6 +3517,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 773273481042857931, guid: 0ae70d1ab4440b94d9e1351370ba581c, type: 3}
       insertIndex: -1
       addedObject: {fileID: 3841484677473665124}
+    - targetCorrespondingSourceObject: {fileID: 773273481042857931, guid: 0ae70d1ab4440b94d9e1351370ba581c, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1658334630234003423}
     - targetCorrespondingSourceObject: {fileID: 8462609243695369574, guid: 0ae70d1ab4440b94d9e1351370ba581c, type: 3}
       insertIndex: -1
       addedObject: {fileID: 3299312942120760451}
@@ -3609,6 +3683,7 @@ MonoBehaviour:
   audioSource: {fileID: 3607047649965983307}
   hungerLowClip: {fileID: 8300000, guid: 73a66673e50df0e4b9db14406fcaee9d, type: 3}
   hungerDamageClip: {fileID: 8300000, guid: e050d2b74a4235940810cd0e57cd42da, type: 3}
+  workshopUpgrades: {fileID: 9060077060568582003}
 --- !u!114 &7975402313758293827
 MonoBehaviour:
   m_ObjectHideFlags: 0

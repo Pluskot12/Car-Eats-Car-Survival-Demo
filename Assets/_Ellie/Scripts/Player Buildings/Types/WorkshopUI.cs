@@ -46,7 +46,7 @@ namespace CarGame
 
         [Serializable] public struct UpgradeStage 
         {
-            public int stat1;
+            public int speed;
             public int stat2;
             public int stat3;
             public int stat4;
@@ -109,7 +109,7 @@ namespace CarGame
                 return;
             }
 
-            stat1.text = "+" + upgrades[stage].stat1;
+            stat1.text = "+" + upgrades[stage].speed;
             stat2.text = "+" + upgrades[stage].stat2;
             stat3.text = "+" + upgrades[stage].stat3;
             stat4.text = "+" + upgrades[stage].stat4;
@@ -176,7 +176,7 @@ namespace CarGame
                     UpdateStage(upgradeStage);
                     UIMananger.Instance.PlayAudioClip(upgradeSound); 
 
-                    GameManager.Instance.Player.UpgradeCar(upgrades[upgradeStage]);
+                    GameManager.Instance.Player.OnWorkshopUpgrade(upgrades[upgradeStage]);
 
                     upgradeStage++;
 
