@@ -1,11 +1,6 @@
-using System;
-using System.Net.Mail;
-using UnityEditor.Graphs;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.Rendering;
-using UnityEngine.UIElements;
-using static UnityEngine.Analytics.IAnalytic;
 
 namespace CarGame
 {
