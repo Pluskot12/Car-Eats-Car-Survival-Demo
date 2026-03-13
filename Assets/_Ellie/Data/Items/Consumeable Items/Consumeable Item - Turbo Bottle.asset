@@ -18,4 +18,4 @@ MonoBehaviour:
   useClip: {fileID: 8300000, guid: 3e41c1078fad186448e6edfa3798582d, type: 3}
   effects:
   - type: 2
-    amount: 50
+    amount: 7
