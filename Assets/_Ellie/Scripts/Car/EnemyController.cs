@@ -319,6 +319,8 @@ namespace CarGame
 
                 StopAllCoroutines();
                 ItemSpawner.Instance.SpawnLoot(transform, dropTables);
+
+                Destroy(gameObject, 5f);
             }
         }
 

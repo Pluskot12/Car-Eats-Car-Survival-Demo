@@ -58,9 +58,18 @@ namespace CarGame
             CurrentHealth = MaxHealth;
 
             currentHunger = maxHunger;
-            //currentTurbo = maxTurbo;
 
-            statPanel.UpdateHealth(CurrentHealth, MaxHealth, true);
+            baseSpeed = carController.GetMaxSpeed();
+            baseHunger = maxHunger;
+
+            baseHealth = MaxHealth;
+            baseHorsepower = carController.GetHorsepower();
+            baseTurbo = maxTurbo;
+
+
+        //currentTurbo = maxTurbo;
+
+        statPanel.UpdateHealth(CurrentHealth, MaxHealth, true);
             statPanel.UpdateTurbo(currentTurbo, maxTurbo);
             statPanel.UpdateHunger(currentHunger, maxHunger);
             statPanel.UpdateSpeed(0, 1);
@@ -210,6 +219,8 @@ namespace CarGame
                 attachmentController.HideAttachment();
                 
                 playerController.OnDeath();
+
+                ResetWorkshopUpgrades();
 
                 PlayerInventory.Instance.DropAllItems();
                 PlayerGadgets.Instance.DropAllItems();
@@ -453,37 +464,41 @@ namespace CarGame
 
         [SerializeField] private PlayerWorkshopUpgrades workshopUpgrades;
         public int WorkshopUpgradeLevel => workshopUpgrades.UpgradeLevel;
+        public PlayerWorkshopUpgrades WorkshopUpgrades => workshopUpgrades;
 
-        public void OnWorkshopUpgrade(WorkshopUI.UpgradeStage upgradeStage)
+        public void OnWorkshopUpgrade()
         {
             workshopUpgrades.Upgrade();
 
-            // Speed
-            carController.SetMaxSpeed(CalcMaxSpeed());
-            
-            // Horsepower
-            carController.SetHorsepower(CalcMaxHorsepower());
+            CalculateStats();
 
-            // Hunger
-            maxHunger = CalcMaxHunger();
-            currentHunger = maxHunger;
-            UpdateHunger();
-
-            // Health
-            MaxHealth = CalcMaxHealth();
+            AddHunger(maxHunger);
             AddHealth(MaxHealth);
+            AddTurbo(maxTurbo);
+        }
 
-            // Turbo
+        private void ResetWorkshopUpgrades() 
+        {
+            workshopUpgrades.ResetUpgrades();
+
+            CalculateStats();
+        }
+
+        private void CalculateStats()
+        {   
+            carController.SetMaxSpeed(CalcMaxSpeed());
+            carController.SetHorsepower(CalcMaxHorsepower());
+            maxHunger = CalcMaxHunger();
+            MaxHealth = CalcMaxHealth();
             maxTurbo = CalcMaxTurbo();
-            currentTurbo = maxTurbo;
         }
 
         private float baseSpeed;
         private float baseHunger;
 
         private int baseHealth;
-        private int baseHorsepower;
-        private int baseTurbo;
+        private float baseHorsepower;
+        private float baseTurbo;
 
 
         private float CalcMaxSpeed() 

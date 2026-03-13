@@ -25,17 +25,14 @@ namespace CarGame
 
 
         [Header("Stats")]
-        [SerializeField] private TextMeshProUGUI stat1;
-        [SerializeField] private TextMeshProUGUI stat2;
-        [SerializeField] private TextMeshProUGUI stat3;
-        [SerializeField] private TextMeshProUGUI stat4;
-        [SerializeField] private TextMeshProUGUI stat5;
+        [SerializeField] private TextMeshProUGUI health;
+        [SerializeField] private TextMeshProUGUI hunger;
+        [SerializeField] private TextMeshProUGUI speed;
+        [SerializeField] private TextMeshProUGUI horsepower;
+        [SerializeField] private TextMeshProUGUI turbo;
 
         [Header("Stars")]
         [SerializeField] private StarUI[] stars;
-
-        [Header("Upgrade")]
-        [SerializeField] private UpgradeStage[] upgrades;
 
         [Header("Animation Settings")]
         [SerializeField] private RectTransform animationParent;
@@ -44,18 +41,6 @@ namespace CarGame
 
         private bool isShowing;
 
-        [Serializable] public struct UpgradeStage 
-        {
-            public int speed;
-            public int stat2;
-            public int stat3;
-            public int stat4;
-            public int stat5;
-
-            public Ingredient[] items;
-        }
-
-        private int upgradeStage = 0;
 
         Ingredient[] currentRecipe;
 
@@ -63,8 +48,8 @@ namespace CarGame
 
         private void Awake()
         {
-            currentRecipe = upgrades[0].items;
-            UpdateLabels(0);
+           // currentRecipe = upgrades[0].items;
+            
 
             animationParent.anchoredPosition = new Vector2(0, offPosition);
         }
@@ -84,40 +69,61 @@ namespace CarGame
             UpdateSlots();
         }
 
-        private void UpdateStage(int stage) 
+        private void UpdateStage(int stage, bool animate) 
         {
-            stars[stage].Activate(true);
+            Debug.Log("stage " +  stage);
+            for (int i = 0; i < stars.Length; i++)
+            {
+                if (i < stage)
+                {
+                    stars[i].Activate(i < stage);
+                }
+                else 
+                {
+                    stars[i].Deactivate();
+                } 
+            }
+
+            UpdateLabels(player.WorkshopUpgrades.GetNextUpgrade());
             
-            UpdateLabels(stage + 1);
-            
-            if (stage == upgrades.Length - 1)
+            if (player.WorkshopUpgrades.IsMax())
             {
                 maxedImage.enabled = true;
-                Tween.PunchScale(maxedImage.transform, Vector3.one * 0.05f, 0.15f, 5);
+
+                if (animate)
+                {
+                    Tween.PunchScale(maxedImage.transform, Vector3.one * 0.05f, 0.15f, 5);
+                }
             }
             else 
             {
-                currentRecipe = upgrades[stage + 1].items;
+                maxedImage.enabled = false;
+                currentRecipe = player.WorkshopUpgrades.GetNextUpgrade().items;
                 UpdateSlots();
             }
         }
 
-        private void UpdateLabels(int stage) 
+        private void UpdateLabels(PlayerWorkshopUpgrades.Upgrades upgrades) 
         {
-            if (stage == upgrades.Length)
+            if (upgrades == null)
             {
                 return;
             }
 
-            stat1.text = "+" + upgrades[stage].speed;
-            stat2.text = "+" + upgrades[stage].stat2;
-            stat3.text = "+" + upgrades[stage].stat3;
-            stat4.text = "+" + upgrades[stage].stat4;
-            stat5.text = "+" + upgrades[stage].stat5;
+            health.text = "+" + upgrades.health;
+            hunger.text = "+" + upgrades.hunger;
+            speed.text = "+" + upgrades.speed;
+            horsepower.text = "+" + upgrades.horsepower;
+            turbo.text = "+" + upgrades.turbo;
         }
 
         public void UpdateSlots()
         {
+            if (currentRecipe == null) 
+            {
+                return;
+            }
+
             int validSlots = 0;
 
             for (int i = 0; i < slots.Length; i++)
@@ -150,8 +156,10 @@ namespace CarGame
 
         public void OnUpgradeButton()
         {
-
-
+            if (player.WorkshopUpgrades.IsMax()) 
+            {
+                return;
+            }
 
             int requried = currentRecipe.Length;
             int valid = 0;
@@ -171,17 +179,14 @@ namespace CarGame
                     PlayerInventory.Instance.InventoryController.RemoveItems(ingredient.item, ingredient.quantity);
                 }
 
-                if (upgradeStage < 3)
-                {
-                    UpdateStage(upgradeStage);
-                    UIMananger.Instance.PlayAudioClip(upgradeSound); 
-
-                    GameManager.Instance.Player.OnWorkshopUpgrade(upgrades[upgradeStage]);
-
-                    upgradeStage++;
-
+   
                     
-                }
+                UIMananger.Instance.PlayAudioClip(upgradeSound); 
+
+                GameManager.Instance.Player.OnWorkshopUpgrade();
+
+                UpdateStage(player.WorkshopUpgradeLevel, true);
+
             }
             else
             {
@@ -203,15 +208,22 @@ namespace CarGame
             }
         }
 
+        Player player;
 
         public void Show(Player player, bool animate)
         {
+            this.player = player;
+
+            // Update UI based on players upgrade
+            UpdateStage(player.WorkshopUpgradeLevel, false);
+            //UpdateLabels(player.WorkshopUpgrades.GetNextUpgrade());
+            
+
             workshop.SetShowing(true);
             isShowing = true;
             canvas.enabled = true;
 
-            //InventoryPanelUI.Instance.SetSecondary(this);
-
+ 
             if (animate)
             {
                 Animate();

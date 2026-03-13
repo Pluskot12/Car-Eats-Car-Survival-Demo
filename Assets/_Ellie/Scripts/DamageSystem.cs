@@ -69,10 +69,7 @@ namespace CarGame
             source.PlayOneShot(deathSound);
             carExhaust.SetActive(false);
 
-            if (isEnemy) 
-            {
-                carVisuals.SetActive(false);
-            }
+
 
             Color c = Color.white;
             
@@ -89,6 +86,14 @@ namespace CarGame
             exp.SetActive(true);
             var parts = Instantiate(partsParent, transform.position, Quaternion.identity);
             parts.SetActive(true);
+
+            Destroy(exp, 5f);
+            Destroy(parts, 5f);
+
+            if (isEnemy)
+            {
+                carVisuals.SetActive(false);
+            }
         }
 
         public void Respawn()

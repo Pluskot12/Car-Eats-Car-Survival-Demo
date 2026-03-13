@@ -6,7 +6,7 @@ namespace CarGame
     public class PlayerWorkshopUpgrades : MonoBehaviour
     {
         [System.Serializable]
-        public struct Upgrades 
+        public class Upgrades 
         {
             public int health;
             public int hunger;
@@ -56,6 +56,21 @@ namespace CarGame
         {
             currentUpgrades = new Upgrades();
             upgradeLevel = 0;
+        }
+
+        public Upgrades GetNextUpgrade() 
+        {
+            if (upgradeLevel < upgrades.Length) 
+            {
+                return upgrades[upgradeLevel];
+            }
+
+            return null;
+        }
+
+        public bool IsMax() 
+        {
+            return upgradeLevel >= upgrades.Length;
         }
 
 

@@ -32,5 +32,11 @@ namespace CarGame
                 off.enabled = false;
             }
         }
+
+        public void Deactivate()
+        {
+            on.enabled = false;
+            off.enabled = true;
+        }
     }
 }

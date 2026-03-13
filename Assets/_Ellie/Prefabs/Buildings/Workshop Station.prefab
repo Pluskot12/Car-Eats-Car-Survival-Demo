@@ -499,7 +499,7 @@ GameObject:
   - component: {fileID: 3867061068177783808}
   - component: {fileID: 928165331778332927}
   m_Layer: 5
-  m_Name: Text (TMP) (3)
+  m_Name: Horsepower Text (TMP) (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -636,7 +636,7 @@ GameObject:
   - component: {fileID: 3572042069941457945}
   - component: {fileID: 5536774371832379968}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: Health Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -848,7 +848,7 @@ GameObject:
   - component: {fileID: 5618642389930241138}
   - component: {fileID: 1505856107051469816}
   m_Layer: 5
-  m_Name: Text (TMP) (2)
+  m_Name: Speed Text (TMP) (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -985,7 +985,7 @@ GameObject:
   - component: {fileID: 17514025537314596}
   - component: {fileID: 5240264001436607165}
   m_Layer: 5
-  m_Name: Text (TMP) (4)
+  m_Name: TurboText (TMP) (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1228,7 +1228,7 @@ GameObject:
   - component: {fileID: 3964966259858456586}
   - component: {fileID: 4662228351138883151}
   m_Layer: 5
-  m_Name: Text (TMP) (1)
+  m_Name: Hunger Text (TMP) (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1744,44 +1744,15 @@ MonoBehaviour:
   craftButtonValid: {fileID: 21300000, guid: b885e9d4ba67de74682b7d43addc7a64, type: 3}
   craftButtonInvalid: {fileID: 21300000, guid: d884f9be6c41f704dbdd4242459a0cb9, type: 3}
   upgradeSound: {fileID: 8300000, guid: ee64e8162e070544ca61af6600f5d618, type: 3}
-  stat1: {fileID: 5536774371832379968}
-  stat2: {fileID: 4662228351138883151}
-  stat3: {fileID: 1505856107051469816}
-  stat4: {fileID: 928165331778332927}
-  stat5: {fileID: 5240264001436607165}
+  health: {fileID: 5536774371832379968}
+  hunger: {fileID: 4662228351138883151}
+  speed: {fileID: 1505856107051469816}
+  horsepower: {fileID: 928165331778332927}
+  turbo: {fileID: 5240264001436607165}
   stars:
   - {fileID: 377758532261726139}
   - {fileID: 3930446206620864003}
   - {fileID: 2892631033116779856}
-  upgrades:
-  - stat1: 1
-    stat2: 2
-    stat3: 3
-    stat4: 4
-    stat5: 5
-    items:
-    - item: {fileID: 11400000, guid: dc2b451c6b66237479da37a515047f91, type: 2}
-      quantity: 5
-  - stat1: 2
-    stat2: 3
-    stat3: 4
-    stat4: 5
-    stat5: 6
-    items:
-    - item: {fileID: 11400000, guid: dc2b451c6b66237479da37a515047f91, type: 2}
-      quantity: 5
-    - item: {fileID: 11400000, guid: eebccc480c2d42548ba823933ee66812, type: 2}
-      quantity: 5
-  - stat1: 3
-    stat2: 4
-    stat3: 5
-    stat4: 6
-    stat5: 7
-    items:
-    - item: {fileID: 11400000, guid: dc2b451c6b66237479da37a515047f91, type: 2}
-      quantity: 10
-    - item: {fileID: 11400000, guid: eebccc480c2d42548ba823933ee66812, type: 2}
-      quantity: 10
   animationParent: {fileID: 2546577607162109324}
   offPosition: -400
   inDuration: 0.2
@@ -2051,11 +2022,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 439405614362305673, guid: 81a4b03a53eabc94c86a6a6d706911df, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 11.4350605
+      value: 17.45573
       objectReference: {fileID: 0}
     - target: {fileID: 439405614362305673, guid: 81a4b03a53eabc94c86a6a6d706911df, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.7954278
+      value: 0.029471874
       objectReference: {fileID: 0}
     - target: {fileID: 439405614362305673, guid: 81a4b03a53eabc94c86a6a6d706911df, type: 3}
       propertyPath: m_LocalPosition.z

@@ -12,6 +12,7 @@ namespace CarGame
         [SerializeField] private Collider2D col;
         [SerializeField] private SortingGroup sortingGroup;
         [SerializeField] private bool attachable;
+        [SerializeField] private bool returnItemOnDeath = true;
 
         [SerializeField] private BuildingAttachmentSlot[] attachmentSlots;
         [SerializeField] private BuildingItem[] allowedAttachments;
@@ -119,7 +120,7 @@ namespace CarGame
                 }
             }
 
-            if (spawnItem) 
+            if (spawnItem && returnItemOnDeath) 
             { 
                 ItemSpawner.Instance.SpawnItem(data, 1, transform.position);
             }

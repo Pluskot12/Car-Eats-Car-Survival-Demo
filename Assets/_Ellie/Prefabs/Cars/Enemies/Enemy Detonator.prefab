@@ -245,7 +245,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: -1962667653
-  m_SortingLayer: 10
+  m_SortingLayer: 11
   m_SortingOrder: 100
   m_MaskInteraction: 0
   m_Sprite: {fileID: 21300000, guid: ab1241b6b80bf58468addbc376a2ef47, type: 3}
@@ -370,6 +370,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: CarGame::CarGame.ExplodeAtTarget
   enemyController: {fileID: 5388008087247309080}
   distanceThreshold: 0.2
+  enemyBlockerMask:
+    serializedVersion: 2
+    m_Bits: 16777216
+  rayDistance: 0.3
 --- !u!1 &6080770536984360282
 GameObject:
   m_ObjectHideFlags: 0
@@ -448,7 +452,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: -1533714651
-  m_SortingLayer: 11
+  m_SortingLayer: 12
   m_SortingOrder: 20
   m_MaskInteraction: 0
   m_Sprite: {fileID: 21300000, guid: 345bd3afedeb74740b14db329be7ccc4, type: 3}
@@ -679,6 +683,8 @@ MonoBehaviour:
   explodeOnStart: 1
   damage: 40
   blastRadius: 1.25
+  knockbackForce: 10
+  verticalKnockbackFactor: 0
 --- !u!1001 &2481855581519238037
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1351,11 +1357,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4010788744008517821, guid: e07c9f67501a53e44a16ded9bc670a1d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 21
+      value: 2.8645973
       objectReference: {fileID: 0}
     - target: {fileID: 4010788744008517821, guid: e07c9f67501a53e44a16ded9bc670a1d, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -11.6
+      value: 0.82
       objectReference: {fileID: 0}
     - target: {fileID: 4010788744008517821, guid: e07c9f67501a53e44a16ded9bc670a1d, type: 3}
       propertyPath: m_LocalPosition.z
