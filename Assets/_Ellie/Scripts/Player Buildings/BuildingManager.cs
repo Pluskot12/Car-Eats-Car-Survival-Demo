@@ -18,6 +18,7 @@ namespace CarGame
         [Header("Audio")]
         [SerializeField] private AudioSource audioSource;
         [SerializeField] private AudioClip buildAudio;
+        [SerializeField] private AudioClip removeAudio;
 
         [Header("Colors")]
         [SerializeField] private Color validPlacementColor;
@@ -211,16 +212,24 @@ namespace CarGame
                     if (!removeInProgress) 
                     {
                         removeInProgress = true;
+                        Debug.Log("Show");
+                        progressRemoveBar.Show(hoveringBInteraction.Building.IndicatorPosition);
+
+                        progressRemoveBar.UpdateStatus(BuildingIndicatorUI.Status.Valid);
+                        progressRemoveBar.OnClick(true);
                     }
                     float progress = (interactionTimer - 0.25f) / removeTime;
-                    progressRemoveBar.Show(hoveringBInteraction.Building.IndicatorPosition);
-                    progressRemoveBar.OnClick(true);
+ 
                     progressRemoveBar.UpdateProgress(progress);
 
                     if ((interactionTimer - 0.25f) >= removeTime)
                     {
                         hoveringBInteraction.Building.RemoveBuilding(true);
                         progressRemoveBar.UpdateStatus(BuildingIndicatorUI.Status.Complete);
+                        clickedBInteraction = null;
+                        interactionTimer = 0f;
+                        removeInProgress = false;
+                        audioSource.PlayOneShot(removeAudio);
                     }
                     //
                 }
@@ -240,12 +249,14 @@ namespace CarGame
                 progressRemoveBar.Hide(false);
                 progressRemoveBar.OnClick(false);
                 clickedBInteraction = null;
+                removeInProgress = false;
             }
             else
             {
-               // interactionTimer -= Time.deltaTime * drainSpeed;
-               // float progress = (interactionTimer - 0.25f) / removeTime;
-               // progressRemoveBar.UpdateProgress(progress);
+                // interactionTimer -= Time.deltaTime * drainSpeed;
+                // float progress = (interactionTimer - 0.25f) / removeTime;
+                // progressRemoveBar.UpdateProgress(progress);
+                removeInProgress = false;
             }
         }
 
