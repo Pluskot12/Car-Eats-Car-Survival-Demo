@@ -30,6 +30,7 @@ namespace CarGame
 
         [Header("Progress Bar")]
         [SerializeField] private BuildingIndicatorUI progressBar;
+        [SerializeField] private BuildingIndicatorUI progressRemoveBar;
 
         private List<Building> placedBuildings = new();
         public List<Building> PlacedBuildings => placedBuildings;
@@ -79,7 +80,8 @@ namespace CarGame
             Gizmos.DrawSphere(bottomLeft, 0.1f);
             Gizmos.DrawSphere(bottomRight, 0.1f);
         }
-        
+        float removeTime = 1.5f;
+        bool removeInProgress;
         private void Update()
         {
             HandleRightClick();
@@ -204,17 +206,30 @@ namespace CarGame
             }
             else if (Input.GetMouseButton(1) && clickedBInteraction == hoveringBInteraction)
             {
-                if (interactionTimer >= 0.5f)
+                if (interactionTimer >= 0.25f)
                 {
+                    if (!removeInProgress) 
+                    {
+                        removeInProgress = true;
+                    }
+                    float progress = (interactionTimer - 0.25f) / removeTime;
+                    progressRemoveBar.Show(hoveringBInteraction.Building.IndicatorPosition);
+                    progressRemoveBar.OnClick(true);
+                    progressRemoveBar.UpdateProgress(progress);
 
-                    hoveringBInteraction.Building.RemoveBuilding(true);
+                    if ((interactionTimer - 0.25f) >= removeTime)
+                    {
+                        hoveringBInteraction.Building.RemoveBuilding(true);
+                        progressRemoveBar.UpdateStatus(BuildingIndicatorUI.Status.Complete);
+                    }
+                    //
                 }
 
                 interactionTimer += Time.deltaTime;
             }
             else if (Input.GetMouseButtonUp(1) && clickedBInteraction == hoveringBInteraction)
             {
-                if (interactionTimer < removeInteractionTime) 
+                if (interactionTimer < removeInteractionTime)
                 {
                     if (hoveringBInteraction)
                     {
@@ -222,8 +237,15 @@ namespace CarGame
 
                     }
                 }
-
+                progressRemoveBar.Hide(false);
+                progressRemoveBar.OnClick(false);
                 clickedBInteraction = null;
+            }
+            else
+            {
+               // interactionTimer -= Time.deltaTime * drainSpeed;
+               // float progress = (interactionTimer - 0.25f) / removeTime;
+               // progressRemoveBar.UpdateProgress(progress);
             }
         }
 

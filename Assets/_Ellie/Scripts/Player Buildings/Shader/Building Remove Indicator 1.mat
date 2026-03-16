@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Building Indicator
+  m_Name: Building Remove Indicator 1
   m_Shader: {fileID: -6465566751694194690, guid: d07b55bf1dc32974080da037041e5473, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -32,7 +32,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Complete:
-        m_Texture: {fileID: 2800000, guid: 2cfddc6378d278846aefa70fb20007cc, type: 3}
+        m_Texture: {fileID: 2800000, guid: dc856f91be4ea344ca9218fb8c2aac4e, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
@@ -40,7 +40,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Valid:
-        m_Texture: {fileID: 2800000, guid: 72855346a54774b44910a932ccca127a, type: 3}
+        m_Texture: {fileID: 2800000, guid: dc856f91be4ea344ca9218fb8c2aac4e, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - unity_Lightmaps:
@@ -60,7 +60,7 @@ Material:
     - _Blocked: 0
     - _BlockedStatus: 0
     - _ColorMask: 15
-    - _Progress: 0
+    - _Progress: 1
     - _Stencil: 0
     - _StencilComp: 8
     - _StencilOp: 0
