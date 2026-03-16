@@ -57,6 +57,10 @@ namespace CarGame
 
         protected override void ApplyEffect(Collider2D hit, IDamageable target, BombItem data)
         {
+
+            Debug.Log("??? " + hit.gameObject);
+            Debug.Log("??? " + data.damage);
+
             base.ApplyEffect(hit, target, data);
 
             Rigidbody2D rb = hit.attachedRigidbody;

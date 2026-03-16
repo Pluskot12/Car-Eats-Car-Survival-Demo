@@ -443,7 +443,7 @@ MonoBehaviour:
   audioSource: {fileID: 1642843171804914490}
   damageableLayers:
     serializedVersion: 2
-    m_Bits: 2048
+    m_Bits: 3072
   mask:
     serializedVersion: 2
     m_Bits: 2304

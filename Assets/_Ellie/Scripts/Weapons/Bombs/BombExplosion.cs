@@ -1,6 +1,8 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
 using static UnityEngine.Analytics.IAnalytic;
+using static UnityEngine.GraphicsBuffer;
 
 namespace CarGame
 {
@@ -9,6 +11,8 @@ namespace CarGame
 
         [SerializeField] private AudioSource audioSource;
         [SerializeField] private LayerMask damageableLayers;
+
+        private HashSet<IDamageable> targets;
 
         private void Awake()
         {
@@ -25,6 +29,8 @@ namespace CarGame
 
             Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, blastRadius, damageableLayers);
 
+            targets = new HashSet<IDamageable>();
+
             foreach (Collider2D hit in hits)
             {
                 if (hit.attachedRigidbody == null)
@@ -32,8 +38,14 @@ namespace CarGame
 
                 IDamageable target = hit.attachedRigidbody.GetComponent<IDamageable>();
 
+                if (targets.Contains(target)) 
+                {
+                    continue;
+                }
+
                 if (target != null)
                 {
+                    targets.Add(target);
                     ApplyEffect(hit, target, data);
                 }
             }
