@@ -11,6 +11,7 @@ namespace CarGame
         public SpriteRenderer SpriteRenderer => spriteRenderer;
         [SerializeField] private List<SpawnTable> spawnTables;
         [SerializeField] private Chest randomLootCrate;
+        [SerializeField] private float randomLootRespawnTime = 60f;
 
         private List<Vector3> spawnedPositions = new List<Vector3>();
         private float minDistance = 0.5f;
@@ -63,6 +64,15 @@ namespace CarGame
             Vector3 spawnPos = GetPositionWithMinDistance();
             if (spawnPos != Vector3.zero)
             {
+
+
+                if (GameManager.Instance.IsVisibleOnScreen(spawnPos, 1f)) 
+                {
+                    Debug.Log("Is on screen");
+                    StartCoroutine(RespawnChest());
+                    return;
+                }
+
                 randomLootCratePosition = spawnPos;
                 Chest chest = Instantiate(randomLootCrate, spawnPos, Quaternion.identity, transform);
                 chest.SetAttachedStructure(this);
@@ -113,7 +123,7 @@ namespace CarGame
 
         private IEnumerator RespawnChest() 
         {
-            yield return new WaitForSeconds(10f);
+            yield return new WaitForSeconds(randomLootRespawnTime);
 
             SpawnRandomCrate();
         }

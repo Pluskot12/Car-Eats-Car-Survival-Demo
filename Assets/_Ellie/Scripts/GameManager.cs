@@ -79,5 +79,14 @@ namespace CarGame
 
            return localPoint;
         }
+
+        public bool IsVisibleOnScreen(Vector3 worldPosition, float margin = 0.1f)
+        {
+            Vector3 viewportPos = Camera.main.WorldToViewportPoint(worldPosition);
+
+            return viewportPos.x > -margin && viewportPos.x < 1 + margin &&
+                   viewportPos.y > -margin && viewportPos.y < 1 + margin &&
+                   viewportPos.z > 0;
+        }
     }
 }
