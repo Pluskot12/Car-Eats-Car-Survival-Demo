@@ -75,7 +75,7 @@ namespace CarGame
 
         private void UpdateText(float dayProgress)
         {
-            float offsetHours = 12f;
+            float offsetHours = 12;
 
             float totalHours = (dayProgress * 24f + offsetHours) % 24f;
 

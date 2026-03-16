@@ -95,7 +95,7 @@ namespace CarGame
             }
         }
 
-
+        bool wrapped;
         private void UpdateTime(bool timeSkip = false)
         {
             if (!timeSkip) 
@@ -103,16 +103,29 @@ namespace CarGame
                 currentTime += Time.deltaTime;
             }
 
+            if (currentTime > dayStartTime && wrapped)
+            {
+                currentDay++;
+                day++;
+
+                wrapped = false;
+            }
+
             if (currentTime > dayLength)
             {
                 currentTime -= dayLength;
+
+                wrapped = true;
+
+
+                /*
                 currentDay++;
                 day++;
 
                 if (currentDay == 7)
                 {
                     currentDay = 0;
-                }
+                }*/
             }
             else if (currentTime < 0)
             {

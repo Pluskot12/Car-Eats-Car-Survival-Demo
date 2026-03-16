@@ -68,7 +68,6 @@ namespace CarGame
 
                 if (GameManager.Instance.IsVisibleOnScreen(spawnPos, 1f)) 
                 {
-                    Debug.Log("Is on screen");
                     StartCoroutine(RespawnChest());
                     return;
                 }
