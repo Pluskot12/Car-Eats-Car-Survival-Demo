@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 81da550d3336bfd428a44bdd11c0926a, type: 3}
-  m_Name: Recipe - Simple Stone Wall
+  m_Name: Recipe - Airbricks
   m_EditorClassIdentifier: CarGame::CarGame.CraftingRecipe
-  item: {fileID: 11400000, guid: 40b6519b576f71044bc60096bd0937ed, type: 2}
+  item: {fileID: 11400000, guid: 339b5ce0c1320b94bb322ae48889b959, type: 2}
   quantity: 1
-  type: 1
+  type: 2
   ingredients:
-  - item: {fileID: 11400000, guid: 339b5ce0c1320b94bb322ae48889b959, type: 2}
-    quantity: 5
+  - item: {fileID: 11400000, guid: 68c670f5e00335044a36975fde9217c5, type: 2}
+    quantity: 20

@@ -21,7 +21,7 @@ namespace CarGame
 
         private bool activated;
 
-        private bool isSpawnPoint;
+        private static bool isSpawnPoint;
 
         private void Update()
         {
@@ -50,12 +50,12 @@ namespace CarGame
 
         public void OnInteract(Player player) 
         {
-            isSpawnPoint = !isSpawnPoint;
+            isSpawnPoint = this == GameManager.Instance.GetSpawnPoint();
 
-            if (isSpawnPoint)
+            if (!isSpawnPoint)
             {
                 audioSource.PlayOneShot(setSpawnSound);
-                GameManager.Instance.SetSpawnPoint(transform.position);
+                GameManager.Instance.SetSpawnPoint(this, transform.position);
             }
             else
             {

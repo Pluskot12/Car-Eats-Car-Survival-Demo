@@ -41,13 +41,22 @@ namespace CarGame
             // SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
 
-        public void SetSpawnPoint(Vector3 spawnPoint) 
+        private CareCenter currentCareCenter;
+
+        public CareCenter GetSpawnPoint() 
         {
+            return currentCareCenter;
+        }
+
+        public void SetSpawnPoint(CareCenter careCenter, Vector3 spawnPoint) 
+        {
+            currentCareCenter = careCenter;
             this.spawnPoint = spawnPoint;
         }
 
         public void RevertSpawnPoint()
         {
+            currentCareCenter = null;
             spawnPoint = defaultSpawnPoint;
         }
 
