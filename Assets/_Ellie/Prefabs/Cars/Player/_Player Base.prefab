@@ -1342,19 +1342,43 @@ MonoBehaviour:
     speed: 10
     horsepower: 20
     turbo: 3
-    items: []
+    items:
+    - item: {fileID: 11400000, guid: b76efbbb1d57b89429407bd79e3295c3, type: 2}
+      quantity: 1
+    - item: {fileID: 11400000, guid: da8b1203d5651ee48b2d217bd2f032b1, type: 2}
+      quantity: 5
+    - item: {fileID: 11400000, guid: b885495a785739244953d60073d133b1, type: 2}
+      quantity: 4
+    - item: {fileID: 11400000, guid: 7404be74ae07db14298dc55b28d79b21, type: 2}
+      quantity: 2
   - health: 50
     hunger: 5
     speed: 10
     horsepower: 10
     turbo: 5
-    items: []
+    items:
+    - item: {fileID: 11400000, guid: b76efbbb1d57b89429407bd79e3295c3, type: 2}
+      quantity: 5
+    - item: {fileID: 11400000, guid: da8b1203d5651ee48b2d217bd2f032b1, type: 2}
+      quantity: 10
+    - item: {fileID: 11400000, guid: 7404be74ae07db14298dc55b28d79b21, type: 2}
+      quantity: 5
+    - item: {fileID: 11400000, guid: befdaf7e01e38b541b66973a2153da8d, type: 2}
+      quantity: 200
   - health: 100
-    hunger: 15
+    hunger: 20
     speed: 10
     horsepower: 15
     turbo: 5
-    items: []
+    items:
+    - item: {fileID: 11400000, guid: c3f141448f026854b9d7241f06c384fc, type: 2}
+      quantity: 1
+    - item: {fileID: 11400000, guid: da8b1203d5651ee48b2d217bd2f032b1, type: 2}
+      quantity: 20
+    - item: {fileID: 11400000, guid: 7404be74ae07db14298dc55b28d79b21, type: 2}
+      quantity: 4
+    - item: {fileID: 11400000, guid: befdaf7e01e38b541b66973a2153da8d, type: 2}
+      quantity: 500
   currentUpgrades:
     health: 0
     hunger: 0
@@ -3872,14 +3896,20 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4834234942597826326, guid: 8fc1470e1c011114fafdf274218ce4f1, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3922311966883368869}
+    - targetCorrespondingSourceObject: {fileID: 4834234942597826326, guid: 8fc1470e1c011114fafdf274218ce4f1, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8850466823025804230}
   m_SourcePrefab: {fileID: 100100000, guid: 8fc1470e1c011114fafdf274218ce4f1, type: 3}
 --- !u!114 &6242925504683548982 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8910653578802676716, guid: 8fc1470e1c011114fafdf274218ce4f1, type: 3}
   m_PrefabInstance: {fileID: 3245498375134208730}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 7934485486639801804}
   m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 073797afb82c5a1438f328866b10b3f0, type: 3}
@@ -3890,6 +3920,51 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5604794427285504168, guid: 8fc1470e1c011114fafdf274218ce4f1, type: 3}
   m_PrefabInstance: {fileID: 3245498375134208730}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &7934485486639801804 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4834234942597826326, guid: 8fc1470e1c011114fafdf274218ce4f1, type: 3}
+  m_PrefabInstance: {fileID: 3245498375134208730}
+  m_PrefabAsset: {fileID: 0}
+--- !u!50 &3922311966883368869
+Rigidbody2D:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7934485486639801804}
+  m_BodyType: 0
+  m_Simulated: 0
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
+--- !u!114 &8850466823025804230
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7934485486639801804}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ee435fa96f5c3d449afa0e0f6ba0d9a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+  lightt: {fileID: 6242925504683548982}
 --- !u!1001 &6795013599825478326
 PrefabInstance:
   m_ObjectHideFlags: 0
