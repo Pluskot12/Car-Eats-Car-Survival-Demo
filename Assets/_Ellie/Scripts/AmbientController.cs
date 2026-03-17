@@ -65,6 +65,8 @@ namespace CarGame
         private void Start()
         {
             BiomeManager.Instance.OnBiomeChanged.AddListener(OnBiomeChange);
+
+
         }
 
         private void OnBiomeChange(BiomeData biome)
@@ -73,9 +75,16 @@ namespace CarGame
                 PlayAmbient(biome.dayAmbience, 1f);
         }
 
+        bool ignoreFirst = true;
         public void UpdateTime(float time) 
         {
             currentTime = time;
+
+            if (ignoreFirst) 
+            {
+                previousTime = currentTime;
+                ignoreFirst = false;
+            }
 
             CheckTriggers();
         }
