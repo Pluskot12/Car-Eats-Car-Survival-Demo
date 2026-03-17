@@ -35,7 +35,9 @@ namespace CarGame
 
         private void Start()
         {
-            
+#if UNITY_EDITOR
+            canSpawn = false;
+#endif
         }
 
         private void Update()

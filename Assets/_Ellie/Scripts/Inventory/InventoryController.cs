@@ -25,6 +25,20 @@ namespace CarGame
         public int Capacity => capacity;
         public int ItemCount => inventory.ItemsCount();
 
+        private void Update()
+        {
+            if (Input.GetKeyDown(KeyCode.V))
+            {
+                Debug.Log("Inventory Content " + name);
+
+                foreach (var item in inventory.Items) 
+                {
+                    if (item != null && item.ItemData != null)
+                    Debug.Log(item.ItemData.displayName + " x " + item.Quantity);
+                }
+            }
+        }
+
         private void Awake()
         {
             inventory = new Inventory(capacity);

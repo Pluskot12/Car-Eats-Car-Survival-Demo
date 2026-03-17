@@ -122,6 +122,11 @@ namespace CarGame
             }
         }
 
+        public void OnChestRemoved() 
+        {
+            inventory.DropAllItems();
+        }
+
         bool isDestroyed;
 
         private void DestroyChest()
@@ -157,6 +162,9 @@ namespace CarGame
             {
                 attachedToStructure.OnChestLooted(this);
             }
+
+            
+            //foreach (var item in )
         }
 
         public void SetAttachedStructure(Structure structure) 

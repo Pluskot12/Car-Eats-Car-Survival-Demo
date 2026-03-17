@@ -20,6 +20,7 @@ namespace CarGame
         [Header("Events"), Space()]
         [SerializeField] private UnityEvent<Building> OnPlace;
         [SerializeField] private UnityEvent<Player> OnInteract;
+        [SerializeField] private UnityEvent<Building> OnRemoved;
 
         public BuildingItem Data => data;
         public BuildingAttachmentSlot[] AttachmentSlots => attachmentSlots;
@@ -107,6 +108,8 @@ namespace CarGame
 
         public void RemoveBuilding(bool spawnItem) 
         {
+            OnRemoved.Invoke(this);
+
             if (isAttachment) 
             {
                 Debug.Log("Is attachment, do something");

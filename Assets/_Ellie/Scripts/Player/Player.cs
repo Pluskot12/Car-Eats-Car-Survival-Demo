@@ -132,7 +132,7 @@ namespace CarGame
             }
             if (Input.GetKeyDown(KeyCode.C))
             {
-                //GetComponent<IDamageable>().TryDamage(9999);
+                TryDamage(99999);
             }
             if (Input.GetKeyDown(KeyCode.L))
             {
