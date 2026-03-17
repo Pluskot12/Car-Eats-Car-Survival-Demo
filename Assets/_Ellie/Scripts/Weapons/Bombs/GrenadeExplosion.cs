@@ -57,10 +57,6 @@ namespace CarGame
 
         protected override void ApplyEffect(Collider2D hit, IDamageable target, BombItem data)
         {
-
-            Debug.Log("??? " + hit.gameObject);
-            Debug.Log("??? " + data.damage);
-
             base.ApplyEffect(hit, target, data);
 
             Rigidbody2D rb = hit.attachedRigidbody;
@@ -74,13 +70,15 @@ namespace CarGame
             dir.y *= verticalKnockbackFactor;
             dir.Normalize();
 
-            float force = knockbackForce;
-
-            if (hit.attachedRigidbody.TryGetComponent<CarController>(out CarController car)) 
+            if (rb.TryGetComponent<CarController>(out CarController car))
             {
-                car.Knockback(dir * force);
-            }
+                float velocityAlongDir = Vector2.Dot(rb.linearVelocity, dir);
 
+                // Guarantee knockback is at least knockbackForce, but respect existing momentum
+                float finalForce = Mathf.Max(knockbackForce, velocityAlongDir + knockbackForce);
+
+                car.Knockback(dir * finalForce);
+            }
         }
 
 
