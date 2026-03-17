@@ -212,7 +212,7 @@ namespace CarGame
             }
             else if (Input.GetMouseButton(1) && clickedBInteraction == hoveringBInteraction)
             {
-                if (interactionTimer >= 0.25f)
+                if (hoveringBInteraction.Building.Removeable && interactionTimer >= 0.25f)
                 {
                     if (!removeInProgress) 
                     {

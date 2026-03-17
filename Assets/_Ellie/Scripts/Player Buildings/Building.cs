@@ -12,6 +12,7 @@ namespace CarGame
         [SerializeField] private Collider2D col;
         [SerializeField] private SortingGroup sortingGroup;
         [SerializeField] private bool attachable;
+        [SerializeField] private bool removeable = true;
         [SerializeField] private bool returnItemOnDeath = true;
 
         [SerializeField] private BuildingAttachmentSlot[] attachmentSlots;
@@ -21,6 +22,8 @@ namespace CarGame
         [SerializeField] private UnityEvent<Building> OnPlace;
         [SerializeField] private UnityEvent<Player> OnInteract;
         [SerializeField] private UnityEvent<Building> OnRemoved;
+
+
 
         public BuildingItem Data => data;
         public BuildingAttachmentSlot[] AttachmentSlots => attachmentSlots;
@@ -35,6 +38,8 @@ namespace CarGame
         public SortingGroup SortingGroup {  get { return sortingGroup; } set { sortingGroup = value; }  }
 
         public bool Attachable => attachable;
+        public bool Removeable => removeable;
+
 
         public Vector3 GetLeftCorner() 
         {
