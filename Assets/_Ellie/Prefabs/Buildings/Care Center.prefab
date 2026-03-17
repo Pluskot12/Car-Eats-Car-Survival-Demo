@@ -177,7 +177,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2223015872265380319, guid: 81a4b03a53eabc94c86a6a6d706911df, type: 3}
       propertyPath: OnInteract.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: SetSpawn
+      value: OnInteract
       objectReference: {fileID: 0}
     - target: {fileID: 2223015872265380319, guid: 81a4b03a53eabc94c86a6a6d706911df, type: 3}
       propertyPath: OnPlace.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
@@ -268,6 +268,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: CarGame::CarGame.CareCenter
   audioSource: {fileID: 8295628151249637108}
   healSound: {fileID: 8300000, guid: 13d841072cce1b346a2a2d356ea1967b, type: 3}
+  setSpawnSound: {fileID: 8300000, guid: f6654cffd3e4ac84cb82989737ec42c5, type: 3}
+  unsetSpawnSound: {fileID: 8300000, guid: 7dc102dcdb2e6a549a465a148a3986f9, type: 3}
   healthPerTick: 1
   secondsPerTick: 5
   flag: {fileID: 7590302099642979348}

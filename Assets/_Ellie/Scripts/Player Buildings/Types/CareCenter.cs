@@ -6,6 +6,8 @@ namespace CarGame
     {
         [SerializeField] private AudioSource audioSource;
         [SerializeField] private AudioClip healSound;
+        [SerializeField] private AudioClip setSpawnSound;
+        [SerializeField] private AudioClip unsetSpawnSound;
 
         [SerializeField] private int healthPerTick;
         [SerializeField] private float secondsPerTick;
@@ -19,13 +21,10 @@ namespace CarGame
 
         private bool activated;
 
+        private bool isSpawnPoint;
+
         private void Update()
         {
-            if (Input.GetKeyDown(KeyCode.L)) 
-            {
-                GameManager.Instance.Player.TryDamage(10);
-            }
-
             if (!activated) 
             {
                 return;
@@ -49,11 +48,22 @@ namespace CarGame
             }
         }
 
-        public void SetSpawn(Player player) 
+        public void OnInteract(Player player) 
         {
-            Debug.Log("respawn set");
-            GameManager.Instance.SetSpawnPoint(transform.position);
+            isSpawnPoint = !isSpawnPoint;
+
+            if (isSpawnPoint)
+            {
+                audioSource.PlayOneShot(setSpawnSound);
+                GameManager.Instance.SetSpawnPoint(transform.position);
+            }
+            else
+            {
+                audioSource.PlayOneShot(unsetSpawnSound);
+                GameManager.Instance.RevertSpawnPoint();
+            }
         }
+
 
         public void OnPlace(Building building) 
         {

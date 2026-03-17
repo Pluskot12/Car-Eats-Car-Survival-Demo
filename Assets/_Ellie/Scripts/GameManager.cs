@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 namespace CarGame
@@ -10,6 +11,7 @@ namespace CarGame
         [SerializeField] private Player player;
 
         [SerializeField] private Vector3 spawnPoint; 
+        [SerializeField] private Vector3 defaultSpawnPoint; 
 
         private Vector3 mousePosition;
         public Vector3 MousePosition => GetMousePosition();
@@ -20,6 +22,8 @@ namespace CarGame
         private void Awake()
         {
             Instance = this;
+
+            defaultSpawnPoint = spawnPoint;
         }
 
         private void Update()
@@ -40,6 +44,11 @@ namespace CarGame
         public void SetSpawnPoint(Vector3 spawnPoint) 
         {
             this.spawnPoint = spawnPoint;
+        }
+
+        public void RevertSpawnPoint()
+        {
+            spawnPoint = defaultSpawnPoint;
         }
 
         public void OnPlayerDeath()
@@ -88,5 +97,6 @@ namespace CarGame
                    viewportPos.y > -margin && viewportPos.y < 1 + margin &&
                    viewportPos.z > 0;
         }
+
     }
 }
