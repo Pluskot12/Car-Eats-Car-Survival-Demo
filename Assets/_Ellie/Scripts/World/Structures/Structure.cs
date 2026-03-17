@@ -11,7 +11,6 @@ namespace CarGame
         public SpriteRenderer SpriteRenderer => spriteRenderer;
         [SerializeField] private List<SpawnTable> spawnTables;
         [SerializeField] private Chest randomLootCrate;
-        [SerializeField] private float randomLootRespawnTime = 60f;
 
         private List<Vector3> spawnedPositions = new List<Vector3>();
         private float minDistance = 0.5f;
@@ -123,8 +122,8 @@ namespace CarGame
         private IEnumerator RespawnChest() 
         {
             float respawnTime = Random.Range(TimeManager.Instance.DayLength, TimeManager.Instance.DayLength * 2F);
-
-            yield return new WaitForSeconds(randomLootRespawnTime);
+            
+            yield return new WaitForSeconds(respawnTime);
 
             SpawnRandomCrate();
         }

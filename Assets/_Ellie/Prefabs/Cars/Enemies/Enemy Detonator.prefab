@@ -681,7 +681,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 3072
   explodeOnStart: 1
-  damage: 40
+  damage: 60
   blastRadius: 1.25
   knockbackForce: 10
   verticalKnockbackFactor: 0

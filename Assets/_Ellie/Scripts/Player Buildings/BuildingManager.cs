@@ -194,8 +194,13 @@ namespace CarGame
 
             // Clicks
 
-            if (hoveringBInteraction == null) 
+            if (hoveringBInteraction == null)
             {
+                if (progressRemoveBar.IsShowing)
+                {
+                    Debug.Log("nope");
+                    progressRemoveBar.Hide(false);
+                }
                 interactionTimer = 0;
                 return;
             }
@@ -253,6 +258,7 @@ namespace CarGame
             }
             else
             {
+
                 // interactionTimer -= Time.deltaTime * drainSpeed;
                 // float progress = (interactionTimer - 0.25f) / removeTime;
                 // progressRemoveBar.UpdateProgress(progress);
@@ -334,10 +340,7 @@ namespace CarGame
 
             return false;
         }
-        /*/
-         *             List<Collider2D> results = new List<Collider2D>();
-            int count = Physics2D.OverlapCollider(currentBuilding.Collider, results);
-        */
+
         private bool IsBlockedByStructure() 
         {
             int count = currentBuilding.Collider.Overlap(blockingFilter, results);
@@ -366,8 +369,6 @@ namespace CarGame
             currentBuildingData = building;
 
             SpawnBuildingPreview();
-
-            Debug.Log("Selected " + building.displayName);
         }
 
         public bool TryPlace(BuildingItem building) 

@@ -94,7 +94,7 @@ namespace CarGame
 
             isShowing = false;
         }
-
+        public bool IsShowing => isShowing;
         public void UpdateStatus(Status status)
         {
             if (currentStatus == status) 
