@@ -23,8 +23,8 @@ namespace CarGame
 
         [SerializeField] float buildingDistance = 5f;
         [SerializeField] float distancePerIteration = 1f;
-        private Vector3 left = new Vector2(-1, 0);
-        private Vector3 right = new Vector2(2, 0);
+        private Vector3 left = new Vector2(-0.8f, 0);
+        private Vector3 right = new Vector2(1.8f, 0);
 
 
         [SerializeField] private bool canSpawn;
@@ -43,6 +43,21 @@ namespace CarGame
             if (Input.GetKeyDown(KeyCode.O)) 
             {
                 canSpawn = !canSpawn;
+            }
+
+            if (Input.GetKeyDown(KeyCode.K))
+            {
+                foreach (var enemy in randomSpawnedEnemies) 
+                {
+                    enemy.OnDeath();
+                }
+
+                randomSpawnedEnemies.Clear();
+            }
+
+            if (Input.GetKeyDown(KeyCode.J))
+            {
+                SpawnRandomEnemyOffScreen();
             }
 
             if (!canSpawn || GameManager.Instance.Player.IsDead)
@@ -85,7 +100,6 @@ namespace CarGame
             float chance = Random.Range(0f, 100f);
             if (chance <= baseSpawnChance)
             {
-                //Debug.Log("Spawning");
                 SpawnRandomEnemyOffScreen();
             }
 
@@ -138,15 +152,7 @@ namespace CarGame
                 return;
             }
 
-
-            RaycastHit2D hit = Physics2D.Raycast(
-                position + Vector3.up * 100f,
-                Vector2.down,
-                99999,
-                groundLayer
-            );
-
-
+            RaycastHit2D hit = Physics2D.Raycast(position + Vector3.up * 100f, Vector2.down, 99999, groundLayer);
 
             // Dont spawn on DeadEnd
             if (hit.transform.gameObject.TryGetComponent<Biome>(out Biome biome))
@@ -161,7 +167,7 @@ namespace CarGame
 
             if (enemy != null)
             {
-                var instance = SpawnEnemy(GetEnemy(position), position);
+                var instance = SpawnEnemy(enemy, position);
                 randomSpawnedEnemies.Add(instance);
             }
             
@@ -184,18 +190,12 @@ namespace CarGame
             BiomeData biome = BiomeManager.Instance.CurrentBiome;
 
             position.y = 100;
-            RaycastHit2D hit = Physics2D.Raycast(
-                position,
-                Vector2.down,
-                999,
-                groundLayer
-            );
+            RaycastHit2D hit = Physics2D.Raycast(position, Vector2.down, 999, groundLayer);
 
             if (hit && hit.collider.TryGetComponent<Biome>(out Biome b)) 
             {
                 biome = b.Data;
             }
-
 
             return biome.GetEnemy(); 
         }

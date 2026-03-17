@@ -86,3 +86,5 @@ MonoBehaviour:
     chance: 40
   - enemy: {fileID: 5388008087247309080, guid: 01b0be618b158d845ba52ed4d344e75d, type: 3}
     chance: 10
+  - enemy: {fileID: 5388008087247309080, guid: dd70175222d6dbc47aece0e0a3e550e1, type: 3}
+    chance: 20

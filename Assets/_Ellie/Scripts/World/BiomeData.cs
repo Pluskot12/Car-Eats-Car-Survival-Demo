@@ -120,9 +120,9 @@ namespace CarGame
         public SpriteShape profile;
 
         [Header("Flat Areas")]
-        public float flatChance = 0.2f;      // Chance to START a flat section
-        public int flatMinPoints = 2;         // Min flat length (in spline points)
-        public int flatMaxPoints = 5;         // Max flat length
+        public float flatChance = 0.2f;
+        public int flatMinPoints = 2;
+        public int flatMaxPoints = 5;
 
         [Header("Spawnable")]
         public bool spawningAllowed = true;
@@ -130,8 +130,6 @@ namespace CarGame
         public List<Structure> structures = new List<Structure>();
         public List<BiomeSpawnable> nodes = new List<BiomeSpawnable>();
         public List<BiomeSpawnable> interactables = new List<BiomeSpawnable>();
-
-
 
         [Header("Backgrounds")]
         public Background skySprite;
@@ -147,7 +145,7 @@ namespace CarGame
         public class Enemies 
         {
             public EnemyController enemy;
-            [Range(0,100f)] public float chance;
+            [Range(0,100f)] public int chance;
         }
 
         [System.Serializable]
@@ -159,26 +157,31 @@ namespace CarGame
 
         [Header("Enemies")]
         public List<Enemies> enemies;
-        
 
         public EnemyController GetEnemy()
         {
+            int totalWeight = 0;
+
             foreach (var e in enemies) 
+            { 
+                totalWeight += e.chance;
+            }
+
+            int random = Random.Range(0, totalWeight);
+            int cumulative = 0;
+
+            foreach (var e in enemies)
             {
-                float random = Random.Range(0, 100f);
-                if (random <= e.chance) 
-                {
+                cumulative += e.chance;
+
+                if (random <= cumulative) 
+                { 
                     return e.enemy;
                 }
             }
 
             return null;
         }
-        /*
-        public void ApplyTangent(Epline spline, int index)
-        {
-            spline.SetLeftTangent(index, Vector3.left * tangentStrength);
-            spline.SetRightTangent(index, Vector3.right * tangentStrength);
-        }*/
+
     }
 }

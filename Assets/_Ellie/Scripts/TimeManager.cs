@@ -26,6 +26,8 @@ namespace CarGame
         [SerializeField] private float duskStartTime;
         [SerializeField] private float nightStartTime;
 
+        public float DayLength => dayLength;
+
         public enum TimeOfDay 
         {
             Day,

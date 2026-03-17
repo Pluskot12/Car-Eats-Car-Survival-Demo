@@ -42,8 +42,4 @@ MonoBehaviour:
   dayAmbience: {fileID: 8300000, guid: 15ba665da82359b4ea8a2c6dc886d314, type: 3}
   duskAmbience: {fileID: 0}
   nightAmbience: {fileID: 0}
-  enemies:
-  - enemy: {fileID: 7901404810430939016, guid: 898c5c4fefec328478894e78cc74dac3, type: 3}
-    chance: 75
-  - enemy: {fileID: 7901404810430939016, guid: 9e2109056b5376c4ab432d36b8a1b1e9, type: 3}
-    chance: 100
+  enemies: []

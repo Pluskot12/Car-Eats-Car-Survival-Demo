@@ -351,7 +351,7 @@ PrefabInstance:
       addedObject: {fileID: 6217307393892056541}
     - targetCorrespondingSourceObject: {fileID: 179251914639705651, guid: 81a4b03a53eabc94c86a6a6d706911df, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 5267751012722358320}
+      addedObject: {fileID: 1128019817073369089}
   m_SourcePrefab: {fileID: 100100000, guid: 81a4b03a53eabc94c86a6a6d706911df, type: 3}
 --- !u!212 &3840725770131467810 stripped
 SpriteRenderer:
@@ -397,7 +397,7 @@ MonoBehaviour:
   spriteRenderer: {fileID: 3840725770131467810}
   source: {fileID: 9150366908640230480}
   onDeathParts: {fileID: 8106010741364046662}
-  blockingCollider: {fileID: 5267751012722358320}
+  blockingCollider: {fileID: 1128019817073369089}
   hitEffect: {fileID: 0}
   health: 50
   hitSounds:
@@ -432,10 +432,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ac77a029108968429dd4f0630385a26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: CarGame::CarGame.EnemyBlocker
-  blockingCollider: {fileID: 5267751012722358320}
+  blockingCollider: {fileID: 1128019817073369089}
   enabledOnAwake: 0
---- !u!61 &5267751012722358320
-BoxCollider2D:
+--- !u!60 &1128019817073369089
+PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -468,7 +468,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0.45}
+  m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -478,8 +478,16 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.45, y: 1}
-  m_EdgeRadius: 0
+  m_Points:
+    m_Paths:
+    - - {x: 0.15824032, y: 0.5312043}
+      - {x: 0.013098717, y: 0.5677506}
+      - {x: -0.18402004, y: 0.5256643}
+      - {x: -0.28303438, y: 0.45964944}
+      - {x: -0.17578548, y: -0.025440514}
+      - {x: 0.19505656, y: -0.025440335}
+      - {x: 0.28958225, y: 0.44982573}
+  m_UseDelaunayMesh: 1
 --- !u!114 &5844002745563753973 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2223015872265380319, guid: 81a4b03a53eabc94c86a6a6d706911df, type: 3}

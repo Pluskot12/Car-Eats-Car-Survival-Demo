@@ -122,6 +122,8 @@ namespace CarGame
 
         private IEnumerator RespawnChest() 
         {
+            float respawnTime = Random.Range(TimeManager.Instance.DayLength, TimeManager.Instance.DayLength * 2F);
+
             yield return new WaitForSeconds(randomLootRespawnTime);
 
             SpawnRandomCrate();
