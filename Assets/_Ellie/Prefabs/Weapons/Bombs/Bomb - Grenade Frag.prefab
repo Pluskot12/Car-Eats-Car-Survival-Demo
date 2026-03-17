@@ -25,6 +25,10 @@ PrefabInstance:
       value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 3270022949829619265, guid: f28a2489381ebe446afed8a554d5f6f7, type: 3}
+      propertyPath: hitLayer.m_Bits
+      value: 3328
+      objectReference: {fileID: 0}
+    - target: {fileID: 3270022949829619265, guid: f28a2489381ebe446afed8a554d5f6f7, type: 3}
       propertyPath: hitSounds.Array.size
       value: 2
       objectReference: {fileID: 0}

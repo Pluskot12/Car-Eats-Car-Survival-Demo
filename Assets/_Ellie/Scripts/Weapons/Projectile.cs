@@ -74,6 +74,7 @@ namespace CarGame
             hit = Physics2D.Raycast(start, direction, distance, hitLayer);
             if (hit)
             {
+                Debug.Log(hit.collider);
                 if (hit.rigidbody != null) 
                 {
                     if (hit.rigidbody.gameObject.TryGetComponent(out IDamageable target)) 
