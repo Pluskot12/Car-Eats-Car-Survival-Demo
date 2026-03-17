@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using static CarGame.CarController;
 
 
 namespace CarGame
@@ -21,7 +22,7 @@ namespace CarGame
         [SerializeField] private float knockbackForce = 10f;
         [SerializeField] private float verticalKnockbackFactor = 0;
 
-        private HashSet<Rigidbody2D> targets = new HashSet<Rigidbody2D>();
+        private HashSet<IDamageable> targets = new HashSet<IDamageable>();
 
         private void Start()
         {
@@ -44,16 +45,29 @@ namespace CarGame
 
             foreach (Collider2D hit in hits)
             {
-                if (hit.attachedRigidbody == null) 
-                { 
-                    continue;
+                IDamageable target = null;
+
+                target = hit.gameObject.GetComponent<IDamageable>();
+
+                if (target == null)
+                {
+                    if (hit.attachedRigidbody == null) 
+                    {
+                        continue;
+                    }
+                    else 
+                    {
+                        target = hit.attachedRigidbody.GetComponent<IDamageable>();
+                    }
+
                 }
 
-                IDamageable target = hit.attachedRigidbody.GetComponent<IDamageable>();
+
+                
 
                 if (target != null)
                 {
-                    targets.Add(hit.attachedRigidbody);
+                    targets.Add(target);
                 }
             }
 
@@ -65,9 +79,9 @@ namespace CarGame
             noiseGenerator.GenerateNoise(1f);
         }
 
-        private void ApplyEffect(Rigidbody2D hit)
+        private void ApplyEffect(IDamageable hit)
         {
-            IDamageable target = hit.GetComponent<IDamageable>();
+            IDamageable target = hit;
 
             if (target == null)
             {
@@ -75,8 +89,11 @@ namespace CarGame
             }
 
             if (knockbackForce != 0) 
-            { 
-                ApplyKnockback(hit);
+            {
+                if (hit is Player player) 
+                { 
+                    ApplyKnockback(player.CarController.GetRigidbody(PhysicsPart.Body));
+                }
             }
 
             target.TryDamage(damage, gameObject);

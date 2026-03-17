@@ -124,7 +124,7 @@ namespace CarGame
 
         public void OnChestRemoved() 
         {
-            inventory.DropAllItems();
+            inventory.DropAllItems(transform.position + Vector3.up);
         }
 
         bool isDestroyed;

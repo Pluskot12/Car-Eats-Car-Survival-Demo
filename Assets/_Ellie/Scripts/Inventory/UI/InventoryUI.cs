@@ -116,7 +116,9 @@ namespace CarGame
                     }
 
                     AnyValueChanged.Invoke(inventoryPanelU.ClonedSlot, clickedSlot);
-                    //inventoryPanelU.RemoveClone();
+                    
+                    // Memo: This removes leftover item
+                    // inventoryPanelU.RemoveClone();
                 }
             }
         }

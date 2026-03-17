@@ -116,7 +116,8 @@ namespace CarGame
 
             carController.Teleport(spawnPoint, () =>
             {
-                IsDead = false; Debug.Log("teleportcomplete");
+                IsDead = false; 
+                //Debug.Log("teleportcomplete");
             });
 
             //body.simulated = true;
@@ -132,7 +133,7 @@ namespace CarGame
             }
             if (Input.GetKeyDown(KeyCode.C))
             {
-                TryDamage(99999);
+                //TryDamage(99999);
             }
             if (Input.GetKeyDown(KeyCode.L))
             {

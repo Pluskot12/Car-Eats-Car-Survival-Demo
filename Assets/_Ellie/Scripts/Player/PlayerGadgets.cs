@@ -54,7 +54,8 @@ namespace CarGame
 
         public void DropAllItems()
         {
-            gadgetController.DropAllItems();
+            Vector3 position = GameManager.Instance.Player.transform.position;
+            gadgetController.DropAllItems(position);
         }
 
     }

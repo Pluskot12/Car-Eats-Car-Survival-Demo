@@ -40,6 +40,9 @@ namespace CarGame
 
         public void TryDamage(int damage, GameObject attacker)
         {
+         
+
+
             if (isDead)
             {
                 return;
@@ -58,6 +61,8 @@ namespace CarGame
             {
                 OnHit(damage);
             }
+
+            Debug.LogWarning("boink " + CurrentHealth);
         }
 
         public void OnHit(int damage)

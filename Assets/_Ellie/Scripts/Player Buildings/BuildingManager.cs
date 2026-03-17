@@ -198,7 +198,6 @@ namespace CarGame
             {
                 if (progressRemoveBar.IsShowing)
                 {
-                    Debug.Log("nope");
                     progressRemoveBar.Hide(false);
                 }
                 interactionTimer = 0;

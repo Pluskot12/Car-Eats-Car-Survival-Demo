@@ -15,9 +15,10 @@ namespace CarGame
             Instance = this;
         }
 
-        public void DropAllItems() 
+        public void DropAllItems()
         {
-            inventoryController.DropAllItems();
+            Vector3 position = GameManager.Instance.Player.transform.position;
+            inventoryController.DropAllItems(position);
         }
     }
 }

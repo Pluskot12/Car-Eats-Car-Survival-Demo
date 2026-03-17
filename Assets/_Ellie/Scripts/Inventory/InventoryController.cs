@@ -84,6 +84,8 @@ namespace CarGame
             {
                 inventory.TryAddAtIndex(to.Index, from.SlottedItem.ItemData, from.SlottedItem.Quantity, from.SlottedItem.Durability);
                 from.Setup(null);
+
+                UIMananger.HeldItem = null;
                 UIMananger.IsHoldingItem = false;
 
                 return;
@@ -94,10 +96,14 @@ namespace CarGame
             if (leftover != null && leftover.Quantity > 0 || leftover.ItemData.GetType() == typeof(WeaponItemData))
             {
                 from.Setup(leftover);
+                UIMananger.HeldItem = leftover;
             }
             else
             {
                 from.Setup(null);
+
+                UIMananger.HeldItem = null;
+                UIMananger.IsHoldingItem = false;
             }
         }
 
@@ -167,10 +173,9 @@ namespace CarGame
             inventory.TryAddAtIndex(index, data, q, d);
         }
 
-        public void DropAllItems()
+        public void DropAllItems(Vector3 position)
         {
             Vector3 force = Vector3.up;
-            Vector3 position = GameManager.Instance.Player.transform.position;
             
             foreach (var item in inventory.Items) 
             {

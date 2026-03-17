@@ -49,12 +49,14 @@ namespace CarGame
 
             if (Input.GetKeyDown(KeyCode.K))
             {
+                /*
                 foreach (var enemy in randomSpawnedEnemies) 
                 {
                     enemy.OnDeath();
                 }
 
                 randomSpawnedEnemies.Clear();
+                */
             }
 
             if (Input.GetKeyDown(KeyCode.J))
